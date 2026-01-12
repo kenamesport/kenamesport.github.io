@@ -1,140 +1,681 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KENAME Sport | Coming Soon</title>
+  <title>KENAME | Experience HER Game</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;family=Playfair+Display:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
   <style>
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+    body {
+      box-sizing: border-box;
     }
-
-    @keyframes bgFade {
+    
+    * {
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .font-display {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    @keyframes fade-in-up {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    @keyframes slide-in-right {
+      from {
+        opacity: 0;
+        transform: translateX(-60px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes shimmer {
+      0% {
+        background-position: -1000px 0;
+      }
+      100% {
+        background-position: 1000px 0;
+      }
+    }
+    
+    @keyframes pulse-glow {
       0%, 100% {
-        background-image: linear-gradient(rgba(44,47,94,0.85), rgba(44,47,94,0.85)), url('https://media.cnn.com/api/v1/images/stellar/prod/230820082100-19-wwc-final.jpg?c=original');
+        box-shadow: 0 0 20px rgba(255, 200, 87, 0.3);
       }
       50% {
-        background-image: linear-gradient(rgba(44,47,94,0.85), rgba(44,47,94,0.85)), url('https://ca-times.brightspotcdn.com/dims4/default/3aa56e4/2147483647/strip/true/crop/2048x1152%2B0%2B0/resize/1200x675%21/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F8a%2F93%2Feb224e7ab324889625590369b241%2Fla-sp-christen-press-20160410');
+        box-shadow: 0 0 40px rgba(255, 200, 87, 0.6);
       }
     }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      animation: bgFade 20s ease-in-out infinite;
-      background-size: cover;
-      background-position: center;
+    
+    .animate-fade-in-up {
+      animation: fade-in-up 1.2s ease-out forwards;
+    }
+    
+    .animate-fade-in {
+      animation: fade-in 1s ease-out forwards;
+    }
+    
+    .animate-slide-in-right {
+      animation: slide-in-right 1s ease-out forwards;
+    }
+    
+    .btn-primary {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      background: linear-gradient(135deg, #FFC857 0%, #FFD980 100%);
+      color: #270E40;
+    }
+    
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 40px rgba(255, 200, 87, 0.4);
+    }
+    
+    .btn-primary:hover::before {
+      width: 400px;
+      height: 400px;
+    }
+    
+    .btn-secondary {
+      position: relative;
+      transition: all 0.4s ease;
+      border: 2px solid #FFC857;
       color: #FFC857;
-      font-family: 'Poppins', sans-serif;
-      text-align: center;
-      overflow-x: hidden;
-      padding: 40px 10px;
-      transition: background-image 2s ease-in-out;
     }
-
-    .logo {
-      width: 220px;
-      max-width: 90%;
-      border-radius: 8px;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      animation: fadeIn 1s ease-out;
+    
+    .btn-secondary:hover {
+      background: rgba(255, 200, 87, 0.1);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(255, 200, 87, 0.2);
     }
-
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: #FFC857;
-      animation: fadeIn 1.5s ease-out;
+    
+    .card-premium {
+      transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      position: relative;
+      overflow: hidden;
     }
-
-    p {
-      font-size: 1.1rem;
-      max-width: 600px;
-      margin: 0 auto 1.5rem;
-      color: #ffffffcc;
-      animation: fadeIn 2s ease-out;
-    }
-
-    .btn {
-      background: #FFC857;
-      color: #2C2F5E;
-      padding: 12px 28px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      animation: fadeIn 2.5s ease-out;
-    }
-
-    .btn:hover {
-      background: #A63E2A;
-      color: #fff;
-    }
-
-    iframe.survey {
-      width: 95%;
-      max-width: 800px;
-      height: 600px;
-      border: none;
-      border-radius: 10px;
-      margin-top: 2rem;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.4);
-      animation: fadeIn 3s ease-out;
-    }
-
-    footer {
-      margin-top: 2rem;
+    
+    .card-premium::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
       width: 100%;
-      text-align: center;
-      color: #fff;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 200, 87, 0.1), transparent);
+      transition: left 0.8s;
     }
-
-    footer div {
-      background: rgba(0,0,0,0.35);
-      padding: 14px 10px;
-      border-radius: 10px;
-      display: inline-block;
-      animation: fadeIn 3.2s ease-out;
+    
+    .card-premium:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
     }
-
-    footer a {
+    
+    .card-premium:hover::before {
+      left: 100%;
+    }
+    
+    .gradient-gold {
+      background: linear-gradient(135deg, #FFC857 0%, #FFD980 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .text-gold {
       color: #FFC857;
-      text-decoration: none;
-      font-weight: 600;
     }
-
-    footer a:hover {
+    
+    .text-terracotta {
       color: #A63E2A;
     }
+    
+    .bg-plum {
+      background: #270E40;
+    }
+    
+    .bg-plum-light {
+      background: #3A1759;
+    }
+    
+    .bg-plum-dark {
+      background: #1A0829;
+    }
+    
+    .border-gold {
+      border-color: #FFC857;
+    }
+    
+    .divider-gold {
+      position: relative;
+    }
+    
+    .divider-gold::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 0;
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, #FFC857, #FFD980);
+    }
+    
+    .hero-gradient {
+      background: linear-gradient(135deg, rgba(39, 14, 64, 0.95) 0%, rgba(58, 21, 89, 0.9) 50%, rgba(39, 14, 64, 0.95) 100%);
+    }
+    
+    .section-pattern {
+      background-image: 
+        radial-gradient(circle at 20% 50%, rgba(255, 200, 87, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(166, 62, 42, 0.02) 0%, transparent 50%);
+    }
+    
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #FFC857;
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover {
+      color: #FFC857;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .image-overlay {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .image-overlay::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(39, 14, 64, 0.6), rgba(255, 200, 87, 0.3));
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    
+    .image-overlay:hover::after {
+      opacity: 1;
+    }
+    
+    .spotlight {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 200, 87, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .quote-mark {
+      font-size: 120px;
+      line-height: 0;
+      opacity: 0.15;
+      color: #FFC857;
+      font-family: 'Playfair Display', serif;
+    }
+    
+    @media (prefers-reduced-motion: reduce) {
+      .animate-fade-in-up,
+      .animate-fade-in,
+      .animate-slide-in-right {
+        animation: none;
+      }
+    }
   </style>
-</head>
-<body>
-  <img src="KENAME%20LOGO.svg" alt="KENAME Sport Logo" class="logo">
-
-  <h1>It's time to experience HER game.</h1>
-  <p>A new era of women’s football travel and empowerment launches soon.<br>
-  Be part of the movement.</p>
-
-  <a href="https://forms.gle/SczXK-er0PX7Gzh0T9jhfCq6G2fgD05yUIWcl_jVJQM90ssUQ" target="_blank" class="btn">Take the Survey</a>
-
-  <iframe class="survey" src="https://docs.google.com/forms/d/e/1FAIpQLSczXK-er0PX7Gzh0T9jhfCq6G2fgD05yUIWcl_jVJQM90ssUQ/viewform?embedded=true" loading="lazy">Loading…</iframe>
-
-  <footer>
-    <div>
-      <p style="margin:0 0 8px 0;font-size:14px;color:#ffffffdd;">Questions or partnerships? <a href="mailto:kenamesport@gmail.com">kenamesport@gmail.com</a></p>
-      <div style="display:flex;gap:18px;justify-content:center;align-items:center;">
-        <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram">Instagram</a>
-        <span style="opacity:.6;">•</span>
-        <a href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn">LinkedIn</a>
-      </div>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-plum">
+  <div id="app-wrapper" class="w-full h-full overflow-auto"><!-- Navigation -->
+   <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-plum-dark" style="border-bottom: 1px solid rgba(255, 200, 87, 0.15);">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+     <div class="flex items-center justify-between h-20"><!-- Logo -->
+      <div class="flex items-center">
+       <div class="flex items-center gap-3">
+        <div class="w-11 h-11 rounded-lg flex items-center justify-center" style="background: linear-gradient(135deg, #FFC857 0%, #FFD980 100%);">
+         <svg viewbox="0 0 40 40" class="w-8 h-8"><circle cx="20" cy="20" r="16" fill="#270E40" opacity="0.3" /> <path d="M20 8 L28 20 L20 32 L12 20 Z" fill="#270E40" /> <circle cx="20" cy="20" r="6" fill="#270E40" />
+         </svg>
+        </div>
+        <div>
+         <div class="text-2xl font-bold tracking-tight text-gold" style="letter-spacing: 0.02em;">
+          KENAME
+         </div>
+         <div class="text-xs tracking-widest text-gray-400" style="letter-spacing: 0.15em;">
+          Sport 
+         </div>
+        </div>
+       </div>
+      </div><!-- Desktop Navigation -->
+      <div class="hidden lg:flex items-center space-x-10"><a href="#home" class="nav-link text-sm font-medium text-gray-300">Home</a> <a href="#story" class="nav-link text-sm font-medium text-gray-300">Our Story</a> <a href="#services" class="nav-link text-sm font-medium text-gray-300">Services</a> <a href="#leadership" class="nav-link text-sm font-medium text-gray-300">Leadership</a> <a href="#media" class="nav-link text-sm font-medium text-gray-300">Media</a> <a href="#contact" class="nav-link text-sm font-medium text-gray-300">Contact</a>
+      </div><!-- CTA Button -->
+      <div class="hidden lg:block"><button class="btn-primary px-6 py-3 rounded-full font-semibold text-sm"> Partner With Us </button>
+      </div><!-- Mobile Menu Button --> <button id="mobile-menu-btn" class="lg:hidden p-2 text-gold">
+       <svg class="w-7 h-7" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+       </svg></button>
+     </div>
+    </div><!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-plum-dark border-t border-gold" style="border-opacity: 0.15;">
+     <div class="px-6 py-6 space-y-4"><a href="#home" class="block text-base font-medium text-gray-300 py-2">Home</a> <a href="#story" class="block text-base font-medium text-gray-300 py-2">Our Story</a> <a href="#services" class="block text-base font-medium text-gray-300 py-2">Services</a> <a href="#leadership" class="block text-base font-medium text-gray-300 py-2">Leadership</a> <a href="#media" class="block text-base font-medium text-gray-300 py-2">Media</a> <a href="#contact" class="block text-base font-medium text-gray-300 py-2">Contact</a> <button class="w-full btn-primary px-6 py-3 rounded-full font-semibold mt-4"> Partner With Us </button>
+     </div>
     </div>
-    <p style="margin-top:10px;font-size:12px;color:#ffffff99;">© 2025 KENAME Sport. All rights reserved.</p>
-  </footer>
-</body>
+   </nav><!-- Hero Section -->
+   <section id="home" class="relative min-h-screen flex items-center overflow-hidden"><!-- Background Image Overlay -->
+    <div class="absolute inset-0">
+     <div class="absolute inset-0 hero-gradient"></div>
+    </div><!-- Spotlight Effect -->
+    <div class="spotlight" id="spotlight"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-8 lg:px-12 py-40 w-full">
+     <div class="max-w-5xl mx-auto text-center">
+      <h1 id="hero-tagline" class="font-display text-7xl md:text-8xl lg:text-9xl font-bold mb-16 leading-tight animate-fade-in-up" style="opacity: 0; animation-delay: 0.4s; letter-spacing: -0.02em;"><span class="text-white">Experience</span><br><span class="gradient-gold">HER Game</span></h1>
+      <p id="hero-subtitle" class="text-2xl md:text-3xl text-gray-300 mb-20 leading-relaxed max-w-3xl mx-auto animate-fade-in-up" style="opacity: 0; animation-delay: 0.6s; font-weight: 300;">Connecting women football fans to the world's elite tournaments through immersive travel experiences and strategic fan engagement.</p>
+      <div class="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in-up" style="opacity: 0; animation-delay: 0.8s;"><button class="btn-primary px-12 py-5 rounded-full font-bold text-base"> Explore Experiences </button> <button class="btn-secondary px-12 py-5 rounded-full font-semibold text-base"> Partner With Us </button>
+      </div>
+     </div>
+    </div>
+   </section><!-- Our Story Section -->
+   <section id="story" class="py-40 section-pattern bg-plum-light relative overflow-hidden">
+    <div class="max-w-5xl mx-auto px-8 lg:px-12 relative z-10">
+     <div class="text-center mb-24">
+      <h2 id="story-headline" class="font-display text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight" style="letter-spacing: -0.02em;">Built for the Future<br><span class="gradient-gold">of Women's Football</span></h2>
+     </div><!-- Mission Statement -->
+     <div class="relative max-w-4xl mx-auto mb-32">
+      <div class="rounded-3xl p-16 md:p-20 shadow-2xl border border-gold" style="border-opacity: 0.1; background: rgba(26, 8, 41, 0.4);">
+       <p id="mission-statement" class="text-2xl md:text-3xl text-gray-200 leading-relaxed font-light text-center" style="line-height: 1.7;"> KENAME empowers women and girls through global football experiences that unite travel, education, and social impact. Our mission is to connect women fans to the world's biggest tournaments while engaging with local communities and creating meaningful pathways for the next generation of girls in sport.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Services Section -->
+   <section id="services" class="py-40 bg-plum">
+    <div class="max-w-6xl mx-auto px-8 lg:px-12">
+     <div class="text-center mb-28">
+      <h2 class="font-display text-6xl md:text-7xl font-bold text-white mb-8" style="letter-spacing: -0.02em;">Our <span class="gradient-gold">Services</span></h2>
+     </div>
+     <div class="space-y-24"><!-- Service 1: Sports Tourism -->
+      <div class="card-premium rounded-3xl overflow-hidden" style="background: rgba(58, 21, 89, 0.3); border: 1px solid rgba(255, 200, 87, 0.08);">
+       <div class="grid md:grid-cols-2 gap-0">
+        <div class="p-16 md:p-20 flex flex-col justify-center">
+         <h3 id="service-one-title" class="text-5xl md:text-6xl font-bold text-white mb-8 font-display" style="letter-spacing: -0.01em;">Sports Tourism</h3>
+         <p class="text-xl text-gray-300 mb-10 leading-relaxed">Curated international travel experiences to elite women's football tournaments. We design immersive journeys that connect fans to World Cups, Olympics, continental championships, and league matches across the globe.</p><button class="btn-primary px-10 py-5 rounded-full font-bold text-base self-start"> Explore Trips </button>
+        </div>
+        <div class="h-96 md:h-auto relative overflow-hidden" style="background: linear-gradient(135deg, rgba(255, 200, 87, 0.12), rgba(166, 62, 42, 0.08));">
+         <svg viewbox="0 0 400 400" class="w-full h-full"><circle cx="200" cy="200" r="120" fill="none" stroke="#FFC857" stroke-width="2" opacity="0.2" /> <ellipse cx="200" cy="200" rx="120" ry="40" fill="none" stroke="#FFC857" stroke-width="2" opacity="0.2" /> <path d="M100 150 Q200 130 300 170" stroke="#FFC857" stroke-width="2" stroke-dasharray="5,5" opacity="0.4" fill="none" /> <g transform="translate(220, 145)">
+           <path d="M-15 0 L15 0 L10 -5 L-10 -5 Z" fill="#FFC857" />
+          </g> <g transform="translate(200, 100)">
+           <path d="M-12 0 L-8 -25 L8 -25 L12 0 Z" fill="#FFC857" />
+           <ellipse cx="0" cy="0" rx="15" ry="4" fill="#FFC857" />
+           <circle cx="0" cy="-30" r="6" fill="white" />
+          </g>
+         </svg>
+        </div>
+       </div>
+      </div><!-- Service 2: Fan Engagement -->
+      <div class="card-premium rounded-3xl overflow-hidden" style="background: rgba(58, 21, 89, 0.3); border: 1px solid rgba(255, 200, 87, 0.08);">
+       <div class="grid md:grid-cols-2 gap-0">
+        <div class="h-96 md:h-auto relative overflow-hidden order-2 md:order-1" style="background: linear-gradient(135deg, rgba(166, 62, 42, 0.12), rgba(255, 200, 87, 0.08));">
+         <svg viewbox="0 0 400 400" class="w-full h-full"><g opacity="0.2">
+           <line x1="80" y1="320" x2="320" y2="320" stroke="#FFC857" stroke-width="2" />
+           <line x1="80" y1="320" x2="80" y2="120" stroke="#FFC857" stroke-width="2" />
+          </g> <polyline points="100,280 160,220 220,180 280,120" fill="none" stroke="#FFC857" stroke-width="3" opacity="0.5" /> <circle cx="100" cy="280" r="6" fill="#A63E2A" /> <circle cx="160" cy="220" r="6" fill="#A63E2A" /> <circle cx="220" cy="180" r="6" fill="#A63E2A" /> <circle cx="280" cy="120" r="6" fill="#A63E2A" />
+         </svg>
+        </div>
+        <div class="p-16 md:p-20 flex flex-col justify-center order-1 md:order-2">
+         <h3 id="service-two-title" class="text-5xl md:text-6xl font-bold text-white mb-8 font-display" style="letter-spacing: -0.01em;">Fan Engagement</h3>
+         <p class="text-xl text-gray-300 mb-10 leading-relaxed">Strategic consulting for clubs, leagues, federations, and brands. We develop data-driven strategies to authentically connect with women's football audiences and build sustainable fan communities.</p><button class="btn-secondary px-10 py-5 rounded-full font-bold text-base self-start"> Learn More </button>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Leadership Section -->
+   <section id="leadership" class="py-40 bg-plum-dark relative overflow-hidden">
+    <div class="max-w-5xl mx-auto px-8 lg:px-12 relative z-10">
+     <div class="text-center mb-28">
+      <h2 class="font-display text-6xl md:text-7xl font-bold text-white mb-6" style="letter-spacing: -0.02em;">Meet Our <span class="gradient-gold">Founder</span></h2>
+     </div>
+     <div class="text-center max-w-3xl mx-auto">
+      <div class="mb-12">
+       <h3 id="ceo-name" class="text-5xl font-bold text-white mb-4 font-display">Zaiditu Y. Persaud</h3>
+       <p id="ceo-title" class="text-2xl text-gold font-medium">Founder &amp; Founder & Chief Executive Officer</p>
+      </div>
+      <div class="space-y-6 text-xl text-gray-300 leading-relaxed mb-12">
+       <p>A former professional footballer and sports business strategist with over 15 years of experience in global sports management, Sarah founded KENAME to bridge the gap between elite women's football and its rapidly growing fanbase.</p>
+       <p>She holds a PhD in Sports Marketing from the London School of Economics and has advised FIFA, UEFA, and multiple national federations on fan engagement strategies.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Media Section -->
+   <section id="media" class="py-40 bg-plum section-pattern">
+    <div class="max-w-5xl mx-auto px-8 lg:px-12">
+     <div class="text-center mb-28">
+      <h2 class="font-display text-6xl md:text-7xl font-bold text-white" style="letter-spacing: -0.02em;">Media &amp; <span class="gradient-gold">Stories</span></h2>
+     </div>
+     <div class="text-center max-w-2xl mx-auto">
+      <p class="text-2xl text-gray-300 leading-relaxed mb-12">Insights, stories, and perspectives on the future of women's football — coming soon.</p><button class="btn-secondary px-10 py-5 rounded-full font-semibold text-base"> Stay Updated </button>
+     </div>
+    </div>
+   </section><!-- Contact Section -->
+   <section id="contact" class="py-40 bg-plum-dark relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-8 lg:px-12 text-center relative z-10">
+     <h2 class="font-display text-6xl md:text-7xl font-bold text-white mb-10" style="letter-spacing: -0.02em;">Ready to <span class="gradient-gold">Partner</span>?</h2>
+     <p class="text-2xl text-gray-300 mb-16 leading-relaxed max-w-2xl mx-auto">Whether you're a football club, federation, brand, or passionate fan, we'd love to explore how we can work together to elevate women's football.</p>
+     <div class="flex flex-col sm:flex-row gap-6 justify-center"><button class="btn-primary px-12 py-5 rounded-full font-bold text-base"> Schedule a Call </button> <button class="btn-secondary px-12 py-5 rounded-full font-semibold text-base"> Send Email </button>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="py-20 bg-plum-dark border-t border-gold" style="border-opacity: 0.08;">
+    <div class="max-w-7xl mx-auto px-8 lg:px-12"><!-- Bottom -->
+     <div class="flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+      <div class="flex items-center gap-3">
+       <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: linear-gradient(135deg, #FFC857, #FFD980);">
+        <svg viewbox="0 0 40 40" class="w-7 h-7"><circle cx="20" cy="20" r="16" fill="#270E40" opacity="0.3" /> <path d="M20 8 L28 20 L20 32 L12 20 Z" fill="#270E40" />
+        </svg>
+       </div>
+       <div>
+        <div class="text-xl font-bold text-gold">
+         KENAME
+        </div>
+        <div class="text-xs tracking-widest text-gray-500">
+         GLOBAL
+        </div>
+       </div>
+      </div>
+      <p class="text-gray-500 text-sm">© 2024 KENAME Global. All rights reserved.</p>
+      <div class="flex gap-4"><a href="#" class="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:scale-110" style="background: rgba(255, 200, 87, 0.1);">
+        <svg class="w-4 h-4 text-gold" fill="currentColor" viewbox="0 0 24 24">
+         <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+        </svg></a> <a href="#" class="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:scale-110" style="background: rgba(255, 200, 87, 0.1);">
+        <svg class="w-4 h-4 text-gold" fill="currentColor" viewbox="0 0 24 24">
+         <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z" />
+        </svg></a> <a href="#" class="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:scale-110" style="background: rgba(255, 200, 87, 0.1);">
+        <svg class="w-4 h-4 text-gold" fill="currentColor" viewbox="0 0 24 24">
+         <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+        </svg></a>
+      </div>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+    // Configuration
+    const defaultConfig = {
+      hero_tagline: "Experience HER Game",
+      hero_subtitle: "Connecting women football fans to the world's elite tournaments through immersive travel experiences and strategic fan engagement.",
+      story_headline: "Built for the Future of Women's Football",
+      mission_statement: "KENAME empowers women and girls through global football experiences that unite travel, education, and social impact. Our mission is to connect women fans to the world's biggest tournaments while engaging with local communities and creating meaningful pathways for the next generation of girls in sport.",
+      service_one_title: "Sports Tourism",
+      service_two_title: "Fan Engagement",
+      ceo_name: "Dr. Sarah Mitchell",
+      ceo_title: "Founder & Chief Executive Officer",
+      background_color: "#270E40",
+      surface_color: "#3A1559",
+      text_color: "#FFFFFF",
+      primary_color: "#FFC857",
+      secondary_color: "#A63E2A",
+      font_family: "Inter",
+      font_size: 16
+    };
+
+    // Initialize Element SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (config) => {
+          // Update text content
+          const heroTagline = document.getElementById('hero-tagline');
+          if (heroTagline) {
+            const text = config.hero_tagline || defaultConfig.hero_tagline;
+            const words = text.split(' ');
+            const lastWord = words.pop();
+            heroTagline.innerHTML = `<span class="text-white">${words.join(' ')}</span><br><span class="gradient-gold">${lastWord}</span>`;
+          }
+          
+          const heroSubtitle = document.getElementById('hero-subtitle');
+          if (heroSubtitle) heroSubtitle.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+          
+          const storyHeadline = document.getElementById('story-headline');
+          if (storyHeadline) {
+            const text = config.story_headline || defaultConfig.story_headline;
+            storyHeadline.innerHTML = text.replace("of Women's Football", "<br><span class='gradient-gold'>of Women's Football</span>");
+          }
+          
+          const missionStatement = document.getElementById('mission-statement');
+          if (missionStatement) missionStatement.textContent = config.mission_statement || defaultConfig.mission_statement;
+          
+          const serviceOneTitle = document.getElementById('service-one-title');
+          if (serviceOneTitle) serviceOneTitle.textContent = config.service_one_title || defaultConfig.service_one_title;
+          
+          const serviceTwoTitle = document.getElementById('service-two-title');
+          if (serviceTwoTitle) serviceTwoTitle.textContent = config.service_two_title || defaultConfig.service_two_title;
+          
+          const ceoName = document.getElementById('ceo-name');
+          if (ceoName) ceoName.textContent = config.ceo_name || defaultConfig.ceo_name;
+          
+          const ceoTitle = document.getElementById('ceo-title');
+          if (ceoTitle) ceoTitle.textContent = config.ceo_title || defaultConfig.ceo_title;
+          
+          // Apply font
+          const fontFamily = config.font_family || defaultConfig.font_family;
+          const baseFontStack = 'sans-serif';
+          document.body.style.fontFamily = `${fontFamily}, ${baseFontStack}`;
+          
+          // Apply font size
+          const baseSize = config.font_size || defaultConfig.font_size;
+          document.documentElement.style.fontSize = `${baseSize}px`;
+        },
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (value) => {
+                config.background_color = value;
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            },
+            {
+              get: () => config.surface_color || defaultConfig.surface_color,
+              set: (value) => {
+                config.surface_color = value;
+                window.elementSdk.setConfig({ surface_color: value });
+              }
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => {
+                config.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            },
+            {
+              get: () => config.primary_color || defaultConfig.primary_color,
+              set: (value) => {
+                config.primary_color = value;
+                window.elementSdk.setConfig({ primary_color: value });
+              }
+            },
+            {
+              get: () => config.secondary_color || defaultConfig.secondary_color,
+              set: (value) => {
+                config.secondary_color = value;
+                window.elementSdk.setConfig({ secondary_color: value });
+              }
+            }
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || defaultConfig.font_family,
+            set: (value) => {
+              config.font_family = value;
+              window.elementSdk.setConfig({ font_family: value });
+            }
+          },
+          fontSizeable: {
+            get: () => config.font_size || defaultConfig.font_size,
+            set: (value) => {
+              config.font_size = value;
+              window.elementSdk.setConfig({ font_size: value });
+            }
+          }
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ['hero_tagline', config.hero_tagline || defaultConfig.hero_tagline],
+          ['hero_subtitle', config.hero_subtitle || defaultConfig.hero_subtitle],
+          ['story_headline', config.story_headline || defaultConfig.story_headline],
+          ['mission_statement', config.mission_statement || defaultConfig.mission_statement],
+          ['service_one_title', config.service_one_title || defaultConfig.service_one_title],
+          ['service_two_title', config.service_two_title || defaultConfig.service_two_title],
+          ['ceo_name', config.ceo_name || defaultConfig.ceo_name],
+          ['ceo_title', config.ceo_title || defaultConfig.ceo_title]
+        ])
+      });
+    }
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Navbar background on scroll
+    const navbar = document.getElementById('navbar');
+    const appWrapper = document.getElementById('app-wrapper');
+    
+    appWrapper.addEventListener('scroll', () => {
+      if (appWrapper.scrollTop > 50) {
+        navbar.style.background = 'rgba(26, 8, 41, 0.98)';
+        navbar.style.backdropFilter = 'blur(20px)';
+        navbar.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.3)';
+      } else {
+        navbar.style.background = '#1A0829';
+        navbar.style.backdropFilter = 'none';
+        navbar.style.boxShadow = 'none';
+      }
+    });
+
+    // Spotlight effect
+    const spotlight = document.getElementById('spotlight');
+    const heroSection = document.querySelector('#home');
+    
+    heroSection.addEventListener('mousemove', (e) => {
+      const rect = heroSection.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      spotlight.style.left = `${x - 300}px`;
+      spotlight.style.top = `${y - 300}px`;
+      spotlight.style.opacity = '1';
+    });
+    
+    heroSection.addEventListener('mouseleave', () => {
+      spotlight.style.opacity = '0';
+    });
+
+    // Trigger animations on load
+    window.addEventListener('load', () => {
+      const heroStats = document.getElementById('hero-stats');
+      if (heroStats) {
+        setTimeout(() => {
+          heroStats.style.opacity = '1';
+        }, 1000);
+      }
+    });
+
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+      threshold: 0.15,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe sections
+    document.querySelectorAll('section:not(#home)').forEach(section => {
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(40px)';
+      section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      observer.observe(section);
+    });
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9bc9317533ed6a4e',t:'MTc2ODE4NDYyMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
