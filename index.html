@@ -1,39 +1,791 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KENAME Sport</title>
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KENAME | Experience HER Game</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;family=Playfair+Display:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
   <style>
-    :root {
-      --plum: #270E40;
-      --gold: #FFC857;
-      --terracotta: #A63E2A;
-      --white: #ffffff;
-    }
-
     body {
-      margin: 0;
-      font-family: "Inter", sans-serif;
-      color: var(--plum);
-      background-color: var(--white);
-      line-height: 1.6;
+      box-sizing: border-box;
+    }
+    
+    * {
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .font-display {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    @keyframes fade-in-up {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    @keyframes slide-in-right {
+      from {
+        opacity: 0;
+        transform: translateX(-60px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes shimmer {
+      0% {
+        background-position: -1000px 0;
+      }
+      100% {
+        background-position: 1000px 0;
+      }
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% {
+        box-shadow: 0 0 20px rgba(255, 200, 87, 0.3);
+      }
+      50% {
+        box-shadow: 0 0 40px rgba(255, 200, 87, 0.6);
+      }
+    }
+    
+    .animate-fade-in-up {
+      animation: fade-in-up 1.2s ease-out forwards;
+    }
+    
+    .animate-fade-in {
+      animation: fade-in 1s ease-out forwards;
+    }
+    
+    .animate-slide-in-right {
+      animation: slide-in-right 1s ease-out forwards;
+    }
+    
+    .btn-primary {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      background: linear-gradient(135deg, #FFC857 0%, #FFD980 100%);
+      color: #270E40;
+    }
+    
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 40px rgba(255, 200, 87, 0.4);
+    }
+    
+    .btn-primary:hover::before {
+      width: 400px;
+      height: 400px;
+    }
+    
+    .btn-secondary {
+      position: relative;
+      transition: all 0.4s ease;
+      border: 2px solid #FFC857;
+      color: #FFC857;
+    }
+    
+    .btn-secondary:hover {
+      background: rgba(255, 200, 87, 0.1);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(255, 200, 87, 0.2);
+    }
+    
+    .card-premium {
+      transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card-premium::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 200, 87, 0.1), transparent);
+      transition: left 0.8s;
+    }
+    
+    .card-premium:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+    }
+    
+    .card-premium:hover::before {
+      left: 100%;
+    }
+    
+    .gradient-gold {
+      background: linear-gradient(135deg, #FFC857 0%, #FFD980 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .text-gold {
+      color: #FFC857;
+    }
+    
+    .text-terracotta {
+      color: #A63E2A;
+    }
+    
+    .bg-plum {
+      background: #270E40;
+    }
+    
+    .bg-plum-light {
+      background: #3A1759;
+    }
+    
+    .bg-plum-dark {
+      background: #1A0829;
+    }
+    
+    .border-gold {
+      border-color: #FFC857;
+    }
+    
+    .divider-gold {
+      position: relative;
+    }
+    
+    .divider-gold::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 0;
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, #FFC857, #FFD980);
+    }
+    
+    .hero-gradient {
+      background: linear-gradient(135deg, rgba(39, 14, 64, 0.95) 0%, rgba(58, 21, 89, 0.9) 50%, rgba(39, 14, 64, 0.95) 100%);
+    }
+    
+    .section-pattern {
+      background-image: 
+        radial-gradient(circle at 20% 50%, rgba(255, 200, 87, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(166, 62, 42, 0.02) 0%, transparent 50%);
+    }
+    
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #FFC857;
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover {
+      color: #FFC857;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .image-overlay {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .image-overlay::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(39, 14, 64, 0.6), rgba(255, 200, 87, 0.3));
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    
+    .image-overlay:hover::after {
+      opacity: 1;
+    }
+    
+    .spotlight {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 200, 87, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .quote-mark {
+      font-size: 120px;
+      line-height: 0;
+      opacity: 0.15;
+      color: #FFC857;
+      font-family: 'Playfair Display', serif;
+    }
+    
+    @media (prefers-reduced-motion: reduce) {
+      .animate-fade-in-up,
+      .animate-fade-in,
+      .animate-slide-in-right {
+        animation: none;
+      }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-plum">
+  <div id="app-wrapper" class="w-full h-full overflow-auto"><!-- Navigation -->
+   <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-plum-dark" style="border-bottom: 1px solid rgba(255, 200, 87, 0.15);">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+     <div class="flex items-center justify-between h-20"><!-- Logo -->
+      <div class="flex items-center">
+       <div class="flex items-center gap-4"><!-- Logo Image - Replace src with your logo URL -->
+        <div class="w-14 h-14 rounded-lg overflow-hidden flex items-center justify-center" style="background: rgba(255, 200, 87, 0.1);">
+         <svg viewbox="0 0 40 40" class="w-10 h-10"><circle cx="20" cy="20" r="16" fill="none" stroke="#FFC857" stroke-width="2" /> <text x="20" y="25" text-anchor="middle" fill="#FFC857" font-size="16" font-weight="bold">
+           K
+          </text>
+         </svg><!-- Replace the SVG above with: <img src="YOUR_LOGO_URL_HERE" alt="KENAME Logo" class="w-full h-full object-contain"> -->
+        </div>
+        <div>
+         <div class="text-2xl font-bold tracking-tight text-gold" style="letter-spacing: 0.02em;">
+          KENAME
+         </div>
+         <div class="text-xs tracking-widest text-gray-400" style="letter-spacing: 0.15em;">
+          SPORT
+         </div>
+        </div>
+       </div>
+      </div><!-- Desktop Navigation -->
+      <div class="hidden lg:flex items-center space-x-10"><a href="#home" class="nav-link text-sm font-medium text-gray-300">Home</a> <a href="#story" class="nav-link text-sm font-medium text-gray-300">Our Story</a> <a href="#services" class="nav-link text-sm font-medium text-gray-300">Services</a> <a href="#leadership" class="nav-link text-sm font-medium text-gray-300">Leadership</a> <a href="#media" class="nav-link text-sm font-medium text-gray-300">Media</a> <a href="#contact" class="nav-link text-sm font-medium text-gray-300">Contact</a>
+      </div><!-- CTA Button -->
+      <div class="hidden lg:block"><button class="btn-primary px-6 py-3 rounded-full font-semibold text-sm"> Partner With Us </button>
+      </div><!-- Mobile Menu Button --> <button id="mobile-menu-btn" class="lg:hidden p-2 text-gold">
+       <svg class="w-7 h-7" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+       </svg></button>
+     </div>
+    </div><!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-plum-dark border-t border-gold" style="border-opacity: 0.15;">
+     <div class="px-6 py-6 space-y-4"><a href="#home" class="block text-base font-medium text-gray-300 py-2">Home</a> <a href="#story" class="block text-base font-medium text-gray-300 py-2">Our Story</a> <a href="#services" class="block text-base font-medium text-gray-300 py-2">Services</a> <a href="#leadership" class="block text-base font-medium text-gray-300 py-2">Leadership</a> <a href="#media" class="block text-base font-medium text-gray-300 py-2">Media</a> <a href="#contact" class="block text-base font-medium text-gray-300 py-2">Contact</a> <button class="w-full btn-primary px-6 py-3 rounded-full font-semibold mt-4"> Partner With Us </button>
+     </div>
+    </div>
+   </nav><!-- Hero Section -->
+   <section id="home" class="relative min-h-screen flex items-center overflow-hidden"><!-- Background Image Overlay -->
+    <div class="absolute inset-0">
+     <div class="absolute inset-0 hero-gradient"></div>
+    </div><!-- Spotlight Effect -->
+    <div class="spotlight" id="spotlight"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-8 lg:px-12 py-40 w-full">
+     <div class="max-w-5xl mx-auto text-center">
+      <h1 id="hero-tagline" class="font-display text-7xl md:text-8xl lg:text-9xl font-bold mb-16 leading-tight animate-fade-in-up" style="opacity: 0; animation-delay: 0.4s; letter-spacing: -0.02em;"><span class="text-white">Experience</span><br><span class="text-white"><span class="gradient-gold">HER</span> Game</span></h1>
+      <p id="hero-subtitle" class="text-2xl md:text-3xl text-gray-300 mb-20 leading-relaxed max-w-3xl mx-auto animate-fade-in-up" style="opacity: 0; animation-delay: 0.6s; font-weight: 300;">Connecting women football fans to the world's elite tournaments through immersive travel experiences and strategic fan engagement.</p>
+      <div class="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in-up" style="opacity: 0; animation-delay: 0.8s;"><button class="btn-primary px-12 py-5 rounded-full font-bold text-base"> Explore Experiences </button> <button class="btn-secondary px-12 py-5 rounded-full font-semibold text-base"> Partner With Us </button>
+      </div>
+     </div>
+    </div>
+   </section><!-- Our Story Section -->
+   <section id="story" class="py-40 section-pattern bg-plum-light relative overflow-hidden">
+    <div class="max-w-5xl mx-auto px-8 lg:px-12 relative z-10">
+     <div class="text-center mb-24">
+      <h2 id="story-headline" class="font-display text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight" style="letter-spacing: -0.02em;">Built for the Future<br><span class="gradient-gold">of Women's Football</span></h2>
+     </div><!-- Mission Statement -->
+     <div class="relative max-w-4xl mx-auto mb-32">
+      <div class="rounded-3xl p-16 md:p-20 shadow-2xl border border-gold" style="border-opacity: 0.1; background: rgba(26, 8, 41, 0.4);">
+       <p id="mission-statement" class="text-2xl md:text-3xl text-gray-200 leading-relaxed font-light text-center" style="line-height: 1.7;">KENAME empowers women and girls through global football experiences that unite travel, education, and social impact. Our mission is to connect women fans to the world's biggest tournaments while engaging with local communities and creating meaningful pathways for the next generation of girls in sport.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Services Section -->
+   <section id="services" class="py-40 bg-plum">
+    <div class="max-w-6xl mx-auto px-8 lg:px-12">
+     <div class="text-center mb-28">
+      <h2 class="font-display text-6xl md:text-7xl font-bold text-white mb-8" style="letter-spacing: -0.02em;">Our <span class="gradient-gold">Services</span></h2>
+     </div>
+     <div class="space-y-24"><!-- Service 1: Sports Tourism -->
+      <div class="card-premium rounded-3xl overflow-hidden" style="background: rgba(58, 21, 89, 0.3); border: 1px solid rgba(255, 200, 87, 0.08);">
+       <div class="grid md:grid-cols-2 gap-0">
+        <div class="p-16 md:p-20 flex flex-col justify-center">
+         <h3 id="service-one-title" class="text-5xl md:text-6xl font-bold text-white mb-8 font-display" style="letter-spacing: -0.01em;">Sports Tourism</h3>
+         <p class="text-xl text-gray-300 mb-10 leading-relaxed">Curated international travel experiences to elite women's football tournaments. We design immersive journeys that connect fans to World Cups, Olympics, continental championships, and league matches across the globe.</p><button class="btn-primary px-10 py-5 rounded-full font-bold text-base self-start"> Explore Trips </button>
+        </div>
+        <div class="h-96 md:h-auto relative overflow-hidden bg-black"><iframe src="https://www.youtube.com/embed/ORWtARNnzXw?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=ORWtARNnzXw&amp;controls=0&amp;modestbranding=1&amp;rel=0&amp;showinfo=0&amp;iv_load_policy=3" class="w-full h-full absolute inset-0" style="border: none; min-height: 400px; object-fit: cover;" allow="autoplay; encrypted-media" allowfullscreen> </iframe>
+        </div>
+       </div>
+      </div><!-- Service 2: Fan Engagement -->
+      <div class="card-premium rounded-3xl overflow-hidden" style="background: rgba(58, 21, 89, 0.3); border: 1px solid rgba(255, 200, 87, 0.08);">
+       <div class="grid md:grid-cols-2 gap-0">
+        <div class="h-96 md:h-auto relative overflow-hidden order-2 md:order-1" style="background: linear-gradient(135deg, rgba(166, 62, 42, 0.12), rgba(255, 200, 87, 0.08));">
+         <svg viewbox="0 0 400 400" class="w-full h-full"><g opacity="0.2">
+           <line x1="80" y1="320" x2="320" y2="320" stroke="#FFC857" stroke-width="2" />
+           <line x1="80" y1="320" x2="80" y2="120" stroke="#FFC857" stroke-width="2" />
+          </g> <polyline points="100,280 160,220 220,180 280,120" fill="none" stroke="#FFC857" stroke-width="3" opacity="0.5" /> <circle cx="100" cy="280" r="6" fill="#A63E2A" /> <circle cx="160" cy="220" r="6" fill="#A63E2A" /> <circle cx="220" cy="180" r="6" fill="#A63E2A" /> <circle cx="280" cy="120" r="6" fill="#A63E2A" />
+         </svg>
+        </div>
+        <div class="p-16 md:p-20 flex flex-col justify-center order-1 md:order-2">
+         <h3 id="service-two-title" class="text-5xl md:text-6xl font-bold text-white mb-8 font-display" style="letter-spacing: -0.01em;">Fan Engagement</h3>
+         <p class="text-xl text-gray-300 mb-10 leading-relaxed">Strategic consulting for clubs, leagues, federations, and brands. We develop data-driven strategies to authentically connect with women's football audiences and build sustainable fan communities.</p><button class="btn-secondary px-10 py-5 rounded-full font-bold text-base self-start"> Learn More </button>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Leadership Section -->
+   <section id="leadership" class="py-40 bg-plum-dark relative overflow-hidden">
+    <div class="max-w-5xl mx-auto px-8 lg:px-12 relative z-10">
+     <div class="text-center mb-28">
+      <h2 class="font-display text-6xl md:text-7xl font-bold text-white mb-6" style="letter-spacing: -0.02em;">Meet Our <span class="gradient-gold">Founder</span></h2>
+     </div><!-- Founder Photo -->
+     <div class="flex justify-center mb-16">
+      <div class="relative w-80 h-80"><!-- Outer decorative ring -->
+       <svg class="absolute inset-0 w-full h-full" viewbox="0 0 320 320"><circle cx="160" cy="160" r="155" fill="none" stroke="#FFC857" stroke-width="2" opacity="0.3" /> <circle cx="160" cy="160" r="145" fill="none" stroke="#FFC857" stroke-width="1" opacity="0.2" />
+       </svg><!-- Main photo circle -->
+       <div class="absolute inset-0 w-full h-full flex items-center justify-center" style="padding: 10px;">
+        <div class="w-full h-full rounded-full overflow-hidden border-4 border-gold"><img src="https://www.dropbox.com/scl/fi/dbs7urlkck2f746w21mmv/Zaiditu.png?rlkey=YOUR_KEY&amp;raw=1" alt="Zaiditu Y. Persaud - Founder &amp; CEO" class="w-full h-full object-cover rounded-full" style="filter: grayscale(100%); object-position: center;" onerror="this.style.display='none'; console.error('Image failed to load');">
+        </div>
+       </div><!-- Decorative corner elements -->
+       <svg class="absolute inset-0 w-full h-full pointer-events-none" viewbox="0 0 320 320"><path d="M 160 10 L 165 20 L 155 20 Z" fill="#FFC857" opacity="0.6" /> <path d="M 160 310 L 165 300 L 155 300 Z" fill="#FFC857" opacity="0.6" /> <path d="M 10 160 L 20 165 L 20 155 Z" fill="#FFC857" opacity="0.6" /> <path d="M 310 160 L 300 165 L 300 155 Z" fill="#FFC857" opacity="0.6" />
+       </svg>
+      </div>
+     </div>
+     <div class="text-center max-w-3xl mx-auto">
+      <div class="mb-12">
+       <h3 id="ceo-name" class="text-5xl font-bold text-white mb-4 font-display">Zaiditu Y. Persaud</h3>
+       <p id="ceo-title" class="text-2xl text-gold font-medium">Founder &amp; Chief Executive Officer</p>
+      </div>
+      <div class="space-y-6 text-xl text-gray-300 leading-relaxed mb-12">
+       <p>Zaiditu Y. Persaud is the Founder of KENAME Sport, a growing global platform dedicated to connecting women through the shared power of football and travel. A Dual MBA in Sports Management candidate at Florida International University &amp; Real Madrid Graduate School-Universidad Europea, Zaiditu brings together her deep passion for women's football with a strong foundation in marketing, sports policy, and governance. Her work is driven by a clear belief that women belong at the center of the global game, not only as fans, but as travelers, decision-makers, and leaders shaping its future.</p>
+       <p>With a background in communications and a long-standing commitment to gender equity, Zaiditu has researched women's football development across the Caribbean and Africa, examining how the sport can serve as a pathway to entrepreneurship for girls. Through KENAME Sport, she transforms that research and vision into thoughtful, real-world experiences that bring women together to experience the game, support its growth, and invest in the next generation.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Media Section -->
+   <section id="media" class="py-40 bg-plum section-pattern">
+    <div class="max-w-5xl mx-auto px-8 lg:px-12">
+     <div class="text-center mb-28">
+      <h2 class="font-display text-6xl md:text-7xl font-bold text-white" style="letter-spacing: -0.02em;">Media &amp; <span class="gradient-gold">Stories</span></h2>
+     </div>
+     <div class="text-center max-w-2xl mx-auto">
+      <p class="text-2xl text-gray-300 leading-relaxed mb-12">Insights, stories, and perspectives on the future of women's football — coming soon.</p><button class="btn-secondary px-10 py-5 rounded-full font-semibold text-base"> Stay Updated </button>
+     </div>
+    </div>
+   </section><!-- Contact Section -->
+   <section id="contact" class="py-40 bg-plum-dark relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-8 lg:px-12 text-center relative z-10">
+     <h2 class="font-display text-6xl md:text-7xl font-bold text-white mb-10" style="letter-spacing: -0.02em;">Ready to <span class="gradient-gold">Partner</span>?</h2>
+     <p class="text-2xl text-gray-300 mb-16 leading-relaxed max-w-2xl mx-auto">Whether you're a football club, federation, brand, or passionate fan, we'd love to explore how we can work together to elevate women's football.</p>
+     <div class="flex flex-col sm:flex-row gap-6 justify-center"><button id="schedule-btn" class="btn-primary px-12 py-5 rounded-full font-bold text-base"> Schedule a Call </button> <button id="email-btn" class="btn-secondary px-12 py-5 rounded-full font-semibold text-base"> Send Email </button>
+     </div>
+    </div>
+   </section><!-- Contact Modal -->
+   <div id="contact-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-6" style="background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px);">
+    <div class="bg-plum-light rounded-3xl shadow-2xl max-w-2xl w-full border border-gold" style="border-opacity: 0.2; max-height: 90%; overflow-y: auto;"><!-- Modal Header -->
+     <div class="p-8 border-b border-gold" style="border-opacity: 0.15;">
+      <div class="flex items-center justify-between mb-4">
+       <h3 class="font-display text-4xl font-bold text-white">Get in Touch</h3><button id="close-modal" class="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:bg-opacity-20" style="background: rgba(255, 200, 87, 0.1);">
+        <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg></button>
+      </div>
+      <p class="text-gray-300 text-lg">Share your details and we'll connect with you soon.</p>
+     </div><!-- Modal Body - Contact Form -->
+     <form id="contact-form" class="p-8 space-y-6">
+      <div><label for="contact-name" class="block text-sm font-semibold text-gray-300 mb-2">Name *</label> <input type="text" id="contact-name" required class="w-full px-5 py-4 rounded-xl bg-plum-dark border border-gold text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gold transition-all" style="border-opacity: 0.2;" placeholder="Your full name">
+      </div>
+      <div><label for="contact-email" class="block text-sm font-semibold text-gray-300 mb-2">Email *</label> <input type="email" id="contact-email" required class="w-full px-5 py-4 rounded-xl bg-plum-dark border border-gold text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gold transition-all" style="border-opacity: 0.2;" placeholder="your@email.com">
+      </div>
+      <div><label for="contact-organization" class="block text-sm font-semibold text-gray-300 mb-2">Organization</label> <input type="text" id="contact-organization" class="w-full px-5 py-4 rounded-xl bg-plum-dark border border-gold text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gold transition-all" style="border-opacity: 0.2;" placeholder="Your club, federation, or company">
+      </div>
+      <div><label for="contact-interest" class="block text-sm font-semibold text-gray-300 mb-2">I'm interested in *</label> <select id="contact-interest" required class="w-full px-5 py-4 rounded-xl bg-plum-dark border border-gold text-white focus:outline-none focus:ring-2 focus:ring-gold transition-all" style="border-opacity: 0.2;"> <option value="">Select an option</option> <option value="sports-tourism">Sports Tourism</option> <option value="fan-engagement">Fan Engagement Consulting</option> <option value="partnerships">Partnerships</option> <option value="general">General Inquiry</option> </select>
+      </div>
+      <div><label for="contact-message" class="block text-sm font-semibold text-gray-300 mb-2">Message *</label> <textarea id="contact-message" required rows="5" class="w-full px-5 py-4 rounded-xl bg-plum-dark border border-gold text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gold transition-all resize-none" style="border-opacity: 0.2;" placeholder="Tell us about your goals and how we can help..."></textarea>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-4 pt-4"><button type="submit" class="btn-primary px-10 py-4 rounded-full font-bold text-base flex-1"> Send Message </button> <button type="button" id="cancel-modal" class="btn-secondary px-10 py-4 rounded-full font-semibold text-base flex-1"> Cancel </button>
+      </div>
+     </form><!-- Success Message (Hidden by default) -->
+     <div id="success-message" class="hidden p-8 text-center">
+      <div class="w-20 h-20 mx-auto mb-6 rounded-full flex items-center justify-center" style="background: rgba(255, 200, 87, 0.15);">
+       <svg class="w-10 h-10 text-gold" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+       </svg>
+      </div>
+      <h4 class="font-display text-3xl font-bold text-white mb-4">Message Sent!</h4>
+      <p class="text-xl text-gray-300 mb-8">Thank you for reaching out. We'll be in touch within 24-48 hours.</p><button id="close-success" class="btn-primary px-10 py-4 rounded-full font-bold text-base"> Close </button>
+     </div>
+    </div>
+   </div><!-- Footer -->
+   <footer class="py-20 bg-plum-dark border-t border-gold" style="border-opacity: 0.08;">
+    <div class="max-w-7xl mx-auto px-8 lg:px-12"><!-- Bottom -->
+     <div class="flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+      <div class="flex items-center gap-4"><!-- Logo Image - Replace src with your logo URL -->
+       <div class="w-12 h-12 rounded-lg overflow-hidden flex items-center justify-center" style="background: rgba(255, 200, 87, 0.1);">
+        <svg viewbox="0 0 40 40" class="w-9 h-9"><circle cx="20" cy="20" r="16" fill="none" stroke="#FFC857" stroke-width="2" /> <text x="20" y="25" text-anchor="middle" fill="#FFC857" font-size="16" font-weight="bold">
+          K
+         </text>
+        </svg><!-- Replace the SVG above with: <img src="YOUR_LOGO_URL_HERE" alt="KENAME Logo" class="w-full h-full object-contain"> -->
+       </div>
+       <div>
+        <div class="text-xl font-bold text-gold">
+         KENAME
+        </div>
+        <div class="text-xs tracking-widest text-gray-500">
+         SPORT
+        </div>
+       </div>
+      </div>
+      <p class="text-gray-500 text-sm">© 2026 Kename Sport LTD Liability Co. All rights reserved.</p>
+      <div class="flex gap-4"><!-- Instagram --> <a href="https://www.instagram.com/kenamesport" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:scale-110" style="background: rgba(255, 200, 87, 0.1);">
+        <svg class="w-5 h-5 text-gold" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+        </svg></a> <!-- LinkedIn --> <a href="https://www.linkedin.com/company/kenamesport" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:scale-110" style="background: rgba(255, 200, 87, 0.1);">
+        <svg class="w-5 h-5 text-gold" fill="currentColor" viewbox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+        </svg></a> <!-- TikTok --> <a href="https://www.tiktok.com/@kenamesport" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:scale-110" style="background: rgba(255, 200, 87, 0.1);">
+        <svg class="w-5 h-5 text-gold" fill="currentColor" viewbox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+        </svg></a> <!-- YouTube --> <a href="https://www.youtube.com/@kenamesport" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:scale-110" style="background: rgba(255, 200, 87, 0.1);">
+        <svg class="w-5 h-5 text-gold" fill="currentColor" viewbox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+        </svg></a>
+      </div>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+    // Configuration
+    const defaultConfig = {
+      hero_tagline: "Experience HER Game",
+      hero_subtitle: "Connecting women football fans to the world's elite tournaments through immersive travel experiences and strategic fan engagement.",
+      story_headline: "Built for the Future of Women's Football",
+      mission_statement: "KENAME empowers women and girls through global football experiences that unite travel, education, and social impact. Our mission is to connect women fans to the world's biggest tournaments while engaging with local communities and creating meaningful pathways for the next generation of girls in sport.",
+      service_one_title: "Sports Tourism",
+      service_two_title: "Fan Engagement",
+      ceo_name: "Zaiditu Y. Persaud",
+      ceo_title: "Founder & Chief Executive Officer",
+      background_color: "#270E40",
+      surface_color: "#3A1559",
+      text_color: "#FFFFFF",
+      primary_color: "#FFC857",
+      secondary_color: "#A63E2A",
+      font_family: "Inter",
+      font_size: 16
+    };
+
+    // Initialize Element SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (config) => {
+          // Update text content
+          const heroTagline = document.getElementById('hero-tagline');
+          if (heroTagline) {
+            const text = config.hero_tagline || defaultConfig.hero_tagline;
+            heroTagline.innerHTML = `<span class="text-white">Experience</span><br><span class="text-white"><span class="gradient-gold">HER</span> Game</span>`;
+          }
+          
+          const heroSubtitle = document.getElementById('hero-subtitle');
+          if (heroSubtitle) heroSubtitle.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+          
+          const storyHeadline = document.getElementById('story-headline');
+          if (storyHeadline) {
+            const text = config.story_headline || defaultConfig.story_headline;
+            storyHeadline.innerHTML = text.replace("of Women's Football", "<br><span class='gradient-gold'>of Women's Football</span>");
+          }
+          
+          const missionStatement = document.getElementById('mission-statement');
+          if (missionStatement) missionStatement.textContent = config.mission_statement || defaultConfig.mission_statement;
+          
+          const serviceOneTitle = document.getElementById('service-one-title');
+          if (serviceOneTitle) serviceOneTitle.textContent = config.service_one_title || defaultConfig.service_one_title;
+          
+          const serviceTwoTitle = document.getElementById('service-two-title');
+          if (serviceTwoTitle) serviceTwoTitle.textContent = config.service_two_title || defaultConfig.service_two_title;
+          
+          const ceoName = document.getElementById('ceo-name');
+          if (ceoName) ceoName.textContent = config.ceo_name || defaultConfig.ceo_name;
+          
+          const ceoTitle = document.getElementById('ceo-title');
+          if (ceoTitle) ceoTitle.textContent = config.ceo_title || defaultConfig.ceo_title;
+          
+          // Apply font
+          const fontFamily = config.font_family || defaultConfig.font_family;
+          const baseFontStack = 'sans-serif';
+          document.body.style.fontFamily = `${fontFamily}, ${baseFontStack}`;
+          
+          // Apply font size
+          const baseSize = config.font_size || defaultConfig.font_size;
+          document.documentElement.style.fontSize = `${baseSize}px`;
+        },
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (value) => {
+                config.background_color = value;
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            },
+            {
+              get: () => config.surface_color || defaultConfig.surface_color,
+              set: (value) => {
+                config.surface_color = value;
+                window.elementSdk.setConfig({ surface_color: value });
+              }
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => {
+                config.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            },
+            {
+              get: () => config.primary_color || defaultConfig.primary_color,
+              set: (value) => {
+                config.primary_color = value;
+                window.elementSdk.setConfig({ primary_color: value });
+              }
+            },
+            {
+              get: () => config.secondary_color || defaultConfig.secondary_color,
+              set: (value) => {
+                config.secondary_color = value;
+                window.elementSdk.setConfig({ secondary_color: value });
+              }
+            }
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || defaultConfig.font_family,
+            set: (value) => {
+              config.font_family = value;
+              window.elementSdk.setConfig({ font_family: value });
+            }
+          },
+          fontSizeable: {
+            get: () => config.font_size || defaultConfig.font_size,
+            set: (value) => {
+              config.font_size = value;
+              window.elementSdk.setConfig({ font_size: value });
+            }
+          }
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ['hero_tagline', config.hero_tagline || defaultConfig.hero_tagline],
+          ['hero_subtitle', config.hero_subtitle || defaultConfig.hero_subtitle],
+          ['story_headline', config.story_headline || defaultConfig.story_headline],
+          ['mission_statement', config.mission_statement || defaultConfig.mission_statement],
+          ['service_one_title', config.service_one_title || defaultConfig.service_one_title],
+          ['service_two_title', config.service_two_title || defaultConfig.service_two_title],
+          ['ceo_name', config.ceo_name || defaultConfig.ceo_name],
+          ['ceo_title', config.ceo_title || defaultConfig.ceo_title]
+        ])
+      });
     }
 
-    h1, h2, h3 {
-      font-family: "Playfair Display", serif;
-      margin-bottom: 0.5rem;
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Navbar background on scroll
+    const navbar = document.getElementById('navbar');
+    const appWrapper = document.getElementById('app-wrapper');
+    
+    appWrapper.addEventListener('scroll', () => {
+      if (appWrapper.scrollTop > 50) {
+        navbar.style.background = 'rgba(26, 8, 41, 0.98)';
+        navbar.style.backdropFilter = 'blur(20px)';
+        navbar.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.3)';
+      } else {
+        navbar.style.background = '#1A0829';
+        navbar.style.backdropFilter = 'none';
+        navbar.style.boxShadow = 'none';
+      }
+    });
+
+    // Spotlight effect
+    const spotlight = document.getElementById('spotlight');
+    const heroSection = document.querySelector('#home');
+    
+    heroSection.addEventListener('mousemove', (e) => {
+      const rect = heroSection.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      spotlight.style.left = `${x - 300}px`;
+      spotlight.style.top = `${y - 300}px`;
+      spotlight.style.opacity = '1';
+    });
+    
+    heroSection.addEventListener('mouseleave', () => {
+      spotlight.style.opacity = '0';
+    });
+
+    // Trigger animations on load
+    window.addEventListener('load', () => {
+      const heroStats = document.getElementById('hero-stats');
+      if (heroStats) {
+        setTimeout(() => {
+          heroStats.style.opacity = '1';
+        }, 1000);
+      }
+    });
+
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+      threshold: 0.15,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe sections
+    document.querySelectorAll('section:not(#home)').forEach(section => {
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(40px)';
+      section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      observer.observe(section);
+    });
+
+    // Contact Modal Functionality
+    const contactModal = document.getElementById('contact-modal');
+    const scheduleBtn = document.getElementById('schedule-btn');
+    const emailBtn = document.getElementById('email-btn');
+    const closeModalBtn = document.getElementById('close-modal');
+    const cancelModalBtn = document.getElementById('cancel-modal');
+    const contactForm = document.getElementById('contact-form');
+    const successMessage = document.getElementById('success-message');
+    const closeSuccessBtn = document.getElementById('close-success');
+
+    // Open modal
+    function openModal() {
+      contactModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
     }
 
-    section {
-      padding: 4rem 1.5rem;
-      max-width: 1100px;
-      margin: auto;
+    // Close modal
+    function closeModal() {
+      contactModal.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+      // Reset form and messages
+      contactForm.reset();
+      contactForm.classList.remove('hidden');
+      successMessage.classList.add('hidden');
     }
 
-    .hero {
-      backgr
+    // Event listeners for opening modal
+    scheduleBtn.addEventListener('click', openModal);
+    emailBtn.addEventListener('click', openModal);
+
+    // Event listeners for closing modal
+    closeModalBtn.addEventListener('click', closeModal);
+    cancelModalBtn.addEventListener('click', closeModal);
+    closeSuccessBtn.addEventListener('click', closeModal);
+
+    // Close modal when clicking outside
+    contactModal.addEventListener('click', (e) => {
+      if (e.target === contactModal) {
+        closeModal();
+      }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !contactModal.classList.contains('hidden')) {
+        closeModal();
+      }
+    });
+
+    // Handle form submission
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Get form data
+      const formData = {
+        name: document.getElementById('contact-name').value,
+        email: document.getElementById('contact-email').value,
+        organization: document.getElementById('contact-organization').value,
+        interest: document.getElementById('contact-interest').value,
+        message: document.getElementById('contact-message').value
+      };
+
+      // Log form data (in a real application, this would send to a server)
+      console.log('Form submitted:', formData);
+
+      // Show success message
+      contactForm.classList.add('hidden');
+      successMessage.classList.remove('hidden');
+    });
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9bde3ca0249e3ea9',t:'MTc2ODQwNTI3OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+
