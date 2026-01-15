@@ -7,6 +7,7 @@
   <link rel="icon" type="image/png" href="https://www.dropbox.com/scl/fi/qpuh0xwoab6s2yjxfnce0/KENAME-LOGO-2.png?rlkey=8va0wizqgg1mqmq76ek8kepfr&amp;st=qag2foje&amp;dl=1">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="/_sdk/element_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;family=Playfair+Display:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
@@ -72,6 +73,12 @@
       }
     }
     
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    
     .animate-fade-in-up {
       animation: fade-in-up 1.2s ease-out forwards;
     }
@@ -82,6 +89,10 @@
     
     .animate-slide-in-right {
       animation: slide-in-right 1s ease-out forwards;
+    }
+    
+    .animate-spin {
+      animation: spin 1s linear infinite;
     }
     
     .btn-primary {
@@ -105,14 +116,19 @@
       transition: width 0.6s, height 0.6s;
     }
     
-    .btn-primary:hover {
+    .btn-primary:hover:not(:disabled) {
       transform: translateY(-3px);
       box-shadow: 0 20px 40px rgba(255, 200, 87, 0.4);
     }
     
-    .btn-primary:hover::before {
+    .btn-primary:hover:not(:disabled)::before {
       width: 400px;
       height: 400px;
+    }
+    
+    .btn-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
     }
     
     .btn-secondary {
@@ -279,7 +295,6 @@
     }
   </style>
   <style>@view-transition { navigation: auto; }</style>
-  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
  <body class="h-full bg-plum">
   <div id="app-wrapper" class="w-full h-full overflow-auto"><!-- Navigation -->
@@ -302,14 +317,14 @@
       </div><!-- Desktop Navigation -->
       <div class="hidden lg:flex items-center space-x-10"><a href="#home" class="nav-link text-sm font-medium text-gray-300">Home</a> <a href="#story" class="nav-link text-sm font-medium text-gray-300">Our Story</a> <a href="#services" class="nav-link text-sm font-medium text-gray-300">Services</a> <a href="#leadership" class="nav-link text-sm font-medium text-gray-300">Leadership</a> <a href="#media" class="nav-link text-sm font-medium text-gray-300">Media</a> <a href="#contact" class="nav-link text-sm font-medium text-gray-300">Contact</a>
       </div><!-- CTA Button -->
-      <div class="hidden lg:block"><button class="btn-primary px-6 py-3 rounded-full font-semibold text-sm"> Partner With Us </button>
+      <div class="hidden lg:block"><button id="nav-partner-btn" class="btn-primary px-6 py-3 rounded-full font-semibold text-sm"> Partner With Us </button>
       </div><!-- Mobile Menu Button --> <button id="mobile-menu-btn" class="lg:hidden p-2 text-gold">
        <svg class="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
        </svg></button>
      </div>
     </div><!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden lg:hidden bg-plum-dark border-t border-gold" style="border-opacity: 0.15;">
-     <div class="px-6 py-6 space-y-4"><a href="#home" class="block text-base font-medium text-gray-300 py-2">Home</a> <a href="#story" class="block text-base font-medium text-gray-300 py-2">Our Story</a> <a href="#services" class="block text-base font-medium text-gray-300 py-2">Services</a> <a href="#leadership" class="block text-base font-medium text-gray-300 py-2">Leadership</a> <a href="#media" class="block text-base font-medium text-gray-300 py-2">Media</a> <a href="#contact" class="block text-base font-medium text-gray-300 py-2">Contact</a> <button class="w-full btn-primary px-6 py-3 rounded-full font-semibold mt-4"> Partner With Us </button>
+     <div class="px-6 py-6 space-y-4"><a href="#home" class="block text-base font-medium text-gray-300 py-2">Home</a> <a href="#story" class="block text-base font-medium text-gray-300 py-2">Our Story</a> <a href="#services" class="block text-base font-medium text-gray-300 py-2">Services</a> <a href="#leadership" class="block text-base font-medium text-gray-300 py-2">Leadership</a> <a href="#media" class="block text-base font-medium text-gray-300 py-2">Media</a> <a href="#contact" class="block text-base font-medium text-gray-300 py-2">Contact</a> <button id="mobile-partner-btn" class="w-full btn-primary px-6 py-3 rounded-full font-semibold mt-4"> Partner With Us </button>
      </div>
     </div>
    </nav><!-- Hero Section -->
@@ -322,7 +337,7 @@
      <div class="max-w-5xl mx-auto text-center">
       <h1 id="hero-tagline" class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-12 md:mb-16 leading-tight animate-fade-in-up" style="opacity: 0; animation-delay: 0.4s; letter-spacing: -0.02em;"><span class="text-white">Experience</span><br><span class="text-white"><span class="gradient-gold">HER</span> Game</span></h1>
       <p id="hero-subtitle" class="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-300 mb-12 md:mb-20 leading-relaxed max-w-3xl mx-auto animate-fade-in-up" style="opacity: 0; animation-delay: 0.6s; font-weight: 300;">Connecting women football fans to the world's elite tournaments through immersive travel experiences and strategic fan engagement.</p>
-      <div class="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center animate-fade-in-up px-4" style="opacity: 0; animation-delay: 0.8s;"><button class="btn-primary px-8 md:px-12 py-4 md:py-5 rounded-full font-bold text-sm md:text-base"> Explore Experiences </button> <button class="btn-secondary px-8 md:px-12 py-4 md:py-5 rounded-full font-semibold text-sm md:text-base"> Partner With Us </button>
+      <div class="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center animate-fade-in-up px-4" style="opacity: 0; animation-delay: 0.8s;"><button class="btn-primary px-8 md:px-12 py-4 md:py-5 rounded-full font-bold text-sm md:text-base"> Explore Experiences </button> <button id="hero-partner-btn" class="btn-secondary px-8 md:px-12 py-4 md:py-5 rounded-full font-semibold text-sm md:text-base"> Partner With Us </button>
       </div>
      </div>
     </div>
@@ -440,7 +455,9 @@
       </div>
       <div><label for="contact-message" class="block text-sm font-semibold text-gray-300 mb-2">Message *</label> <textarea id="contact-message" required rows="5" class="w-full px-4 md:px-5 py-3 md:py-4 rounded-xl bg-plum-dark border border-gold text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gold transition-all resize-none text-sm md:text-base" style="border-opacity: 0.2;" placeholder="Tell us about your goals and how we can help..."></textarea>
       </div>
-      <div class="flex flex-col sm:flex-row gap-3 md:gap-4 pt-4"><button type="submit" class="btn-primary px-8 md:px-10 py-3 md:py-4 rounded-full font-bold text-sm md:text-base flex-1"> Send Message </button> <button type="button" id="cancel-modal" class="btn-secondary px-8 md:px-10 py-3 md:py-4 rounded-full font-semibold text-sm md:text-base flex-1"> Cancel </button>
+      <div class="flex flex-col sm:flex-row gap-3 md:gap-4 pt-4"><button type="submit" id="submit-form-btn" class="btn-primary px-8 md:px-10 py-3 md:py-4 rounded-full font-bold text-sm md:text-base flex-1 flex items-center justify-center gap-2"> <span id="submit-text">Send Message</span>
+        <svg id="submit-spinner" class="hidden animate-spin w-5 h-5 text-plum-dark" fill="none" viewbox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" /> <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+        </svg></button> <button type="button" id="cancel-modal" class="btn-secondary px-8 md:px-10 py-3 md:py-4 rounded-full font-semibold text-sm md:text-base flex-1"> Cancel </button>
       </div>
      </form><!-- Success Message (Hidden by default) -->
      <div id="success-message" class="hidden p-6 md:p-8 text-center">
@@ -450,6 +467,14 @@
       </div>
       <h4 class="font-display text-2xl md:text-3xl font-bold text-white mb-4">Message Sent!</h4>
       <p class="text-lg md:text-xl text-gray-300 mb-8">Thank you for reaching out. We'll be in touch within 24-48 hours.</p><button id="close-success" class="btn-primary px-8 md:px-10 py-3 md:py-4 rounded-full font-bold text-sm md:text-base"> Close </button>
+     </div><!-- Error Message (Hidden by default) -->
+     <div id="error-message" class="hidden p-6 md:p-8 text-center">
+      <div class="w-16 h-16 md:w-20 md:h-20 mx-auto mb-6 rounded-full flex items-center justify-center" style="background: rgba(166, 62, 42, 0.15);">
+       <svg class="w-8 h-8 md:w-10 md:h-10 text-terracotta" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+       </svg>
+      </div>
+      <h4 class="font-display text-2xl md:text-3xl font-bold text-white mb-4">Something Went Wrong</h4>
+      <p class="text-lg md:text-xl text-gray-300 mb-8">We couldn't save your message. Please try again or email us directly.</p><button id="close-error" class="btn-primary px-8 md:px-10 py-3 md:py-4 rounded-full font-bold text-sm md:text-base"> Try Again </button>
      </div>
     </div>
    </div><!-- Footer -->
@@ -503,117 +528,139 @@
       font_size: 16
     };
 
-    // Initialize Element SDK
-    if (window.elementSdk) {
-      window.elementSdk.init({
-        defaultConfig,
-        onConfigChange: async (config) => {
-          // Update text content
-          const heroTagline = document.getElementById('hero-tagline');
-          if (heroTagline) {
-            const text = config.hero_tagline || defaultConfig.hero_tagline;
-            heroTagline.innerHTML = `<span class="text-white">Experience</span><br><span class="text-white"><span class="gradient-gold">HER</span> Game</span>`;
-          }
-          
-          const heroSubtitle = document.getElementById('hero-subtitle');
-          if (heroSubtitle) heroSubtitle.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
-          
-          const storyHeadline = document.getElementById('story-headline');
-          if (storyHeadline) {
-            const text = config.story_headline || defaultConfig.story_headline;
-            storyHeadline.innerHTML = text.replace("of Women's Football", "<br><span class='gradient-gold'>of Women's Football</span>");
-          }
-          
-          const missionStatement = document.getElementById('mission-statement');
-          if (missionStatement) missionStatement.textContent = config.mission_statement || defaultConfig.mission_statement;
-          
-          const serviceOneTitle = document.getElementById('service-one-title');
-          if (serviceOneTitle) serviceOneTitle.textContent = config.service_one_title || defaultConfig.service_one_title;
-          
-          const serviceTwoTitle = document.getElementById('service-two-title');
-          if (serviceTwoTitle) serviceTwoTitle.textContent = config.service_two_title || defaultConfig.service_two_title;
-          
-          const ceoName = document.getElementById('ceo-name');
-          if (ceoName) ceoName.textContent = config.ceo_name || defaultConfig.ceo_name;
-          
-          const ceoTitle = document.getElementById('ceo-title');
-          if (ceoTitle) ceoTitle.textContent = config.ceo_title || defaultConfig.ceo_title;
-          
-          // Apply font
-          const fontFamily = config.font_family || defaultConfig.font_family;
-          const baseFontStack = 'sans-serif';
-          document.body.style.fontFamily = `${fontFamily}, ${baseFontStack}`;
-          
-          // Apply font size
-          const baseSize = config.font_size || defaultConfig.font_size;
-          document.documentElement.style.fontSize = `${baseSize}px`;
-        },
-        mapToCapabilities: (config) => ({
-          recolorables: [
-            {
-              get: () => config.background_color || defaultConfig.background_color,
-              set: (value) => {
-                config.background_color = value;
-                window.elementSdk.setConfig({ background_color: value });
-              }
-            },
-            {
-              get: () => config.surface_color || defaultConfig.surface_color,
-              set: (value) => {
-                config.surface_color = value;
-                window.elementSdk.setConfig({ surface_color: value });
-              }
-            },
-            {
-              get: () => config.text_color || defaultConfig.text_color,
-              set: (value) => {
-                config.text_color = value;
-                window.elementSdk.setConfig({ text_color: value });
-              }
-            },
-            {
-              get: () => config.primary_color || defaultConfig.primary_color,
-              set: (value) => {
-                config.primary_color = value;
-                window.elementSdk.setConfig({ primary_color: value });
-              }
-            },
-            {
-              get: () => config.secondary_color || defaultConfig.secondary_color,
-              set: (value) => {
-                config.secondary_color = value;
-                window.elementSdk.setConfig({ secondary_color: value });
-              }
+    // Initialize Data SDK
+    const dataHandler = {
+      onDataChanged(data) {
+        // This is a write-only form, so we don't need to display data
+        console.log('Contact submissions stored:', data.length);
+      }
+    };
+
+    // Initialize both SDKs
+    async function initializeApp() {
+      // Initialize Data SDK
+      if (window.dataSdk) {
+        const result = await window.dataSdk.init(dataHandler);
+        if (!result.isOk) {
+          console.error('Failed to initialize Data SDK:', result.error);
+        }
+      }
+
+      // Initialize Element SDK
+      if (window.elementSdk) {
+        window.elementSdk.init({
+          defaultConfig,
+          onConfigChange: async (config) => {
+            // Update text content
+            const heroTagline = document.getElementById('hero-tagline');
+            if (heroTagline) {
+              const text = config.hero_tagline || defaultConfig.hero_tagline;
+              heroTagline.innerHTML = `<span class="text-white">Experience</span><br><span class="text-white"><span class="gradient-gold">HER</span> Game</span>`;
             }
-          ],
-          borderables: [],
-          fontEditable: {
-            get: () => config.font_family || defaultConfig.font_family,
-            set: (value) => {
-              config.font_family = value;
-              window.elementSdk.setConfig({ font_family: value });
+            
+            const heroSubtitle = document.getElementById('hero-subtitle');
+            if (heroSubtitle) heroSubtitle.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+            
+            const storyHeadline = document.getElementById('story-headline');
+            if (storyHeadline) {
+              const text = config.story_headline || defaultConfig.story_headline;
+              storyHeadline.innerHTML = text.replace("of Women's Football", "<br><span class='gradient-gold'>of Women's Football</span>");
             }
+            
+            const missionStatement = document.getElementById('mission-statement');
+            if (missionStatement) missionStatement.textContent = config.mission_statement || defaultConfig.mission_statement;
+            
+            const serviceOneTitle = document.getElementById('service-one-title');
+            if (serviceOneTitle) serviceOneTitle.textContent = config.service_one_title || defaultConfig.service_one_title;
+            
+            const serviceTwoTitle = document.getElementById('service-two-title');
+            if (serviceTwoTitle) serviceTwoTitle.textContent = config.service_two_title || defaultConfig.service_two_title;
+            
+            const ceoName = document.getElementById('ceo-name');
+            if (ceoName) ceoName.textContent = config.ceo_name || defaultConfig.ceo_name;
+            
+            const ceoTitle = document.getElementById('ceo-title');
+            if (ceoTitle) ceoTitle.textContent = config.ceo_title || defaultConfig.ceo_title;
+            
+            // Apply font
+            const fontFamily = config.font_family || defaultConfig.font_family;
+            const baseFontStack = 'sans-serif';
+            document.body.style.fontFamily = `${fontFamily}, ${baseFontStack}`;
+            
+            // Apply font size
+            const baseSize = config.font_size || defaultConfig.font_size;
+            document.documentElement.style.fontSize = `${baseSize}px`;
           },
-          fontSizeable: {
-            get: () => config.font_size || defaultConfig.font_size,
-            set: (value) => {
-              config.font_size = value;
-              window.elementSdk.setConfig({ font_size: value });
+          mapToCapabilities: (config) => ({
+            recolorables: [
+              {
+                get: () => config.background_color || defaultConfig.background_color,
+                set: (value) => {
+                  config.background_color = value;
+                  window.elementSdk.setConfig({ background_color: value });
+                }
+              },
+              {
+                get: () => config.surface_color || defaultConfig.surface_color,
+                set: (value) => {
+                  config.surface_color = value;
+                  window.elementSdk.setConfig({ surface_color: value });
+                }
+              },
+              {
+                get: () => config.text_color || defaultConfig.text_color,
+                set: (value) => {
+                  config.text_color = value;
+                  window.elementSdk.setConfig({ text_color: value });
+                }
+              },
+              {
+                get: () => config.primary_color || defaultConfig.primary_color,
+                set: (value) => {
+                  config.primary_color = value;
+                  window.elementSdk.setConfig({ primary_color: value });
+                }
+              },
+              {
+                get: () => config.secondary_color || defaultConfig.secondary_color,
+                set: (value) => {
+                  config.secondary_color = value;
+                  window.elementSdk.setConfig({ secondary_color: value });
+                }
+              }
+            ],
+            borderables: [],
+            fontEditable: {
+              get: () => config.font_family || defaultConfig.font_family,
+              set: (value) => {
+                config.font_family = value;
+                window.elementSdk.setConfig({ font_family: value });
+              }
+            },
+            fontSizeable: {
+              get: () => config.font_size || defaultConfig.font_size,
+              set: (value) => {
+                config.font_size = value;
+                window.elementSdk.setConfig({ font_size: value });
+              }
             }
-          }
-        }),
-        mapToEditPanelValues: (config) => new Map([
-          ['hero_tagline', config.hero_tagline || defaultConfig.hero_tagline],
-          ['hero_subtitle', config.hero_subtitle || defaultConfig.hero_subtitle],
-          ['story_headline', config.story_headline || defaultConfig.story_headline],
-          ['mission_statement', config.mission_statement || defaultConfig.mission_statement],
-          ['service_one_title', config.service_one_title || defaultConfig.service_one_title],
-          ['service_two_title', config.service_two_title || defaultConfig.service_two_title],
-          ['ceo_name', config.ceo_name || defaultConfig.ceo_name],
-          ['ceo_title', config.ceo_title || defaultConfig.ceo_title]
-        ])
-      });
+          }),
+          mapToEditPanelValues: (config) => new Map([
+            ['hero_tagline', config.hero_tagline || defaultConfig.hero_tagline],
+            ['hero_subtitle', config.hero_subtitle || defaultConfig.hero_subtitle],
+            ['story_headline', config.story_headline || defaultConfig.story_headline],
+            ['mission_statement', config.mission_statement || defaultConfig.mission_statement],
+            ['service_one_title', config.service_one_title || defaultConfig.service_one_title],
+            ['service_two_title', config.service_two_title || defaultConfig.service_two_title],
+            ['ceo_name', config.ceo_name || defaultConfig.ceo_name],
+            ['ceo_title', config.ceo_title || defaultConfig.ceo_title]
+          ])
+        });
+      }
     }
+
+    // Initialize app when page loads
+    initializeApp();
 
     // Mobile menu toggle
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -712,11 +759,19 @@
     const contactModal = document.getElementById('contact-modal');
     const scheduleBtn = document.getElementById('schedule-btn');
     const emailBtn = document.getElementById('email-btn');
+    const navPartnerBtn = document.getElementById('nav-partner-btn');
+    const mobilePartnerBtn = document.getElementById('mobile-partner-btn');
+    const heroPartnerBtn = document.getElementById('hero-partner-btn');
     const closeModalBtn = document.getElementById('close-modal');
     const cancelModalBtn = document.getElementById('cancel-modal');
     const contactForm = document.getElementById('contact-form');
     const successMessage = document.getElementById('success-message');
+    const errorMessage = document.getElementById('error-message');
     const closeSuccessBtn = document.getElementById('close-success');
+    const closeErrorBtn = document.getElementById('close-error');
+    const submitFormBtn = document.getElementById('submit-form-btn');
+    const submitText = document.getElementById('submit-text');
+    const submitSpinner = document.getElementById('submit-spinner');
 
     // Open modal
     function openModal() {
@@ -732,16 +787,30 @@
       contactForm.reset();
       contactForm.classList.remove('hidden');
       successMessage.classList.add('hidden');
+      errorMessage.classList.add('hidden');
+      submitFormBtn.disabled = false;
+      submitText.classList.remove('hidden');
+      submitSpinner.classList.add('hidden');
     }
 
     // Event listeners for opening modal
     scheduleBtn.addEventListener('click', openModal);
     emailBtn.addEventListener('click', openModal);
+    navPartnerBtn.addEventListener('click', openModal);
+    mobilePartnerBtn.addEventListener('click', openModal);
+    heroPartnerBtn.addEventListener('click', openModal);
 
     // Event listeners for closing modal
     closeModalBtn.addEventListener('click', closeModal);
     cancelModalBtn.addEventListener('click', closeModal);
     closeSuccessBtn.addEventListener('click', closeModal);
+    closeErrorBtn.addEventListener('click', () => {
+      errorMessage.classList.add('hidden');
+      contactForm.classList.remove('hidden');
+      submitFormBtn.disabled = false;
+      submitText.classList.remove('hidden');
+      submitSpinner.classList.add('hidden');
+    });
 
     // Close modal when clicking outside
     contactModal.addEventListener('click', (e) => {
@@ -758,25 +827,45 @@
     });
 
     // Handle form submission
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       
+      // Show loading state
+      submitFormBtn.disabled = true;
+      submitText.classList.add('hidden');
+      submitSpinner.classList.remove('hidden');
+
       // Get form data
       const formData = {
         name: document.getElementById('contact-name').value,
         email: document.getElementById('contact-email').value,
-        organization: document.getElementById('contact-organization').value,
+        organization: document.getElementById('contact-organization').value || 'Not provided',
         interest: document.getElementById('contact-interest').value,
-        message: document.getElementById('contact-message').value
+        message: document.getElementById('contact-message').value,
+        timestamp: new Date().toISOString()
       };
 
-      // Log form data (in a real application, this would send to a server)
-      console.log('Form submitted:', formData);
-
-      // Show success message
-      contactForm.classList.add('hidden');
-      successMessage.classList.remove('hidden');
+      // Save to Canva Sheet using Data SDK
+      if (window.dataSdk) {
+        const result = await window.dataSdk.create(formData);
+        
+        if (result.isOk) {
+          // Show success message
+          contactForm.classList.add('hidden');
+          successMessage.classList.remove('hidden');
+        } else {
+          // Show error message
+          contactForm.classList.add('hidden');
+          errorMessage.classList.remove('hidden');
+          console.error('Error saving contact form:', result.error);
+        }
+      } else {
+        // SDK not available
+        contactForm.classList.add('hidden');
+        errorMessage.classList.remove('hidden');
+        console.error('Data SDK not available');
+      }
     });
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9be10aeeb56a439c',t:'MTc2ODQzNDcwMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9be147b534670fa9',t:'MTc2ODQzNzE5MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
