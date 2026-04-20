@@ -1,103 +1,392 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>KENAME Sport | Experience Oslo '26</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KENAME Sport | EXPERIENCE OSLO '26</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
 body {
   margin: 0;
-  font-family: "Inter", sans-serif;
-  background: #0d0a1f;
-  color: #fff;
+  font-family: 'Inter', sans-serif;
+  background: #070513;
+  color: white;
 }
 
-/* HERO SECTION */
+/* NAV */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 50px;
+  background: rgba(10, 8, 26, 0.55);
+  backdrop-filter: blur(14px);
+  z-index: 1000;
+}
+
+.logo {
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.menu {
+  display: flex;
+  gap: 22px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+/* HERO */
 .hero {
   height: 100vh;
-  background: linear-gradient(
-      rgba(13,10,31,0.65),
-      rgba(13,10,31,0.85)
-    ),
-    url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=2000&q=80")
-    center/cover no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 0 20px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(7,5,19,0.55),
+      rgba(7,5,19,0.95)
+    ),
+    url('https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=2400&q=80');
+  background-size: cover;
+  background-position: center;
 }
 
-/* MAIN TITLE */
+/* TITLE SYSTEM */
 .hero h1 {
-  font-size: 72px;
-  font-weight: 800;
+  font-size: 78px;
+  font-weight: 900;
   letter-spacing: 2px;
   margin: 0;
 }
 
-/* OSLO '26 STYLE */
-.hero h2 {
-  font-family: "Playfair Display", serif;
-  font-size: 72px;
-  font-weight: 700;
+.hero h1 span {
+  font-family: 'Playfair Display', serif;
   font-style: italic;
+  font-weight: 700;
   color: #d4af37;
-  margin: 10px 0 10px 0;
 }
 
-/* SUB INFO */
-.trip-info {
+/* SUBTEXT */
+.subtext {
+  margin-top: 12px;
   font-size: 14px;
-  font-weight: 300;
-  opacity: 0.9;
+  opacity: 0.85;
   line-height: 1.8;
-  margin-bottom: 25px;
 }
 
 /* COUNTDOWN LABEL */
-.countdown-label {
-  font-size: 13px;
-  font-weight: 300;
-  letter-spacing: 2px;
-  opacity: 0.7;
-  margin-top: 10px;
-  margin-bottom: 15px;
+.label {
+  margin-top: 30px;
+  font-size: 12px;
+  letter-spacing: 3px;
+  opacity: 0.6;
+  text-transform: uppercase;
 }
 
-/* COUNTDOWN WRAPPER */
+/* COUNTDOWN */
 .countdown {
   display: flex;
-  gap: 18px;
   align-items: center;
+  gap: 14px;
+  margin-top: 18px;
 }
 
-/* BOXES */
 .box {
-  border: 1px solid rgba(255,255,255,0.4);
-  padding: 15px 18px;
+  border: 1px solid rgba(255,255,255,0.7);
+  padding: 14px 16px;
   border-radius: 12px;
-  min-width: 85px;
-  backdrop-filter: blur(6px);
+  min-width: 78px;
+  backdrop-filter: blur(10px);
 }
 
-/* NUMBERS */
 .box span {
-  font-size: 34px;
-  font-weight: 600;
+  font-size: 28px;
+  font-weight: 700;
 }
 
-/* LABELS */
-.box small {
-  display: block;
-  font-size: 11px;
-  margin-top: 5px;
+.colon {
+  font-size: 22px;
+  opacity: 0.6;
+}
+
+/* BUTTON */
+.btn {
+  margin-top: 35px;
+  padding: 12px 26px;
+  border-radius: 999px;
+  background: #d4af37;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(212,175,55,0.25);
+}
+
+/* SMALL TAG */
+.tagline {
+  margin-top: 18px;
+  font-size: 13px;
   opacity: 0.7;
+}
+
+/* FLOAT ANIMATION */
+.hero h1, .hero .subtext {
+  animation: fadeUp 1s ease-out;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* SECTION WRAPPER */
+.section {
+  padding: 100px 40px;
+  text-align: center;
+}
+
+/* TITLE */
+.section h2 {
+  font-size: 34px;
   letter-spacing: 1px;
+  margin-bottom: 40px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px;
+  margin-top: 30px;
+}
+
+/* CARD */
+.card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+
+/* HOVER LIFT */
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  border-color: rgba(212,175,55,0.5);
+}
+
+/* IMAGE */
+.card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+/* CONTENT */
+.card-content {
+  padding: 18px;
+}
+
+.card h3 {
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+/* BUTTON */
+.card button {
+  margin-top: 12px;
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.card button:hover {
+  background: #d4af37;
+  color: black;
+  border-color: #d4af37;
+}
+
+/* CENTER CTA */
+.center-btn {
+  margin-top: 30px;
+  padding: 12px 26px;
+  border-radius: 30px;
+  background: #d4af37;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="logo">KENAME</div>
+  <div class="menu">
+    <div>Home</div>
+    <div>Who We Are</div>
+    <div>Ecosystem</div>
+    <div>Travel</div>
+    <div>Contact</div>
+  </div>
+</nav>
+
+<section class="hero">
+
+  <h1>EXPERIENCE <span>OSLO ’26</span></h1>
+
+  <div class="subtext">
+    🗓️ May 20–24, 2026 &nbsp; | &nbsp;
+    🏆 UEFA WCL Final: May 23 &nbsp; | &nbsp;
+    📍 Oslo, Norway 🇳🇴
+  </div>
+
+  <div class="label">Countdown to departure</div>
+
+  <div class="countdown">
+    <div class="box"><span id="d">00</span></div>
+    <div class="colon">:</div>
+    <div class="box"><span id="h">00</span></div>
+    <div class="colon">:</div>
+    <div class="box"><span id="m">00</span></div>
+    <div class="colon">:</div>
+    <div class="box"><span id="s">00</span></div>
+  </div>
+
+  <div class="tagline">
+    A curated women’s football experience on Oslo’s waterfront
+  </div>
+
+  <button class="btn">Book Trip</button>
+
+</section>
+
+<!-- ===================== -->
+<!-- ECOSYSTEM -->
+<!-- ===================== -->
+
+<div class="section">
+  <h2>Our Ecosystem</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=800&q=80">
+      <div class="card-content">
+        <h3>Matchday</h3>
+        <button>Learn More</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1526779259212-939e64788e3c?auto=format&fit=crop&w=800&q=80">
+      <div class="card-content">
+        <h3>Travel</h3>
+        <button>Learn More</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1551817958-20204d6ab6b8?auto=format&fit=crop&w=800&q=80">
+      <div class="card-content">
+        <h3>Media</h3>
+        <button>Learn More</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80">
+      <div class="card-content">
+        <h3>Consulting</h3>
+        <button>Learn More</button>
+      </div>
+    </div>
+
+  </div>
+
+  <button class="center-btn">Learn More</button>
+</div>
+
+<!-- ===================== -->
+<!-- MEDIA SECTION -->
+<!-- ===================== -->
+
+<div class="section">
+  <h2>Media & Stories</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=800&q=80">
+      <div class="card-content">
+        <h3>Matchday Coverage</h3>
+        <button onclick="window.location.href='https://kenamesport.substack.com/'">Read More</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1520975958225-2c7f1f2c1f3a?auto=format&fit=crop&w=800&q=80">
+      <div class="card-content">
+        <h3>Features & Reports</h3>
+        <button onclick="window.location.href='https://kenamesport.substack.com/'">Read More</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=800&q=80">
+      <div class="card-content">
+        <h3>Behind The Game</h3>
+        <button onclick="window.location.href='https://kenamesport.substack.com/'">Read More</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const target = new Date("May 20, 2026 00:00:00").getTime();
+
+setInterval(() => {
+  const now = new Date().getTime();
+  const diff = target - now;
+
+  document.getElementById("d").innerText = Math.floor(diff / (1000*60*60*24));
+  document.getElementById("h").innerText = Math.floor((diff / (1000*60*60)) % 24);
+  document.getElementById("m").innerText = Math.floor((diff / (1000*60)) % 60);
+  document.getElementById("s").innerText = Math.floor((diff / 1000) % 60);
+}, 1000);
+</script>
+
+</body>
+</html>
 }
 
 /* COLON BETWEEN */
