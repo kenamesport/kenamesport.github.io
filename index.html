@@ -15,6 +15,32 @@ body {
   color: white;
 }
 
+/* NAVIGATION LINK FIXES */
+.menu-item > a {
+  color: white !important;
+  text-decoration: none !important;
+  transition: color 0.2s;
+}
+
+.menu-item > a:hover {
+  color: #d4af37 !important;
+}
+
+/* DROPDOWN ARROW FOR MENU ITEMS */
+.menu-item.has-dropdown > a::after {
+  content: '\25BC'; /* ▼ Unicode */
+  display: inline-block;
+  margin-left: 6px;
+  font-size: 0.7em;
+  color: white;
+  vertical-align: middle;
+}
+
+/* Optional: Arrow color on hover */
+.menu-item.has-dropdown:hover > a::after {
+  color: #d4af37;
+}
+
 /* NAVBAR */
 
 .navbar {
@@ -105,7 +131,7 @@ body {
 .hero {
   position: relative;
   height: 100vh;
-  background: url('images/stadium.jpg') center/cover no-repeat;
+  background: url('images/partners/Ullevaal-Stadion_1_1149829857.jpg') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -723,40 +749,40 @@ body {
     <div class="logo"><img src="images/k-logo.png" alt="KENAME logo"></div>
     <div class="menu">
       <div class="menu-item"><a href="home.html">Home</a></div>
-      <div class="menu-item">
-        <a href="who-we-are.html">Who We Are</a>
-        <div class="dropdown">
-          <a href="mission-statement.html">Mission Statement</a>
-          <a href="values.html">Values</a>
-          <a href="our-story.html">Our Story</a>
-          <a href="leadership.html">Leadership</a>
-          <a href="our-team.html">Our Team</a>
-          <a href="meet-our-founder.html">Meet Our Founder</a>
+        <div class="menu-item has-dropdown">
+          <a href="who-we-are.html">Who We Are</a>
+          <div class="dropdown">
+            <a href="mission-statement.html">Mission Statement</a>
+            <a href="values.html">Values</a>
+            <a href="our-story.html">Our Story</a>
+            <a href="leadership.html">Leadership</a>
+            <a href="our-team.html">Our Team</a>
+            <a href="meet-our-founder.html">Meet Our Founder</a>
+          </div>
         </div>
-      </div>
-      <div class="menu-item">
-        <a href="ecosystem.html">Ecosystem</a>
-        <div class="dropdown">
-          <a href="matchday.html">Matchday</a>
-          <a href="travel.html">Travel</a>
-          <a href="media.html">Media</a>
-          <a href="consulting.html">Consulting</a>
+        <div class="menu-item has-dropdown">
+          <a href="ecosystem.html">Ecosystem</a>
+          <div class="dropdown">
+            <a href="matchday.html">Matchday</a>
+            <a href="travel.html">Travel</a>
+            <a href="media.html">Media</a>
+            <a href="consulting.html">Consulting</a>
+          </div>
         </div>
-      </div>
-      <div class="menu-item">
-        <a href="she-knows-ball-fest.html">She Knows Ball Fest</a>
-        <div class="dropdown">
-          <a href="about-the-fest.html">About the Fest</a>
-          <a href="wafcon-26.html">WAFCON ’26</a>
-          <a href="support-our-interns.html">Support Our Interns</a>
+        <div class="menu-item has-dropdown">
+          <a href="she-knows-ball-fest.html">She Knows Ball Fest</a>
+          <div class="dropdown">
+            <a href="about-the-fest.html">About the Fest</a>
+            <a href="wafcon-26.html">WAFCON ’26</a>
+            <a href="support-our-interns.html">Support Our Interns</a>
+          </div>
         </div>
-      </div>
-      <div class="menu-item">
-        <a href="shop.html">Shop</a>
-        <div class="dropdown">
-          <a href="kename-fc.html">KENAME FC</a>
+        <div class="menu-item has-dropdown">
+          <a href="shop.html">Shop</a>
+          <div class="dropdown">
+            <a href="kename-fc.html">KENAME FC</a>
+          </div>
         </div>
-      </div>
       <div class="menu-item"><a href="foundation.html">Foundation</a></div>
       <div class="menu-item"><a href="contact.html">Contact</a></div>
     </div>
