@@ -408,6 +408,121 @@ body {
   filter: brightness(1.05);
 }
 
+.partner-with-us {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 20px;
+  align-items: start;
+}
+
+.partner-with-us-left,
+.partner-with-us-right {
+  background: rgba(20, 18, 35, 0.8);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+}
+
+.partner-with-us-left h2,
+.partner-with-us-right h2 {
+  font-size: 34px;
+  color: #d4af37;
+  margin-bottom: 24px;
+}
+
+.partner-with-us-left p,
+.partner-with-us-left .partner-item,
+.partner-with-us-right label {
+  color: #e8e6ff;
+}
+
+.partner-item {
+  margin-bottom: 20px;
+}
+
+.partner-item h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+  color: white;
+}
+
+.partner-item p {
+  margin: 0;
+  opacity: 0.88;
+  line-height: 1.7;
+}
+
+.partner-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.partner-form label {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.partner-form input,
+.partner-form select,
+.partner-form button {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.partner-form input,
+.partner-form select {
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.05);
+  color: white;
+  padding: 14px 16px;
+  font-size: 14px;
+}
+
+.partner-form input::placeholder {
+  color: rgba(255,255,255,0.65);
+}
+
+.partner-form button {
+  background: #d4af37;
+  color: #0b0a16;
+  border: none;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.partner-form button:hover {
+  background: #b8942f;
+  transform: translateY(-2px);
+}
+
+.partner-confirmation {
+  display: none;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(212,175,55,0.25);
+  border-radius: 14px;
+  padding: 24px;
+  color: #e8e6ff;
+  line-height: 1.7;
+}
+
+.partner-confirmation strong {
+  color: #d4af37;
+}
+
+@media (max-width: 960px) {
+  .partner-with-us {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* COMING SOON PAGES */
 .page {
   display: none;
@@ -605,6 +720,63 @@ body {
   </div>
 </section>
 
+<section class="partner-with-us">
+  <div class="partner-with-us-left">
+    <h2>Partner with KENAME</h2>
+    <p>Whether you're a brand, a club, a media company, or a fan-focused organisation — we'd love to explore how we can build something meaningful together in the women's football space.</p>
+
+    <div class="partner-item">
+      <h3>Matchday Activations</h3>
+      <p>Fan engagement at elite women's football events</p>
+    </div>
+    <div class="partner-item">
+      <h3>Media Collaborations</h3>
+      <p>Content creation and digital storytelling</p>
+    </div>
+    <div class="partner-item">
+      <h3>Travel Partnerships</h3>
+      <p>Co-branded tournament travel experiences</p>
+    </div>
+    <div class="partner-item">
+      <h3>Brand Sponsorships</h3>
+      <p>Strategic alignment with women's football audiences</p>
+    </div>
+  </div>
+
+  <div class="partner-with-us-right">
+    <h2>Submit Inquiry</h2>
+    <form id="partnerForm" class="partner-form" action="https://formspree.io/f/xojydegj" method="POST">
+      <label for="name">Name</label>
+      <input id="name" name="name" type="text" placeholder="Your name" required>
+
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" placeholder="you@example.com" required>
+
+      <label for="organization">Organization</label>
+      <input id="organization" name="organization" type="text" placeholder="Your organization" required>
+
+      <label for="interest">Interest</label>
+      <select id="interest" name="interest" required>
+        <option value="">Select an option</option>
+        <option>Matchday Partnerships & Activations</option>
+        <option>Media & Content Collaborations</option>
+        <option>Fan Engagement Consulting</option>
+        <option>Travel & Experience Partnerships</option>
+        <option>Event & Watch Party Collaborations</option>
+        <option>Sponsorship / Brand Partnerships</option>
+        <option>General Inquiry</option>
+      </select>
+
+      <button type="submit">Submit Inquiry</button>
+    </form>
+
+    <div id="partnerConfirmation" class="partner-confirmation">
+      <strong>Thank you for your inquiry.</strong>
+      <p>KENAME will respond within 3–5 business days.</p>
+    </div>
+  </div>
+</section>
+
 <!-- COMING SOON -->
 <div id="coming" class="page">
   <h1>Coming Soon</h1>
@@ -636,6 +808,30 @@ function updateCountdown() {
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
+
+const partnerForm = document.getElementById('partnerForm');
+const partnerConfirmation = document.getElementById('partnerConfirmation');
+
+partnerForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+  const formData = new FormData(partnerForm);
+  const response = await fetch(partnerForm.action, {
+    method: 'POST',
+    body: formData,
+    headers: {
+      'Accept': 'application/json'
+    }
+  });
+
+  if (response.ok) {
+    partnerForm.style.display = 'none';
+    partnerConfirmation.style.display = 'block';
+  } else {
+    const error = await response.json();
+    alert(error.error || 'Submission failed. Please try again.');
+  }
+});
 </script>
 
 </body>
