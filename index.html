@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KENAME Sport</title>
+<title>KENAME Sport| Experience HER Game</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
@@ -43,26 +43,25 @@ body {
 
 /* NAVBAR */
 
-.navbar {
+
+  .navbar {
   position: fixed;
   top: 0;
   width: 100%;
   display: flex;
-  justify-content: flex-start;
-  padding: 18px 20px 18px 0;
-  background: rgba(10, 8, 20, 0.75);
-  backdrop-filter: blur(12px);
-  z-index: 999;
-  border: none;
+  justify-content: center; /* centers everything */
+  padding: 18px 0;
+  background: transparent; /* removes banner */
+  backdrop-filter: none;   /* removes blur */
   box-shadow: none;
+  z-index: 999;
 }
 
 .navbar-inner {
   width: min(1400px, 100%);
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 40px;
-  margin: 0 auto;
 }
 
 .logo {
@@ -79,6 +78,7 @@ body {
 /* MENU */
 .menu {
   display: flex;
+  justify-content:  center;
   gap: 28px;
   font-size: 14px;
   flex-wrap: wrap;
@@ -132,7 +132,7 @@ body {
 .hero {
   position: relative;
   height: 100vh;
-  background: url('https://images.unsplash.com/photo-1508182311256-e3f94f6f3d6f?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+  background: url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
