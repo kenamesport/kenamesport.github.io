@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KENAME Sport</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
 <style>
 body {
@@ -77,14 +77,119 @@ body {
   color: #d4af37;
 }
 
-/* HERO placeholder */
+/* HERO */
 .hero {
+  position: relative;
   height: 100vh;
+  background: url('https://images.unsplash.com/photo-1604335399105-a0c3d3b7b4f5?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   text-align: center;
   padding-top: 80px;
+  overflow: hidden;
+}
+
+.hero.page.active {
+  display: flex;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(13,10,31,0.6), rgba(13,10,31,0.9));
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+  max-width: 900px;
+}
+
+.badge {
+  border: 1px solid rgba(212,175,55,0.5);
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  color: #d4af37;
+}
+
+.hero h1 {
+  font-size: 90px;
+  font-weight: 900;
+  margin: 0;
+  letter-spacing: 3px;
+}
+
+.hero h2 {
+  font-size: 70px;
+  font-family: 'Playfair Display', serif;
+  color: #d4af37;
+  font-style: italic;
+  margin-top: -15px;
+}
+
+.trip-info {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 14px;
+  opacity: 0.85;
+  flex-wrap: wrap;
+}
+
+.trip-info span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.trip-info-icon {
+  color: #d4af37;
+  font-size: 16px;
+  text-shadow: 0 0 0.1em rgba(212,175,55,0.9), 0 0 0.3em rgba(212,175,55,0.35);
+}
+
+.countdown-label {
+  margin-top: 40px;
+  font-size: 12px;
+  letter-spacing: 3px;
+  opacity: 0.7;
+}
+
+.countdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.time-box {
+  border: 1px solid rgba(255,255,255,0.6);
+  padding: 15px 20px;
+  margin: 0 5px;
+  border-radius: 10px;
+}
+
+.time-box span {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.time-box p {
+  font-size: 10px;
+  margin: 5px 0 0;
+  letter-spacing: 2px;
+}
+
+.colon {
+  font-size: 30px;
+  margin: 0 5px;
 }
 
 /* COMING SOON PAGES */
@@ -154,11 +259,54 @@ body {
   </div>
 </div>
 
-<!-- HOME -->
-<div id="home" class="page active">
-  <h1>WELCOME TO KENAME SPORT</h1>
-  <p>Elite women's football experiences, travel & storytelling.</p>
-</div>
+<section id="home" class="hero page active">
+
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <p class="badge">UEFA WOMEN'S CHAMPIONS LEAGUE FINAL • OSLO, NORWAY</p>
+
+    <h1>EXPERIENCE</h1>
+    <h2>OSLO ’26</h2>
+
+    <div class="trip-info">
+      <span><span class="trip-info-icon">📅</span> May 20–24, 2026</span>
+      <span><span class="trip-info-icon">⚽</span> Final: May 23, 2026</span>
+      <span><span class="trip-info-icon">📍</span> Oslo, Norway</span>
+    </div>
+
+    <p class="countdown-label">COUNTDOWN TO DEPARTURE</p>
+
+    <div class="countdown">
+      <div class="time-box">
+        <span id="days">00</span>
+        <p>DAYS</p>
+      </div>
+
+      <span class="colon">:</span>
+
+      <div class="time-box">
+        <span id="hours">00</span>
+        <p>HOURS</p>
+      </div>
+
+      <span class="colon">:</span>
+
+      <div class="time-box">
+        <span id="minutes">00</span>
+        <p>MINS</p>
+      </div>
+
+      <span class="colon">:</span>
+
+      <div class="time-box">
+        <span id="seconds">00</span>
+        <p>SECS</p>
+      </div>
+    </div>
+  </div>
+
+</section>
 
 <!-- COMING SOON -->
 <div id="coming" class="page">
@@ -171,6 +319,26 @@ function go(page){
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById(page).classList.add('active');
 }
+
+const targetDate = new Date("May 20, 2026 00:00:00").getTime();
+
+function updateCountdown() {
+  const now = new Date().getTime();
+  const diff = targetDate - now;
+
+  const days = Math.max(Math.floor(diff / (1000 * 60 * 60 * 24)), 0);
+  const hours = Math.max(Math.floor((diff / (1000 * 60 * 60)) % 24), 0);
+  const minutes = Math.max(Math.floor((diff / (1000 * 60)) % 60), 0);
+  const seconds = Math.max(Math.floor((diff / 1000) % 60), 0);
+
+  document.getElementById("days").innerText = String(days).padStart(2, '0');
+  document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+  document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+  document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
 </script>
 
 </body>
