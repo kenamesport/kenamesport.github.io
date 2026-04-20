@@ -517,6 +517,164 @@ body {
   color: #d4af37;
 }
 
+.footer {
+  background: rgba(10, 8, 20, 0.95);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 60px 20px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(180px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-column h3 {
+  color: #d4af37;
+  font-size: 18px;
+  margin-bottom: 18px;
+}
+
+.footer-column a {
+  display: block;
+  color: #e8e6ff;
+  text-decoration: none;
+  opacity: 0.86;
+  margin-bottom: 12px;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.footer-column a:hover {
+  color: #d4af37;
+  opacity: 1;
+}
+
+@media (max-width: 960px) {
+  .partner-with-us {
+    grid-template-columns: 1fr;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 960px) {
+  .partner-with-us {
+    grid-template-columns: 1fr;
+  }
+}
+
+.partner-with-us {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 20px;
+  align-items: start;
+}
+
+.partner-with-us-left,
+.partner-with-us-right {
+  background: rgba(20, 18, 35, 0.8);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+}
+
+.partner-with-us-left h2,
+.partner-with-us-right h2 {
+  font-size: 34px;
+  color: #d4af37;
+  margin-bottom: 24px;
+}
+
+.partner-with-us-left p,
+.partner-with-us-left .partner-item,
+.partner-with-us-right label {
+  color: #e8e6ff;
+}
+
+.partner-item {
+  margin-bottom: 20px;
+}
+
+.partner-item h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+  color: white;
+}
+
+.partner-item p {
+  margin: 0;
+  opacity: 0.88;
+  line-height: 1.7;
+}
+
+.partner-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.partner-form label {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.partner-form input,
+.partner-form select,
+.partner-form button {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.partner-form input,
+.partner-form select {
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.05);
+  color: white;
+  padding: 14px 16px;
+  font-size: 14px;
+}
+
+.partner-form input::placeholder {
+  color: rgba(255,255,255,0.65);
+}
+
+.partner-form button {
+  background: #d4af37;
+  color: #0b0a16;
+  border: none;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.partner-form button:hover {
+  background: #b8942f;
+  transform: translateY(-2px);
+}
+
+.partner-confirmation {
+  display: none;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(212,175,55,0.25);
+  border-radius: 14px;
+  padding: 24px;
+  color: #e8e6ff;
+  line-height: 1.7;
+}
+
+.partner-confirmation strong {
+  color: #d4af37;
+}
+
 @media (max-width: 960px) {
   .partner-with-us {
     grid-template-columns: 1fr;
@@ -776,6 +934,39 @@ body {
     </div>
   </div>
 </section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-column">
+      <h3>KENAME</h3>
+      <a href="#">About KENAME</a>
+      <a href="#">What We Do</a>
+      <a href="#">Mission</a>
+    </div>
+    <div class="footer-column">
+      <h3>Ecosystem</h3>
+      <a href="#">Matchday</a>
+      <a href="#">Media</a>
+      <a href="#">Travel</a>
+      <a href="#">KENAME FC</a>
+      <a href="#">Consulting</a>
+      <a href="#">Academy</a>
+    </div>
+    <div class="footer-column">
+      <h3>Stories</h3>
+      <a href="#">Since 1895 (Substack)</a>
+      <a href="#">Matchday Coverage</a>
+      <a href="#">Features & Reports</a>
+    </div>
+    <div class="footer-column">
+      <h3>Work With Us</h3>
+      <a href="#">Partner With KENAME</a>
+      <a href="#">Media & Brand Collaborations</a>
+      <a href="#">Fan Engagement Consulting</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+</footer>
 
 <!-- COMING SOON -->
 <div id="coming" class="page">
