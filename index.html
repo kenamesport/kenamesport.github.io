@@ -227,6 +227,70 @@ body {
   margin: 40px 0;
 }
 
+.ecosystem-section {
+  text-align: center;
+  margin: 60px 0;
+}
+
+.ecosystem-section h2 {
+  font-size: 36px;
+  color: #d4af37;
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+
+.ecosystem-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.ecosystem-card {
+  background: rgba(20, 18, 35, 0.8);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.ecosystem-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(212,175,55,0.3);
+}
+
+.ecosystem-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.ecosystem-card h3 {
+  color: white;
+  font-size: 24px;
+  margin: 20px 0 10px;
+  font-weight: 600;
+}
+
+.ecosystem-card button {
+  background: #d4af37;
+  color: #0b0a16;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.ecosystem-card button:hover {
+  background: #b8942f;
+}
+
 /* COMING SOON PAGES */
 .page {
   display: none;
@@ -360,6 +424,32 @@ body {
 
 <section class="brand-description">
   <p>“<strong style="color: #d4af37;">KENAME Sport</strong> is a multi-arm women’s football company creating global access to the game through <strong style="color: white;">matchday experiences</strong>, <strong style="color: white;">curated travel</strong>, and <strong style="color: white;">fan-centered digital storytelling</strong>. We connect fans to the world's biggest tournaments, produce matchday storytelling from host cities, and prioritize building pathways for women and girls to experience the beautiful game.”</p>
+</section>
+
+<section class="ecosystem-section">
+  <h2>Our Ecosystem</h2>
+  <div class="ecosystem-cards">
+    <div class="ecosystem-card">
+      <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=2076&auto=format&fit=crop" alt="Matchday">
+      <h3>Matchday</h3>
+      <button>Learn More</button>
+    </div>
+    <div class="ecosystem-card">
+      <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2074&auto=format&fit=crop" alt="Travel">
+      <h3>Travel</h3>
+      <button>Learn More</button>
+    </div>
+    <div class="ecosystem-card">
+      <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=2070&auto=format&fit=crop" alt="Media">
+      <h3>Media</h3>
+      <button>Learn More</button>
+    </div>
+    <div class="ecosystem-card">
+      <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop" alt="Consulting">
+      <h3>Consulting</h3>
+      <button>Learn More</button>
+    </div>
+  </div>
 </section>
 
 <!-- COMING SOON -->
