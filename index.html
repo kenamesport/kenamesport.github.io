@@ -17,7 +17,7 @@ body {
 
 /* NAVBAR */
 .navbar {
-  position: fixed;
+  position: center;
   top: 0;
   width: 100%;
   display: flex;
@@ -39,6 +39,12 @@ body {
 .logo {
   font-weight: 700;
   letter-spacing: 2px;
+}
+
+.logo img {
+  height: 40px;
+  width: auto;
+  display: block;
 }
 
 /* MENU */
@@ -90,7 +96,7 @@ body {
 .hero {
   position: relative;
   height: 100vh;
-  background: url('https://images.unsplash.com/photo-1604335399105-a0c3d3b7b4f5?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+  background: url('images/stadium.jpg') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -537,6 +543,12 @@ body {
   margin-bottom: 18px;
 }
 
+.footer-logo {
+  max-width: 160px;
+  display: block;
+  margin-bottom: 20px;
+}
+
 .footer-column a {
   display: block;
   color: #e8e6ff;
@@ -699,7 +711,7 @@ body {
 <!-- NAV -->
 <div class="navbar">
   <div class="navbar-inner">
-    <div class="logo">KENAME</div>
+    <div class="logo"><img src="logo-blue.png" alt="KENAME logo"></div>
 
     <div class="menu">
 
@@ -938,7 +950,7 @@ body {
 <footer class="footer">
   <div class="footer-grid">
     <div class="footer-column">
-      <h3>KENAME</h3>
+      <img src="logo-blue.png" alt="KENAME logo" class="footer-logo">
       <a href="#">About KENAME</a>
       <a href="#">What We Do</a>
       <a href="#">Mission</a>
