@@ -896,6 +896,27 @@ body, h1, h2, h3, h4, h5, h6, p, a, span {
 .dropdown a {
   color: white !important;
 }
+  /* FORCE ALL FOOTER COLUMNS TO START LEVEL */
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: start; /* 🔥 KEY FIX */
+}
+
+/* COLUMN 1 FIX (removes logo pushing text down) */
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* MOVE TEXT UP UNDER LOGO */
+.footer-column img.footer-logo {
+  margin-bottom: 10px; /* reduce spacing so text aligns better */
+}
 </style>
 </head>
 
