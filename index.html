@@ -115,10 +115,11 @@ body {
   opacity: 0.85;
 }
 
-.dropdown a:hover {
-  opacity: 1;
-  color: transparent;
-  -webkit-text-stroke: 1px #d4af37;
+.dropdown a {
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+  opacity: 0.85;
 }
 
 /* HERO */
@@ -146,8 +147,7 @@ body {
 .hero-content {
   position: relative;
   z-index: 2;
-  color: transparent;
-  -webkit-text-stroke: 1px white;
+  color: white;
   max-width: 900px;
 }
 
@@ -173,11 +173,10 @@ body {
 .hero h2 {
   font-size: 70px;
   font-family: 'Playfair Display', serif;
-  color: transparent;
-  -webkit-text-stroke: 1px #d4af37;
+  color: #d4af37; /* gold */
   font-style: italic;
   margin-top: -15px;
-  font-weight: 800; /* makes it bold without changing size */
+  font-weight: 800;
 }
 
 .trip-info {
@@ -853,6 +852,24 @@ body {
 .submit-title {
   color: white;
   font-weight: bold;
+}
+
+  /* 🔥 FORCE CORRECT TITLE COLORS */
+.ecosystem-section h2,
+.media-stories-section h2,
+.partner-section h2,
+.partner-with-us h2 {
+  color: white;
+}
+
+.eco-main,
+.media-stories,
+.partner-main,
+.partner-kename {
+  color: #d4af37 !important;
+  font-family: 'Playfair Display', serif !important;
+  font-style: italic !important;
+  font-weight: bold !important;
 }
 </style>
 </head>
