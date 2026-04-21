@@ -1076,22 +1076,29 @@ body {
   </div>
 
   <div class="partner-with-us-right">
-  <h2><span class="submit-title">Submit Inquiry</span></h2>
-    <form id="partnerForm" class="partner-form" action="https://formspree.io/f/xojydegj" method="POST">
-      <div class="form-row">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" placeholder="Your name" required>
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="you@example.com" required>
-        </div>
-      </div>
 
+  <h2><span class="submit-title">Submit Inquiry</span></h2>
+  <form id="partnerForm" class="partner-form" action="https://formspree.io/f/xojydegj" method="POST">
+    <!-- ROW 1 -->
+    <div class="form-row">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" placeholder="Your name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="you@example.com" required>
+      </div>
+    </div>
+
+    <!-- ORGANIZATION -->
+    <div class="form-group">
       <label for="organization">Organization</label>
       <input id="organization" name="organization" type="text" placeholder="Your organization" required>
+    </div>
 
+    <!-- INTEREST -->
+    <div class="form-group">
       <label for="interest">I'm Interested In*</label>
       <select id="interest" name="interest" required>
         <option value="">Select an option</option>
@@ -1103,51 +1110,59 @@ body {
         <option>Sponsorship / Brand Partnerships</option>
         <option>General Inquiry</option>
       </select>
+    </div>
 
+    <!-- MESSAGE -->
+    <div class="form-group">
       <label for="message">Message</label>
-      <textarea id="message" name="message" placeholder="Tell us about your goals and how you'd like to work together"></textarea>
+      <textarea id="message" name="message" rows="5" placeholder="Tell us about your goals and how you'd like to work together"></textarea>
+    </div>
 
-      <label for="message">Message</label>
-      <textarea id="message" name="message" placeholder="Tell us about your goals and how you'd like to work together"></textarea>
+    <!-- BUTTON -->
+    <button type="submit">Submit Inquiry</button>
+  </form>
 
-      <button type="submit">Submit Inquiry</button>
-    </form>
-  <h2><span class="submit-title">Submit Inquiry</span></h2>
-    <form id="partnerForm" class="partner-form" action="https://formspree.io/f/xojydegj" method="POST">
-      <div class="form-row">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" placeholder="Your name" required>
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="you@example.com" required>
-        </div>
-      </div>
+<!-- FORM LAYOUT FIX -->
+<style>
+.partner-form input,
+.partner-form select,
+.partner-form textarea {
+  width: 100%;
+  box-sizing: border-box; /* 🔥 FIXES OVERFLOW */
+}
 
-      <label for="organization">Organization</label>
-      <input id="organization" name="organization" type="text" placeholder="Your organization" required>
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
 
-      <label for="interest">I'm Interested In*</label>
-      <select id="interest" name="interest" required>
-        <option value="">Select an option</option>
-        <option>Matchday Partnerships & Activations</option>
-        <option>Media & Content Collaborations</option>
-        <option>Fan Engagement Consulting</option>
-        <option>Travel & Experience Partnerships</option>
-        <option>Event & Watch Party Collaborations</option>
-        <option>Sponsorship / Brand Partnerships</option>
-        <option>General Inquiry</option>
-      </select>
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
 
-      <label for="message">Message</label>
-      <textarea id="message" name="message" placeholder="Tell us about your goals and how you'd like to work together"></textarea>
+/* TEXTAREA MATCH INPUT STYLE */
+.partner-form textarea {
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.05);
+  color: white;
+  padding: 14px 16px;
+  font-size: 14px;
+  border-radius: 10px;
+  resize: vertical;
+}
 
-      <label for="message">Message</label>
-      <textarea id="message" name="message" placeholder="Tell us about your goals and how you'd like to work together"></textarea>
+.partner-form textarea::placeholder {
+  color: rgba(255,255,255,0.65);
+}
 
-      <button type="submit">Submit Inquiry</button>
-    </form>
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
 
     <div id="partnerConfirmation" class="partner-confirmation">
       <strong>Thank you for your inquiry.</strong>
