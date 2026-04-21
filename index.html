@@ -853,13 +853,25 @@ body {
   color: white;
   font-weight: bold;
 }
+/* 🚨 GLOBAL TEXT FIX — REMOVE ALL OUTLINES */
+* {
+  -webkit-text-stroke: 0 !important;
+  text-stroke: 0 !important;
+}
 
-  /* 🔥 FORCE CORRECT TITLE COLORS */
-.ecosystem-section h2,
-.media-stories-section h2,
-.partner-section h2,
-.partner-with-us h2 {
-  color: white;
+/* FORCE ALL TEXT TO BE FILLED */
+body, h1, h2, h3, h4, h5, h6, p, a, span {
+  color: inherit;
+}
+
+/* ===== HEADINGS FIX ===== */
+.eco-our,
+.media-title,
+.partner-our,
+.partner-with,
+.submit-title {
+  color: white !important;
+  font-weight: bold !important;
 }
 
 .eco-main,
@@ -870,6 +882,17 @@ body {
   font-family: 'Playfair Display', serif !important;
   font-style: italic !important;
   font-weight: bold !important;
+}
+
+/* ===== CARD TITLES ===== */
+.ecosystem-card h3,
+.media-card h3,
+.partner-item h3 {
+  color: white !important;
+}
+/* ===== DROPDOWN TEXT ===== */
+.dropdown a {
+  color: white !important;
 }
 </style>
 </head>
