@@ -34,18 +34,24 @@ body {
   color: white;
 }
 
-/* NAVBAR */
-  .navbar {
+.navbar {
   position: fixed;
   top: 0;
   width: 100%;
   display: flex;
-  justify-content: center; /* centers everything */
+  justify-content: center;
   padding: 18px 0;
-  background: transparent; /* removes banner */
-  backdrop-filter: none;   /* removes blur */
-  box-shadow: none;
+  background: transparent; /* starts transparent */
+  backdrop-filter: blur(0px);
+  transition: all 0.3s ease;
   z-index: 999;
+}
+
+.navbar.scrolled {
+  background: rgba(11, 10, 22, 0.75);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
 .navbar-inner {
@@ -1338,6 +1344,18 @@ partnerForm.addEventListener('submit', async (event) => {
     alert(error.error || 'Submission failed. Please try again.');
   }
 });
+
+ <script>
+window.addEventListener("scroll", function () {
+  const navbar = document.querySelector(".navbar");
+
+  if (window.scrollY > 50) {
+    navbar.classList.add("scrolled");
+  } else {
+    navbar.classList.remove("scrolled");
+  }
+});
+</script> 
 </script>
 
 </body>
