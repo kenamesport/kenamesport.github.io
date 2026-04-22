@@ -1329,70 +1329,33 @@ function updateCountdown() {
   document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
 }
 
-updateCountdown();
 setInterval(updateCountdown, 1000);
+updateCountdown();
 
-const partnerForm = document.getElementById('partnerForm');
-const partnerConfirmation = document.getElementById('partnerConfirmation');
 
-partnerForm.addEventListener('submit', async (event) => {
-  event.preventDefault();
-
-  const formData = new FormData(partnerForm);
-  const response = await fetch(partnerForm.action, {
-    method: 'POST',
-    body: formData,
-    headers: {
-      'Accept': 'application/json'
-    }
-  });
-
-  if (response.ok) {
-    partnerForm.style.display = 'none';
-    partnerConfirmation.style.display = 'block';
-  } else {
-    const error = await response.json();
-    alert(error.error || 'Submission failed. Please try again.');
-  }
-});
-
- <script>
-window.addEventListener("scroll", function () {
-  const navbar = document.querySelector(".navbar");
-
-  if (window.scrollY > 50) {
-    navbar.classList.add("scrolled");
-  } else {
-    navbar.classList.remove("scrolled");
-  }
-});
-</script> 
-</script>
-<script>
 window.addEventListener("scroll", function () {
   const navbar = document.querySelector(".navbar");
   const partnerSection = document.querySelector("#partner-section");
 
-  const scrollY = window.scrollY;
-  const partnerTop = partnerSection.offsetTop - 120; // trigger point
+  if (!partnerSection) return;
 
-  // Show banner after user leaves hero
+  const scrollY = window.scrollY;
+  const partnerTop = partnerSection.offsetTop - 120;
+
   if (scrollY > 80 && scrollY < partnerTop) {
     navbar.classList.add("scrolled");
     navbar.classList.remove("hidden");
-  }
-
-  // Hide banner once user reaches Partner section
+  } 
   else if (scrollY >= partnerTop) {
     navbar.classList.add("hidden");
     navbar.classList.remove("scrolled");
-  }
-
-  // Top of page (hero)
+  } 
   else {
     navbar.classList.remove("scrolled");
     navbar.classList.remove("hidden");
   }
+});
+</script>
 });
 </body>
 </html>
