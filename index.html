@@ -312,17 +312,64 @@ body {
 }
 
 .ecosystem-card {
-  background: rgba(20, 18, 35, 0.8);
-  border-radius: 12px;
+  background: rgba(20, 18, 35, 0.85);
+  border-radius: 14px;
   overflow: hidden;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
   position: relative;
+  transition: all 0.4s ease;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+  transform: translateY(10px);
+}
+
+  .learn-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #d4af37;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0 20px 20px;
+  transition: gap 0.3s ease, opacity 0.3s ease;
+  opacity: 0.85;
+}
+
+.learn-more span {
+  transition: transform 0.3s ease;
+}
+
+.learn-more:hover {
+  opacity: 1;
+  gap: 10px;
+}
+
+.ecosystem-card:hover .learn-more span {
+  transform: translateX(4px);
+}
+
+/* DARK BASE SHADOW OVER BOTTOM (hidden content feel) */
+.ecosystem-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  background: linear-gradient(to top, rgba(11,10,22,0.95), transparent);
+  transition: opacity 0.4s ease;
+  pointer-events: none;
 }
 
 .ecosystem-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 35px rgba(212,175,55,0.3);
+  transform: translateY(-12px);
+  box-shadow: 0 25px 60px rgba(212,175,55,0.25);
+}
+  .ecosystem-card:hover h3 {
+  color: #d4af37 !important;
+}
+
+.ecosystem-card:hover::after {
+  opacity: 0;
 }
 
 .ecosystem-card img {
@@ -330,11 +377,19 @@ body {
   height: 200px;
   object-fit: cover;
 }
+  
+  .ecosystem-card p {
+  padding: 0 20px;
+  font-size: 14px;
+  opacity: 0.85;
+  margin-bottom: 10px;
+}
 
 .ecosystem-card h3 {
   color: #d4af37 !important;
   -webkit-text-stroke: 0 !important;
   font-weight: 600;
+   transition: color 0.3s ease;
 }
 
 .ecosystem-card button {
@@ -1091,28 +1146,34 @@ body {
 
 <section class="ecosystem-section">
   <h2><span class="eco-our">Our</span> <span class="eco-main">Ecosystem</span></h2>
-  <div class="ecosystem-cards">
+<div class="ecosystem-card">
+  <div class="eco-icon"><i class="fa-solid fa-futbol"></i></div>
+  <img src="kenamesport.github.io/mdkename.jpeg" alt="Matchday">
+  <h3>Matchday</h3>
+  <p>Immersive fan experiences at elite women’s football events.</p>
+  <a href="#" class="learn-more">Learn more <span>→</span></a>
+</div>
     <div class="ecosystem-card">
-      <img src="kenamesport.github.io/mdkename.jpeg" alt="Matchday">
-      <h3>Matchday</h3>
-      <button>Learn More</button>
-    </div>
-    <div class="ecosystem-card">
-      <img src="kenamesport.github.io/travelkename.jpeg" alt="Travel">
-      <h3>Travel</h3>
-      <button>Learn More</button>
-    </div>
-    <div class="ecosystem-card">
-      <img src="kenamesport.github.io/mediakename.jpeg" alt="Media">
-      <h3>Media</h3>
-      <button>Learn More</button>
-    </div>
-    <div class="ecosystem-card">
-      <img src="kenamesport.github.io/consultkename.jpeg" alt="Consulting">
-      <h3>Consulting</h3>
-      <button>Learn More</button>
-    </div>
-  </div>
+  <div class="eco-icon"><i class="fa-solid fa-plane"></i></div>
+  <img src="kenamesport.github.io/travelkename.jpeg" alt="Travel">
+  <h3>Travel</h3>
+  <p>Curated global football travel experiences for fans.</p>
+  <a href="#" class="learn-more">Learn more <span>→</span></a>
+</div>
+<div class="ecosystem-card">
+  <div class="eco-icon"><i class="fa-solid fa-camera"></i></div>
+  <img src="kenamesport.github.io/mediakename.jpeg" alt="Media">
+  <h3>Media</h3>
+  <p>Storytelling, match coverage, and women’s football narratives.</p>
+  <a href="#" class="learn-more">Learn more <span>→</span></a>
+</div>
+   <div class="ecosystem-card">
+  <div class="eco-icon"><i class="fa-solid fa-lightbulb"></i></div>
+  <img src="kenamesport.github.io/consultkename.jpeg" alt="Consulting">
+  <h3>Consulting</h3>
+  <p>Strategy and fan engagement solutions for football ecosystems.</p>
+  <a href="#" class="learn-more">Learn more <span>→</span></a>
+</div>
 </section>
 
 <section class="media-stories-section">
