@@ -41,19 +41,28 @@ body {
   display: flex;
   justify-content: center;
   padding: 18px 0;
-  background: transparent; /* starts transparent */
+  background: transparent;
   backdrop-filter: blur(0px);
   transition: all 0.3s ease;
   z-index: 999;
 }
 
+/* ACTIVE STATE (shadow banner) */
 .navbar.scrolled {
-  background: rgba(11, 10, 22, 0.75);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  background: rgba(11, 10, 22, 0.85);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.35);
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
+/* HIDDEN AGAIN AFTER PARTNER SECTION */
+.navbar.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+  
+}
 .navbar-inner {
   width: min(1400px, 100%);
   display: grid;
@@ -1121,7 +1130,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, span {
   </div>
 </section>
 
-<section class="partner-with-us">
+<section id="partner-section" class="partner-with-us">
   <div class="partner-with-us-left">
    <h2>
   <span class="partner-with">Partner With</span><br>
@@ -1359,6 +1368,31 @@ window.addEventListener("scroll", function () {
 });
 </script> 
 </script>
+<script>
+window.addEventListener("scroll", function () {
+  const navbar = document.querySelector(".navbar");
+  const partnerSection = document.querySelector("#partner-section");
 
+  const scrollY = window.scrollY;
+  const partnerTop = partnerSection.offsetTop - 120; // trigger point
+
+  // Show banner after user leaves hero
+  if (scrollY > 80 && scrollY < partnerTop) {
+    navbar.classList.add("scrolled");
+    navbar.classList.remove("hidden");
+  }
+
+  // Hide banner once user reaches Partner section
+  else if (scrollY >= partnerTop) {
+    navbar.classList.add("hidden");
+    navbar.classList.remove("scrolled");
+  }
+
+  // Top of page (hero)
+  else {
+    navbar.classList.remove("scrolled");
+    navbar.classList.remove("hidden");
+  }
+});
 </body>
 </html>
