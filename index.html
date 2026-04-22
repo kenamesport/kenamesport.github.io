@@ -41,7 +41,7 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 18px 0;
+  padding: 10px 0;
   background: transparent;
   backdrop-filter: blur(0px);
   transition: all 0.3s ease;
@@ -65,10 +65,12 @@ body {
   
 }
 .navbar-inner {
-  width: min(1400px, 100%);
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+  padding: 0 40px;
 }
 
 .logo {
@@ -81,6 +83,10 @@ body {
   width: auto;
   display: block;
 }
+  
+.logo {
+  flex-shrink: 0;
+}
 
 /* MENU */
 .menu {
@@ -89,7 +95,6 @@ body {
   gap: 28px;
   font-size: 14px;
   flex-wrap: wrap;
-  justify-content: center;
 }
 
 .menu-item {
@@ -523,6 +528,10 @@ body {
 }
 
 .partner-form label {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
 .form-row {
   display: flex;
   gap: 18px;
@@ -531,6 +540,7 @@ body {
 .form-group {
   flex: 1;
 }
+  
   font-size: 14px;
   margin-bottom: 8px;
 }
@@ -548,8 +558,7 @@ body {
 .partner-form select {
   border: 1px solid rgba(255,255,255,0.15);
   background: rgba(255,255,255,0.05);
-  color: transparent;
-  -webkit-text-stroke: 1px white;
+  color: white;
   padding: 14px 16px;
   font-size: 14px;
 }
@@ -643,25 +652,31 @@ body {
 .social-icons {
   display: flex;
   gap: 14px;
-  margin-top: 12px;
+  margin-top: 25px; /* MORE SPACE FROM "MISSION" */
 }
 
 .social-icons a {
-  color: white;
-  font-size: 16px;
-  transition: 0.2s ease;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.8);
+  font-size: 14px;
+  transition: 0.25s ease;
 }
 
 .social-icons a:hover {
   color: #d4af37;
+  border-color: #d4af37;
+  box-shadow: 0 0 10px rgba(212,175,55,0.4);
 }
 
 @media (max-width: 960px) {
   .partner-with-us {
     grid-template-columns: 1fr;
-  }
-  .footer-grid {
-    grid-template-columns: 1fr 1fr;
   }
 
 @media (max-width: 960px) {
@@ -1261,7 +1276,6 @@ body {
 <div class="footer-column">
   <img src="kenamesport.github.io/kenamelogo" class="footer-logo" alt="KENAME Logo">
 
-  <h3>KENAME</h3>
   <a href="#">About KENAME</a>
   <a href="#">What We Do</a>
   <a href="#">Mission</a>
@@ -1292,7 +1306,7 @@ body {
   <a href="#">Matchday Coverage</a>
   <a href="#">Features & Reports</a>
 
-  <h3 class="sub-heading">SHOP</h3>
+  <h3 class="sub-heading">KENAME FC</h3>
 <a href="https://kename-fc.myshopify.com">Shop</a>
 </div>
 
@@ -1304,6 +1318,15 @@ body {
   <a href="#">Fan Engagement Consulting</a>
   <a href="#">Careers</a>
   </div>
+
+    <div style="display:flex; justify-content:space-between; max-width:1200px; margin:40px auto 0; font-size:12px; opacity:0.7;">
+  <div>© 2026 KENAME Sport. All rights reserved.</div>
+  <div>
+    <a href="#" style="color:white; margin-right:15px;">Privacy Policy</a>
+    <a href="#" style="color:white;">Terms of Use</a>
+  </div>
+</div>
+    
 </footer>
     
   </div>
@@ -1358,6 +1381,6 @@ window.addEventListener("scroll", function () {
   }
 });
 </script>
-});
+  
 </body>
 </html>
