@@ -301,7 +301,43 @@ body {
   margin-bottom: 40px;
   font-weight: 700;
 }
+/* APPLE-LEVEL ECOSYSTEM CARD */
+.ecosystem-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
 
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border 0.35s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+
+  transform: translateY(0);
+}
+
+.ecosystem-card {
+  background: rgba(20, 18, 35, 0.85);
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+}
+
+.ecosystem-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 70px rgba(212,175,55,0.18);
+}
+
+.ecosystem-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+  
 .ecosystem-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -337,7 +373,7 @@ body {
   backdrop-filter: blur(6px);
 }
 
-  .learn-more {
+ .learn-more {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -346,17 +382,14 @@ body {
   font-weight: 600;
   text-decoration: none;
   padding: 0 20px 20px;
-  transition: gap 0.3s ease, opacity 0.3s ease;
   opacity: 0.85;
-}
-
-.learn-more span {
-  transition: transform 0.3s ease;
+  transition: all 0.25s ease;
 }
 
 .learn-more:hover {
   opacity: 1;
   gap: 10px;
+  transform: translateX(3px);
 }
 
 .ecosystem-card:hover .learn-more span {
@@ -371,19 +404,15 @@ body {
   left: 0;
   width: 100%;
   height: 60%;
-  background: linear-gradient(to top, rgba(11,10,22,0.95), transparent);
+  background: linear-gradient(to top, rgba(11,10,22,0.9), transparent);
   transition: opacity 0.4s ease;
   pointer-events: none;
 }
 
-.ecosystem-card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 25px 60px rgba(212,175,55,0.25);
+.ecosystem-card:hover::after {
+  opacity: 0;
 }
-  .ecosystem-card:hover h3 {
-  color: #d4af37 !important;
-}
-
+  
 .ecosystem-card:hover::after {
   opacity: 0;
 }
@@ -1158,41 +1187,43 @@ body {
 
 <section class="ecosystem-section">
   <h2><span class="eco-our">Our</span> <span class="eco-main">Ecosystem</span></h2>
-<div class="ecosystem-card">
-  <div class="eco-icon"><i class="fa-solid fa-futbol"></i></div>
-  <img src="kenamesport.github.io/mdkename.jpeg" alt="Matchday">
-  <div class="ecosystem-cards">
-  <h3>Matchday</h3>
-  <p>Immersive fan experiences at elite women’s football events.</p>
-  <a href="#" class="learn-more">Learn more <span>→</span></a>
-  <div class="ecosystem-cards">
-</div>
-    <div class="ecosystem-card">
-  <div class="eco-icon"><i class="fa-solid fa-plane"></i></div>
-  <img src="kenamesport.github.io/travelkename.jpeg" alt="Travel">
-  <div class="ecosystem-cards">
-  <h3>Travel</h3>
-  <p>Curated global football travel experiences for fans.</p>
-  <a href="#" class="learn-more">Learn more <span>→</span></a>
-    <div class="ecosystem-cards">
-</div>
-<div class="ecosystem-card">
-  <div class="eco-icon"><i class="fa-solid fa-camera"></i></div>
-  <img src="kenamesport.github.io/mediakename.jpeg" alt="Media">
-  <h3>Media</h3>
-  <p>Storytelling, match coverage, and women’s football narratives.</p>
-  <a href="#" class="learn-more">Learn more <span>→</span></a>
-  <div class="ecosystem-cards">
-</div>
-   <div class="ecosystem-card">
-  <div class="eco-icon"><i class="fa-solid fa-lightbulb"></i></div>
-  <img src="kenamesport.github.io/consultkename.jpeg" alt="Consulting">
-  <h3>Consulting</h3>
-  <p>Strategy and fan engagement solutions for football ecosystems.</p>
-  <a href="#" class="learn-more">Learn more <span>→</span></a>
-  <div class="ecosystem-cards">
-</div>
 
+  <div class="ecosystem-cards">
+
+    <div class="ecosystem-card">
+      <div class="eco-icon"><i class="fa-solid fa-futbol"></i></div>
+      <img src="kenamesport.github.io/mdkename.jpeg" alt="Matchday">
+      <h3>Matchday</h3>
+      <p>Immersive fan experiences at elite women’s football events.</p>
+      <a href="#" class="learn-more">Learn more <span>→</span></a>
+    </div>
+
+    <div class="ecosystem-card">
+      <div class="eco-icon"><i class="fa-solid fa-plane"></i></div>
+      <img src="kenamesport.github.io/travelkename.jpeg" alt="Travel">
+      <h3>Travel</h3>
+      <p>Curated global football travel experiences for fans.</p>
+      <a href="#" class="learn-more">Learn more <span>→</span></a>
+    </div>
+
+    <div class="ecosystem-card">
+      <div class="eco-icon"><i class="fa-solid fa-camera"></i></div>
+      <img src="kenamesport.github.io/mediakename.jpeg" alt="Media">
+      <h3>Media</h3>
+      <p>Storytelling, match coverage, and women’s football narratives.</p>
+      <a href="#" class="learn-more">Learn more <span>→</span></a>
+    </div>
+
+    <div class="ecosystem-card">
+      <div class="eco-icon"><i class="fa-solid fa-lightbulb"></i></div>
+      <img src="kenamesport.github.io/consultkename.jpeg" alt="Consulting">
+      <h3>Consulting</h3>
+      <p>Strategy and fan engagement solutions for football ecosystems.</p>
+      <a href="#" class="learn-more">Learn more <span>→</span></a>
+    </div>
+
+  </div>
+</section>
   <section class="ecosystem-section">
   <h2><span class="eco-our">Our</span> <span class="eco-main">Ecosystem</span></h2>
 
