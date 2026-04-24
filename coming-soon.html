@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KENAME | Coming Soon</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-[#1A0829] text-white flex items-center justify-center px-6">
+  <main class="max-w-xl w-full text-center rounded-3xl border border-[#FFC857]/30 bg-[#270E40] p-10">
+    <p class="text-sm tracking-[.25em] uppercase text-[#FFC857]">KENAME</p>
+    <h1 class="mt-4 text-4xl font-bold">Coming Soon</h1>
+    <p id="message" class="mt-4 text-gray-300">This page is currently in progress. Please check back soon.</p>
+    <a href="index.html" class="inline-block mt-8 px-8 py-3 rounded-full bg-[#FFC857] text-[#270E40] font-bold">Back Home</a>
+  </main>
+  <script>
+    const p = new URLSearchParams(window.location.search).get('page');
+    if (p) {
+      document.getElementById('message').textContent = `${p.replace(/-/g, ' ')} is coming soon.`;
+    }
+  </script>
+</body>
+</html>
