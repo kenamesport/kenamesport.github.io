@@ -41,3 +41,17 @@
 .site-header .brand-word{font-size:clamp(23px,2vw,27px)}
 .footer-brand .brand-word{font-size:clamp(25px,2.1vw,29px)}
 @media(max-width:680px){.site-header .brand-word{font-size:22px}.footer-brand .brand-word{font-size:25px}}
+
+
+/* Refine logo spacing and partner logo presentation */
+.site-header .brand{gap:5px}
+.site-header .brand-logo{width:clamp(76px,7vw,92px);max-height:68px}
+.footer-brand .brand{gap:5px}
+.footer-brand-logo{width:clamp(76px,7vw,92px);max-height:76px}
+.partner-logos-real img:first-child{mix-blend-mode:multiply}
+@media(max-width:680px){
+  .site-header .brand{gap:3px}
+  .site-header .brand-logo{width:72px;max-height:58px}
+  .footer-brand .brand{gap:3px}
+  .footer-brand-logo{width:72px;max-height:62px}
+}
