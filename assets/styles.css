@@ -410,3 +410,11 @@
 
 /* WFMS artwork on the Media page */
 .wfms-logo{display:block;width:min(360px,100%);height:auto;object-fit:contain;border-radius:18px}
+
+/* WFMS section: copy on the left, show logo on the right */
+.wfms-feature{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,360px);align-items:center;gap:clamp(28px,5vw,72px);margin-top:28px}
+.wfms-copy{min-width:0}
+.wfms-copy h2{margin-top:0}
+.wfms-copy .media-buttons{margin:24px 0 0}
+.wfms-feature .wfms-logo{width:100%;max-width:360px;justify-self:end}
+@media(max-width:680px){.wfms-feature{grid-template-columns:1fr;gap:24px}.wfms-feature .wfms-logo{width:min(100%,360px);justify-self:start}}
