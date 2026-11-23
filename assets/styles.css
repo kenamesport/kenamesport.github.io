@@ -676,3 +676,11 @@
   font-weight:800;
   text-shadow:none;
 }
+
+
+/* Where We've Been: use the selected World Sevens tournament photograph */
+.been-photo.been-4{
+  background-image:url("../World_Sevens_Day_Three_27.webp") !important;
+  background-position:center center;
+  background-size:cover;
+}
