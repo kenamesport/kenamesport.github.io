@@ -341,3 +341,20 @@
   .been-track{overflow-x:auto}
   .been-card,.been-photo{transition:none}
 }
+
+
+/* Make Where We've Been cards portrait-format, like Instagram posts */
+.been-card{
+  flex-basis:clamp(250px,22vw,290px);
+  height:auto;
+  aspect-ratio:4 / 5;
+  border-radius:20px;
+}
+@media(max-width:680px){
+  .been-card{
+    flex-basis:76vw;
+    height:auto;
+    aspect-ratio:4 / 5;
+    border-radius:18px;
+  }
+}
