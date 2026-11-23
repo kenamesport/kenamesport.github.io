@@ -717,3 +717,9 @@
   }
   .dropdown-menu a{color:#17131D !important}
 }
+
+
+/* KENAME in the News: give the single confirmed feature a deliberate editorial footprint */
+.news-editorial-grid{grid-template-columns:minmax(0,420px);}
+@media(max-width:900px){.news-editorial-grid{grid-template-columns:minmax(0,420px)}}
+@media(max-width:680px){.news-editorial-grid{grid-template-columns:minmax(0,1fr)}}
