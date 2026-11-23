@@ -5,7 +5,7 @@ const home = `${base}index.html`;
 const logo = `${base}kenamelogo.png`;
 const header = `
 <header class="site-header" id="header">
-<a class="brand" href="${home}" aria-label="KENAME Sport home"><img class="brand-logo" src="${logo}" alt="KENAME Sport"></a>
+<a class="brand" href="${home}" aria-label="KENAME Sport home"><span class="brand-word">KENAME</span><img class="brand-logo" src="${logo}" alt="KENAME logo"></a>
 <nav class="nav" id="mainNav" aria-label="Main navigation">
 <a class="nav-link" href="${home}">Home</a>
 <div class="nav-group"><button class="nav-dropdown-toggle" type="button" aria-expanded="false">Who We Are <span class="chevron" aria-hidden="true"></span></button><div class="dropdown-menu"><a href="${page("who-we-are.html")}#vision">Our Vision</a><a href="${page("who-we-are.html")}#name">Behind the Name</a><a href="${page("who-we-are.html")}#team">Meet the Team</a><a href="${page("who-we-are.html")}#leadership">Leadership</a><a href="${page("who-we-are.html")}#founder">Meet the Founder</a></div></div>
@@ -18,10 +18,11 @@ const header = `
 </header>`;
 const footer = `
 <footer class="site-footer"><div class="footer-main">
-<div class="footer-brand"><a class="brand" href="${home}" aria-label="KENAME Sport home"><img class="footer-brand-logo" src="${logo}" alt="KENAME Sport"></a><p>Creating ways to experience women's football through travel, matchday, media and meaningful connections.</p><div class="social-row"><a href="#">IG</a><a href="#">TT</a><a href="#">in</a></div></div>
-<div class="footer-col"><h4>WHO WE ARE</h4><a href="${page("who-we-are.html")}#vision">Our Vision</a><a href="${page("who-we-are.html")}#name">Behind the Name</a><a href="${page("who-we-are.html")}#team">Meet the Team</a><a href="${page("who-we-are.html")}#leadership">Leadership</a><a href="${page("who-we-are.html")}#founder">Meet the Founder</a></div>
-<div class="footer-col"><h4>OUR ECOSYSTEM</h4><a href="${page("matchday.html")}">Matchday</a><a href="${page("travel.html")}">Travel</a><a href="${page("media.html")}">Media</a><a href="${page("consulting.html")}">Consulting</a><a href="${page("kename-fc.html")}">KENAME FC</a></div>
-<div class="footer-col"><h4>WORK WITH US</h4><a href="${page("contact.html")}">Contact</a><h4>STAY CONNECTED</h4><a href="${page("contact.html")}">Get in touch ↗</a></div>
+<div class="footer-brand"><a class="brand" href="${home}" aria-label="KENAME Sport home"><span class="brand-word">KENAME</span><img class="footer-brand-logo" src="${logo}" alt="KENAME logo"></a><p>Creating ways to experience women's football through travel, matchday, media and meaningful connections.</p><div class="social-row"><a href="#">IG</a><a href="#">TT</a><a href="#">in</a></div></div>
+<div class="footer-col"><h4>WHO WE ARE</h4><a href="${page("who-we-are.html")}#vision">Our Vision</a><a href="${page("who-we-are.html")}#name">Behind the Name</a></div>
+<div class="footer-col"><h4>OUR ECOSYSTEM</h4><a href="${page("matchday.html")}">Matchday</a><a href="${page("travel.html")}">Travel</a><a href="${page("media.html")}">Media</a><a href="${page("consulting.html")}">Consulting</a></div>
+<div class="footer-col"><h4>SHOP</h4><a href="${page("kename-fc.html")}">KENAME FC</a></div>
+<div class="footer-col"><h4>WORK WITH US</h4><a class="footer-contact-button" href="${page("contact.html")}">Contact</a></div>
 </div><div class="footer-bottom"><span>© 2026 KENAME Sport LTD Liability Co.</span><span><a href="${page("privacy.html")}">Privacy Policy</a><a href="${page("terms.html")}">Terms</a></span></div></footer>`;
 document.getElementById("site-header")?.insertAdjacentHTML("afterbegin", header);
 document.getElementById("site-footer")?.insertAdjacentHTML("afterbegin", footer);
