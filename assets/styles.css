@@ -491,3 +491,22 @@
       linear-gradient(180deg,rgba(248,247,244,0) 0%,rgba(248,247,244,.42) 42%,#F8F7F4 100%);
   }
 }
+
+
+/* Homepage travel cards: clean solid-color rectangles without photography */
+#destinations .trip-card{
+  min-height:330px;
+  align-items:flex-end;
+  background:#5817EB !important;
+  background-image:none !important;
+  box-shadow:0 10px 26px rgba(25,12,42,.12);
+}
+#destinations .trip-brazil{
+  background:#21152F !important;
+  background-image:none !important;
+}
+#destinations .trip-card > div{width:100%}
+#destinations .trip-card p:not(.eyebrow){max-width:430px}
+@media(max-width:680px){
+  #destinations .trip-card{min-height:300px}
+}
