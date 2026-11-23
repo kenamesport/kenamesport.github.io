@@ -666,3 +666,13 @@
   background-position:center center;
   background-size:cover;
 }
+
+
+/* Keep the homepage scroll prompt visible above the hero fade */
+.hero .scroll-cue{
+  position:absolute;
+  z-index:4 !important;
+  color:#000 !important;
+  font-weight:800;
+  text-shadow:none;
+}
