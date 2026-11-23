@@ -658,3 +658,11 @@
     min-height:250px;
   }
 }
+
+
+/* Homepage Media card: use the selected KENAME editorial photograph */
+.ecosystem-grid .image-media{
+  background-image:url("../IMG_3277.JPG");
+  background-position:center center;
+  background-size:cover;
+}
