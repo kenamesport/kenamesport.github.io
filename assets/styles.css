@@ -155,3 +155,20 @@
 
 /* Darken the homepage video overlay so the hero headline stays readable */
 .hero-shade{background:linear-gradient(90deg,rgba(10,5,20,.68) 0%,rgba(10,5,20,.48) 58%,rgba(10,5,20,.32) 100%) !important;}
+
+
+/* Restore the translucent glass effect on vivid-purple dropdown panels */
+.dropdown-menu{
+  background:rgba(88,23,235,.72) !important;
+  background-color:rgba(88,23,235,.72) !important;
+  backdrop-filter:blur(14px) saturate(135%) !important;
+  -webkit-backdrop-filter:blur(14px) saturate(135%) !important;
+}
+@media(max-width:900px){
+  .dropdown-menu{
+    background:rgba(88,23,235,.72) !important;
+    background-color:rgba(88,23,235,.72) !important;
+    backdrop-filter:blur(14px) saturate(135%) !important;
+    -webkit-backdrop-filter:blur(14px) saturate(135%) !important;
+  }
+}
