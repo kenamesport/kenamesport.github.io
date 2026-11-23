@@ -36,3 +36,8 @@
 .footer-main{grid-template-columns:1.35fr 1fr 1fr 1fr 1fr}
 @media(max-width:900px){.footer-main{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:680px){.footer-main{grid-template-columns:1fr 1fr}.footer-brand{grid-column:1/-1}.brand-word{font-size:19px}.brand-logo,.footer-brand-logo{width:50px}}
+
+/* Slightly larger KENAME wordmark in header and footer */
+.site-header .brand-word{font-size:clamp(23px,2vw,27px)}
+.footer-brand .brand-word{font-size:clamp(25px,2.1vw,29px)}
+@media(max-width:680px){.site-header .brand-word{font-size:22px}.footer-brand .brand-word{font-size:25px}}
