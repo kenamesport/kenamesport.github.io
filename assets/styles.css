@@ -358,3 +358,33 @@
     border-radius:18px;
   }
 }
+
+
+/* Refined glass treatment for dropdowns and the sticky header */
+.dropdown-menu{
+  background:rgba(88,23,235,.84) !important;
+  background-color:rgba(88,23,235,.84) !important;
+  border-color:rgba(255,255,255,.34) !important;
+  backdrop-filter:blur(18px) saturate(145%) !important;
+  -webkit-backdrop-filter:blur(18px) saturate(145%) !important;
+}
+.site-header.scrolled{
+  background:rgba(88,23,235,.84) !important;
+  background-color:rgba(88,23,235,.84) !important;
+  backdrop-filter:blur(18px) saturate(145%) !important;
+  -webkit-backdrop-filter:blur(18px) saturate(145%) !important;
+  border-bottom:1px solid rgba(255,255,255,.16);
+  box-shadow:0 8px 28px rgba(20,8,55,.14);
+}
+@media(max-width:900px){
+  .dropdown-menu{
+    background:rgba(88,23,235,.84) !important;
+    background-color:rgba(88,23,235,.84) !important;
+    backdrop-filter:blur(18px) saturate(145%) !important;
+    -webkit-backdrop-filter:blur(18px) saturate(145%) !important;
+  }
+  .site-header.scrolled{
+    background:rgba(88,23,235,.84) !important;
+    background-color:rgba(88,23,235,.84) !important;
+  }
+}
