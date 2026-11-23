@@ -431,3 +431,63 @@
   .site-header .brand-logo,
   .footer-brand .footer-brand-logo{margin-left:-6px}
 }
+
+
+/* Floating bubble navigation dropdown */
+@media(min-width:901px){
+  .dropdown-menu{
+    top:calc(100% + 12px);
+    left:-24px;
+    min-width:220px;
+    padding:12px;
+    border-radius:22px !important;
+    border:1px solid rgba(255,255,255,.32) !important;
+    box-shadow:0 20px 48px rgba(20,8,55,.28),inset 0 1px 0 rgba(255,255,255,.14) !important;
+    background:rgba(88,23,235,.88) !important;
+    backdrop-filter:blur(20px) saturate(150%) !important;
+    -webkit-backdrop-filter:blur(20px) saturate(150%) !important;
+  }
+  .dropdown-menu a{
+    padding:13px 15px;
+    border-radius:13px !important;
+    transition:background .2s ease,color .2s ease,transform .2s ease;
+  }
+  .dropdown-menu a:hover{
+    background:rgba(255,255,255,.17) !important;
+    transform:translateX(2px);
+  }
+}
+
+/* Homepage: dissolve the hero video into the page instead of a hard edge */
+.hero{
+  isolation:isolate;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  z-index:2;
+  left:0;
+  right:0;
+  bottom:-1px;
+  height:clamp(150px,22vw,270px);
+  pointer-events:none;
+  background:
+    radial-gradient(ellipse 72% 55% at 18% 100%,rgba(248,247,244,.82) 0%,rgba(248,247,244,0) 100%),
+    radial-gradient(ellipse 72% 60% at 82% 100%,rgba(248,247,244,.72) 0%,rgba(248,247,244,0) 100%),
+    linear-gradient(180deg,rgba(248,247,244,0) 0%,rgba(248,247,244,.34) 38%,rgba(248,247,244,.82) 76%,#F8F7F4 100%);
+}
+.hero-content,.scroll-cue{
+  z-index:3;
+}
+/* Keep the homepage surface continuous until the final inquiry section */
+.partners{
+  background:transparent !important;
+}
+@media(max-width:680px){
+  .hero::after{
+    height:190px;
+    background:
+      radial-gradient(ellipse 90% 52% at 50% 100%,rgba(248,247,244,.82) 0%,rgba(248,247,244,0) 100%),
+      linear-gradient(180deg,rgba(248,247,244,0) 0%,rgba(248,247,244,.42) 42%,#F8F7F4 100%);
+  }
+}
