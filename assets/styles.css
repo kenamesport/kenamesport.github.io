@@ -151,3 +151,7 @@
   .nav-group.dropdown-open .dropdown-menu,
   .nav-group:focus-within .dropdown-menu{display:block}
 }
+
+
+/* Darken the homepage video overlay so the hero headline stays readable */
+.hero-shade{background:linear-gradient(90deg,rgba(10,5,20,.68) 0%,rgba(10,5,20,.48) 58%,rgba(10,5,20,.32) 100%) !important;}
