@@ -510,3 +510,101 @@
 @media(max-width:680px){
   #destinations .trip-card{min-height:300px}
 }
+
+
+/* Homepage travel cards: compact horizontal rectangles with a layered gold hover sheen */
+#destinations .trip-grid{
+  gap:18px;
+  align-items:stretch;
+}
+#destinations .trip-card{
+  position:relative;
+  min-height:0;
+  height:250px;
+  aspect-ratio:2.35 / 1;
+  padding:28px 32px;
+  align-items:center;
+  border-radius:16px;
+  overflow:hidden;
+  isolation:isolate;
+  background:#5817EB !important;
+  background-image:none !important;
+  box-shadow:0 8px 22px rgba(25,12,42,.10);
+  transition:transform .3s ease,box-shadow .3s ease,background-color .3s ease;
+}
+#destinations .trip-brazil{
+  background:#241331 !important;
+  background-image:none !important;
+}
+#destinations .trip-card::before,
+#destinations .trip-card::after{
+  content:"";
+  position:absolute;
+  inset:-45% -70%;
+  z-index:-1;
+  pointer-events:none;
+  opacity:0;
+  transform:translateX(-55%) rotate(-12deg);
+  transition:opacity .35s ease;
+}
+#destinations .trip-card::before{
+  background:linear-gradient(105deg,transparent 34%,rgba(255,255,0,.08) 42%,rgba(255,255,0,.42) 49%,rgba(255,255,255,.2) 52%,rgba(255,255,0,.12) 57%,transparent 65%);
+}
+#destinations .trip-card::after{
+  background:linear-gradient(105deg,transparent 42%,rgba(255,255,0,.16) 49%,transparent 57%);
+  transition-delay:.08s;
+}
+#destinations .trip-card > div{
+  position:relative;
+  z-index:1;
+  width:100%;
+}
+#destinations .trip-card h3{
+  margin:8px 0;
+  font-size:clamp(27px,3vw,40px);
+  transition:color .25s ease,text-shadow .25s ease;
+}
+#destinations .trip-card p:not(.eyebrow){
+  max-width:520px;
+  margin:8px 0;
+  font-size:12px;
+  line-height:1.5;
+}
+#destinations .trip-card .text-link{margin-top:7px}
+#destinations .trip-card:hover,
+#destinations .trip-card:focus-within{
+  transform:translateY(-5px);
+  box-shadow:0 17px 34px rgba(25,12,42,.2);
+}
+#destinations .trip-card:hover::before,
+#destinations .trip-card:focus-within::before{
+  opacity:1;
+  animation:trip-gold-flow 1.25s ease-in-out both;
+}
+#destinations .trip-card:hover::after,
+#destinations .trip-card:focus-within::after{
+  opacity:1;
+  animation:trip-gold-flow 1.55s .08s ease-in-out both;
+}
+#destinations .trip-card:hover h3,
+#destinations .trip-card:focus-within h3{
+  color:#ffff00;
+  text-shadow:0 0 9px rgba(255,255,0,.38),0 0 22px rgba(255,255,0,.22);
+}
+#destinations .trip-card:hover .eyebrow,
+#destinations .trip-card:focus-within .eyebrow{color:#ffff00}
+@keyframes trip-gold-flow{
+  0%{transform:translateX(-55%) rotate(-12deg)}
+  100%{transform:translateX(55%) rotate(-12deg)}
+}
+@media(max-width:900px){
+  #destinations .trip-card{height:265px;padding:24px}
+}
+@media(max-width:680px){
+  #destinations .trip-grid{grid-template-columns:1fr;gap:14px}
+  #destinations .trip-card{height:auto;min-height:250px;aspect-ratio:auto;padding:25px 23px;border-radius:15px}
+}
+@media(prefers-reduced-motion:reduce){
+  #destinations .trip-card::before,
+  #destinations .trip-card::after{animation:none!important}
+}
