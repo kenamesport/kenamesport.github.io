@@ -431,3 +431,31 @@
   .site-header .brand-logo,
   .footer-brand .footer-brand-logo{margin-left:-6px}
 }
+
+
+/* KENAME sitewide content-box treatment: square corners */
+.content-card,
+.card,
+.news-card,
+.news-editorial-card,
+.eco-card,
+.been-card,
+.media-feature-card,
+.media-art,
+.wfms-logo,
+.team-card,
+.leadership-card,
+.partner-card,
+.feature-card,
+.dropdown-menu,
+.dropdown-menu a,
+.form-card,
+input,
+select,
+textarea,
+button,
+.button,
+.site-header,
+.site-footer {
+  border-radius: 0 !important;
+}
