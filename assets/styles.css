@@ -388,3 +388,17 @@
     background-color:rgba(88,23,235,.84) !important;
   }
 }
+
+
+
+/* KENAME in the News: editorial cards with date, headline and outlet */
+.news-editorial-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.news-editorial-card{position:relative;display:flex;flex-direction:column;justify-content:space-between;min-height:310px;aspect-ratio:1.12 / 1;overflow:hidden;padding:25px 26px 28px;border-radius:20px;color:#fff!important;text-decoration:none;background:linear-gradient(145deg,rgba(30,13,52,.96),rgba(88,23,235,.9));box-shadow:0 9px 25px rgba(25,12,42,.14);transition:transform .28s ease,box-shadow .28s ease}
+.news-editorial-card::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.09),transparent 55%);pointer-events:none}
+.news-editorial-card:hover,.news-editorial-card:focus-visible{transform:translateY(-7px);box-shadow:0 19px 38px rgba(25,12,42,.26)}
+.news-date{position:relative;z-index:1;align-self:flex-start;color:#fff!important;font-size:10px;font-weight:800;letter-spacing:.14em}
+.news-editorial-copy{position:relative;z-index:1;color:#fff}
+.news-editorial-copy h3{margin:0 0 15px;max-width:95%;color:#fff!important;font:800 clamp(21px,2.1vw,29px)/1.12 Manrope,sans-serif;letter-spacing:-.035em}
+.news-editorial-copy p{margin:0;color:#fff!important;font-size:10px;font-weight:800;letter-spacing:.13em}
+@media(max-width:900px){.news-editorial-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:680px){.news-editorial-grid{grid-template-columns:1fr;gap:16px}.news-editorial-card{min-height:270px;aspect-ratio:1.2 / 1;border-radius:17px;padding:23px}}
