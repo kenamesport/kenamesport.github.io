@@ -2,7 +2,7 @@ const inPages = location.pathname.includes("/pages/");
 const base = inPages ? "../" : "";
 const page = name => `${base}pages/${name}`;
 const home = `${base}index.html`;
-const logo = `${base}kenamelogo.jpg`;
+const logo = `${base}kenlogo.jpg`;
 const header = `
 <header class="site-header" id="header">
 <a class="brand" href="${home}" aria-label="KENAME Sport home"><span class="brand-word">KENAME</span><img class="brand-logo" src="${logo}" alt="KENAME logo"></a>
