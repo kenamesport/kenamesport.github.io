@@ -608,3 +608,53 @@
   #destinations .trip-card::before,
   #destinations .trip-card::after{animation:none!important}
 }
+
+
+/* Homepage travel cards: remove gold hover effects and keep cards clearly separated */
+#destinations .trip-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  column-gap:24px;
+  row-gap:24px;
+  align-items:stretch;
+}
+#destinations .trip-card{
+  box-sizing:border-box;
+  width:100%;
+  min-width:0;
+  height:250px;
+  min-height:250px;
+  aspect-ratio:auto;
+  margin:0;
+  transform:none;
+  background-image:none !important;
+}
+#destinations .trip-card::before,
+#destinations .trip-card::after{
+  content:none !important;
+  display:none !important;
+  animation:none !important;
+}
+#destinations .trip-card:hover,
+#destinations .trip-card:focus-within{
+  transform:none;
+}
+#destinations .trip-card:hover h3,
+#destinations .trip-card:focus-within h3{
+  color:inherit;
+  text-shadow:none;
+}
+#destinations .trip-card:hover .eyebrow,
+#destinations .trip-card:focus-within .eyebrow{
+  color:var(--gold);
+}
+@media(max-width:680px){
+  #destinations .trip-grid{
+    grid-template-columns:minmax(0,1fr);
+    row-gap:18px;
+  }
+  #destinations .trip-card{
+    height:250px;
+    min-height:250px;
+  }
+}
