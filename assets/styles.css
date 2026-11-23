@@ -82,3 +82,36 @@
 .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
 .hero-shade{z-index:1}
 .hero-content,.scroll-cue{z-index:2}
+
+
+/* Compact vibrant-purple sticky header and matching dropdown panels */
+.site-header.scrolled{
+  background:rgba(88,23,235,.97);
+  padding-top:7px;
+  padding-bottom:7px;
+}
+.site-header.scrolled .brand-logo{
+  max-height:52px;
+}
+.site-header.scrolled .nav-dropdown-toggle{
+  padding-top:8px;
+  padding-bottom:8px;
+}
+.site-header.scrolled .nav-contact{
+  padding:9px 18px;
+}
+.dropdown-menu{
+  background:rgba(88,23,235,.94);
+  border-color:rgba(255,255,255,.28);
+  box-shadow:0 14px 35px rgba(20,8,55,.22);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+.dropdown-menu a:hover{
+  background:rgba(255,255,255,.16);
+  color:#ffff00;
+}
+@media(max-width:900px){
+  .nav{background:rgba(88,23,235,.97)}
+  .dropdown-menu{background:transparent}
+}
