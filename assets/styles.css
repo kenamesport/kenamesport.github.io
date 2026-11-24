@@ -986,3 +986,64 @@
   line-height:1.8;
   color:rgba(255,255,255,.9);
 }
+
+/* Our Vision: editorial-style montage using KENAME Sport's existing photography */
+.vision-montage{
+  width:100%;
+  height:min(66vw,700px);
+  min-height:480px;
+  display:grid;
+  grid-template-columns:1.08fr .82fr .9fr;
+  grid-template-rows:1fr .82fr 1fr;
+  gap:12px;
+  position:relative;
+  animation:vision-rise .95s cubic-bezier(.2,.72,.24,1) both;
+}
+.vision-montage figure{
+  min-width:0;
+  min-height:0;
+  margin:0;
+  overflow:hidden;
+  border-radius:14px;
+  background:rgba(255,255,255,.12);
+}
+.vision-montage img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .65s cubic-bezier(.2,.7,.2,1);
+}
+.vision-montage figure:hover img{transform:scale(1.045)}
+.vision-montage-main{grid-column:1;grid-row:1/4}
+.vision-montage-top{grid-column:2;grid-row:1/3}
+.vision-montage-middle{grid-column:3;grid-row:1}
+.vision-montage-bottom{grid-column:2;grid-row:3}
+.vision-montage-accent{grid-column:3;grid-row:2/4}
+.vision-montage-main img{object-position:center}
+.vision-montage-top img{object-position:center}
+.vision-montage-middle img{object-position:center}
+.vision-montage-bottom img{object-position:center}
+.vision-montage-accent img{object-position:center}
+@media(max-width:900px){
+  .vision-montage{min-height:420px;height:58vw;gap:9px}
+}
+@media(max-width:680px){
+  .vision-montage{
+    height:auto;
+    min-height:0;
+    aspect-ratio:1/1.18;
+    grid-template-columns:1.05fr .95fr;
+    grid-template-rows:1.2fr .8fr 1fr;
+    gap:8px;
+  }
+  .vision-montage-main{grid-column:1;grid-row:1/3}
+  .vision-montage-top{grid-column:2;grid-row:1}
+  .vision-montage-middle{grid-column:2;grid-row:2}
+  .vision-montage-bottom{grid-column:1;grid-row:3}
+  .vision-montage-accent{grid-column:2;grid-row:3}
+}
+@media(prefers-reduced-motion:reduce){
+  .vision-montage{animation:none}
+  .vision-montage img{transition:none}
+}
