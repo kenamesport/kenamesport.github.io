@@ -789,3 +789,22 @@
 }
 .news-editorial-card .news-date,
 .news-editorial-card .news-editorial-copy{z-index:1}
+
+
+/* Women in Soccer feature: readable summary and clear read-more link */
+.news-editorial-copy p{
+  max-width:34ch;
+  margin:0 0 18px;
+  color:rgba(255,255,255,.94)!important;
+  font-size:13px;
+  font-weight:500;
+  line-height:1.55;
+  letter-spacing:0;
+}
+.news-editorial-copy .news-read-more{
+  display:inline-block;
+  color:#fff;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.13em;
+}
