@@ -9,7 +9,7 @@ const header = `
 <nav class="nav" id="mainNav" aria-label="Main navigation">
 <a class="nav-link" href="${home}">Home</a>
 <div class="nav-group"><button class="nav-dropdown-toggle" type="button" aria-expanded="false">Who We Are <span class="chevron" aria-hidden="true"></span></button><div class="dropdown-menu"><a href="${page("our-vision.html")}">Our Vision</a><a href="${page("behind-the-name.html")}">Behind the Name</a><a href="${page("meet-the-founder.html")}">Meet the Founder</a></div></div>
-<div class="nav-group"><button class="nav-dropdown-toggle" type="button" aria-expanded="false">Our Ecosystem <span class="chevron" aria-hidden="true"></span></button><div class="dropdown-menu"><a href="${page("matchday.html")}">Matchday</a><a href="${page("travel.html")}">Travel</a><a href="${page("media.html")}">Media</a><a href="${page("consulting.html")}">Consulting</a></div></div>
+<div class="nav-group"><button class="nav-dropdown-toggle" type="button" aria-expanded="false">Our Framework <span class="chevron" aria-hidden="true"></span></button><div class="dropdown-menu"><a href="${page("matchday.html")}">Matchday</a><a href="${page("travel.html")}">Travel</a><a href="${page("media.html")}">Media</a><a href="${page("consulting.html")}">Consulting</a></div></div>
 <div class="nav-group"><button class="nav-dropdown-toggle" type="button" aria-expanded="false">Shop <span class="chevron" aria-hidden="true"></span></button><div class="dropdown-menu"><a href="${page("kename-fc.html")}">KENAME FC</a></div></div>
 <a class="nav-contact-mobile" href="${page("contact.html")}">Contact</a>
 </nav>
@@ -31,7 +31,7 @@ const footer = `
 <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23 7.1a3 3 0 0 0-2.1-2.2C19 4.4 12 4.4 12 4.4s-7 0-8.9.5A3 3 0 0 0 1 7.1 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.9a3 3 0 0 0 2.1 2.2c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.2 31 31 0 0 0 .5-4.9 31 31 0 0 0-.5-4.9M9.8 15.5v-7l6 3.5z"/></svg></a>
 </div></div>
 <div class="footer-col"><h4>WHO WE ARE</h4><a href="${page("our-vision.html")}">Our Vision</a><a href="${page("behind-the-name.html")}">Behind the Name</a><a href="${page("meet-the-founder.html")}">Meet the Founder</a></div>
-<div class="footer-col"><h4>OUR ECOSYSTEM</h4><a href="${page("matchday.html")}">Matchday</a><a href="${page("travel.html")}">Travel</a><a href="${page("media.html")}">Media</a><a href="${page("consulting.html")}">Consulting</a></div>
+<div class="footer-col"><h4>OUR FRAMEWORK</h4><a href="${page("matchday.html")}">Matchday</a><a href="${page("travel.html")}">Travel</a><a href="${page("media.html")}">Media</a><a href="${page("consulting.html")}">Consulting</a></div>
 <div class="footer-col"><h4>SHOP</h4><a href="${page("kename-fc.html")}">KENAME FC</a></div>
 <div class="footer-col"><h4>WORK WITH US</h4><a class="footer-contact-button" href="${page("contact.html")}">Contact</a></div>
 </div><div class="footer-bottom"><span>© 2026 KENAME Sport LTD Liability Co.</span><span><a href="${page("privacy.html")}">Privacy Policy</a><a href="${page("terms.html")}">Terms</a></span></div></footer>`;
