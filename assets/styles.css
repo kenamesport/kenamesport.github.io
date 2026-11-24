@@ -838,3 +838,23 @@
   background:linear-gradient(180deg,rgba(20,12,30,.10) 0%,rgba(20,12,30,.18) 42%,rgba(20,12,30,.82) 100%) !important;
 }
 .media-feature-card .news-date{color:#fff !important;}
+
+
+/* KENAME Travel ticker: high-contrast tournament roll with monochrome footballs */
+.ticker{
+  background:rgba(39,14,64,.96) !important;
+  color:#fff !important;
+  opacity:1;
+}
+.ticker-track{
+  align-items:center;
+  gap:30px;
+  text-shadow:0 1px 1px rgba(0,0,0,.28);
+}
+.ticker-track span{
+  color:#fff;
+}
+.ticker-track .ticker-label{
+  color:#FFFF00 !important;
+  font-weight:900;
+}
