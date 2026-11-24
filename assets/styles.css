@@ -723,3 +723,48 @@
 .news-editorial-grid{grid-template-columns:minmax(0,420px);}
 @media(max-width:900px){.news-editorial-grid{grid-template-columns:minmax(0,420px)}}
 @media(max-width:680px){.news-editorial-grid{grid-template-columns:minmax(0,1fr)}}
+
+
+/* Navigation dropdowns: smooth molded-plastic finish, not glass */
+.dropdown-menu{
+  background:linear-gradient(160deg,#fff 0%,#f5f2ed 42%,#e8e3dc 100%) !important;
+  background-color:#f5f2ed !important;
+  border:0 !important;
+  outline:0 !important;
+  border-radius:23px !important;
+  box-shadow:
+    0 18px 34px rgba(20,13,31,.24),
+    0 5px 10px rgba(20,13,31,.10),
+    inset 0 2px 2px rgba(255,255,255,.98),
+    inset 0 -2px 3px rgba(80,65,50,.10) !important;
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+}
+.dropdown-menu a{
+  color:#17131D !important;
+  border:0 !important;
+  outline:0 !important;
+  border-radius:14px !important;
+  box-shadow:none !important;
+  transition:background .16s ease,transform .16s ease;
+}
+.dropdown-menu a:hover,
+.dropdown-menu a:focus-visible{
+  background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(224,219,211,.82)) !important;
+  color:#17131D !important;
+  border:0 !important;
+  outline:0 !important;
+  box-shadow:inset 0 1px 2px rgba(255,255,255,.95),0 2px 5px rgba(20,13,31,.08) !important;
+  transform:translateY(-1px);
+}
+@media(max-width:900px){
+  .dropdown-menu{
+    background:linear-gradient(160deg,#fff 0%,#f5f2ed 42%,#e8e3dc 100%) !important;
+    background-color:#f5f2ed !important;
+    border:0 !important;
+    border-radius:18px !important;
+    box-shadow:0 12px 24px rgba(20,13,31,.18),inset 0 2px 2px rgba(255,255,255,.98),inset 0 -2px 3px rgba(80,65,50,.10) !important;
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
+  }
+}
