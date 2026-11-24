@@ -894,3 +894,86 @@
   .founder-bio{min-height:220px}
   .founder-portrait img{min-height:0;max-height:none;aspect-ratio:4/5}
 }
+
+
+/* Our Vision: one continuous purple editorial layout with a rising founder-selected image */
+.vision-section{
+  min-height:calc(100svh - 1px);
+  display:grid;
+  grid-template-columns:minmax(0,1.08fr) minmax(300px,.82fr);
+  align-items:center;
+  gap:clamp(34px,6vw,88px);
+  padding:180px clamp(22px,8vw,110px) 100px;
+  overflow:hidden;
+  background:var(--purple);
+  color:#fff;
+}
+.vision-copy{max-width:720px;position:relative;z-index:1}
+.vision-section .eyebrow{color:var(--gold)}
+.vision-section h1{
+  font:800 clamp(48px,8vw,100px)/.9 Manrope,sans-serif;
+  letter-spacing:-.07em;
+  margin:15px 0 0;
+}
+.vision-intro{
+  max-width:720px;
+  margin:26px 0 0;
+  color:#fff;
+  font-size:clamp(16px,1.35vw,18px);
+  line-height:1.7;
+}
+.vision-details{margin-top:30px}
+.vision-details p{
+  max-width:690px;
+  margin:0 0 18px;
+  color:rgba(255,255,255,.86);
+  font-size:15px;
+  line-height:1.8;
+}
+.vision-image{
+  width:100%;
+  height:min(62vw,660px);
+  min-height:420px;
+  max-height:660px;
+  margin:0;
+  overflow:hidden;
+  border-radius:22px;
+  box-shadow:0 22px 50px rgba(22,8,53,.25);
+  animation:vision-rise .95s cubic-bezier(.2,.72,.24,1) both;
+}
+.vision-image img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+@keyframes vision-rise{
+  from{opacity:0;transform:translateY(64px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@media(max-width:900px){
+  .vision-section{
+    grid-template-columns:minmax(0,1fr) minmax(260px,.8fr);
+    gap:28px;
+    padding-left:clamp(22px,5vw,50px);
+    padding-right:clamp(22px,5vw,50px);
+  }
+  .vision-image{min-height:360px;height:58vw}
+}
+@media(max-width:680px){
+  .vision-section{
+    grid-template-columns:1fr;
+    gap:30px;
+    padding:145px 22px 70px;
+  }
+  .vision-image{
+    min-height:0;
+    height:auto;
+    aspect-ratio:4/5;
+    border-radius:17px;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .vision-image{animation:none}
+}
