@@ -977,3 +977,12 @@
 @media(prefers-reduced-motion:reduce){
   .vision-image{animation:none}
 }
+
+/* Our Vision: keep all three body paragraphs visually consistent */
+.vision-intro,
+.vision-details p{
+  font-size:16px;
+  font-weight:400;
+  line-height:1.8;
+  color:rgba(255,255,255,.9);
+}
