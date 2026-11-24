@@ -46,3 +46,31 @@ document.querySelectorAll(".nav-dropdown-toggle").forEach(button => button.addEv
 document.addEventListener("click", event => { if (!event.target.closest(".nav-group")) document.querySelectorAll(".nav-group").forEach(group => { group.classList.remove("dropdown-open"); group.querySelector(".nav-dropdown-toggle")?.setAttribute("aria-expanded", "false"); }); });
 document.addEventListener("keydown", event => { if (event.key === "Escape") { nav?.classList.remove("open"); toggle?.setAttribute("aria-expanded", "false"); document.querySelectorAll(".nav-group").forEach(group => { group.classList.remove("dropdown-open"); group.querySelector(".nav-dropdown-toggle")?.setAttribute("aria-expanded", "false"); }); } });
 document.querySelectorAll('a[href="#"]').forEach(a => a.addEventListener("click", event => event.preventDefault()));
+
+/* Apply distinct entrance motion to interior pages and scroll reveals on the homepage */
+const isHomePage = !inPages && (location.pathname === "/" || location.pathname.endsWith("/index.html"));
+if (isHomePage) {
+  document.body.classList.add("home-page");
+  const sections = Array.from(document.querySelectorAll("main > section"));
+  const start = sections.findIndex(section => section.id === "destinations");
+  const end = sections.findIndex(section => section.classList.contains("partners"));
+  if (start >= 0 && end >= start) {
+    const revealSections = sections.slice(start, end + 1);
+    if ("IntersectionObserver" in window) {
+      const revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: "0px 0px -7% 0px" });
+      revealSections.forEach(section => {
+        section.classList.add("home-scroll-reveal");
+        revealObserver.observe(section);
+      });
+    } else {
+      revealSections.forEach(section => section.classList.add("is-visible"));
+    }
+  }
+}
