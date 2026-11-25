@@ -1218,3 +1218,54 @@ body:not(.home-page) main .vision-copy{
   isolation:isolate;
   object-fit:contain;
 }
+
+
+/* Reliable animated perimeter highlight for cards */
+@property --kename-border-angle{
+  syntax:"<angle>";
+  inherits:false;
+  initial-value:0deg;
+}
+@keyframes kename-border-orbit{
+  to{--kename-border-angle:360deg}
+}
+.been-card{
+  position:relative;
+  box-shadow:
+    0 2px 5px rgba(15,8,28,.14),
+    0 12px 26px rgba(39,14,64,.22),
+    0 28px 48px rgba(39,14,64,.15) !important;
+  transition:box-shadow .3s ease !important;
+  transform:none !important;
+}
+.been-card::before{
+  content:"";
+  position:absolute;
+  z-index:5;
+  inset:0;
+  border:1px solid transparent;
+  pointer-events:none;
+  background:
+    linear-gradient(transparent,transparent) padding-box,
+    conic-gradient(from var(--kename-border-angle),transparent 0deg 285deg,#ffff00 310deg,#ffff00 326deg,transparent 350deg 360deg) border-box;
+  opacity:0;
+  transition:opacity .2s ease;
+}
+.been-card:hover::before,
+.been-card:focus-visible::before{
+  opacity:1;
+  animation:kename-border-orbit 2.6s linear infinite;
+}
+.been-card:hover{
+  transform:none !important;
+  box-shadow:
+    0 4px 9px rgba(15,8,28,.17),
+    0 18px 34px rgba(39,14,64,.28),
+    0 34px 58px rgba(39,14,64,.19),
+    0 0 18px rgba(255,255,0,.12) !important;
+}
+.been-card:hover .been-photo{transform:none !important}
+@media(prefers-reduced-motion:reduce){
+  .been-card:hover::before,
+  .been-card:focus-visible::before{animation:none !important}
+}
