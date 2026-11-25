@@ -1269,3 +1269,67 @@ body:not(.home-page) main .vision-copy{
   .been-card:hover::before,
   .been-card:focus-visible::before{animation:none !important}
 }
+
+/* Consistent animated yellow perimeter and subtle lift for the featured homepage cards */
+.trip-card,
+.news-editorial-card{
+  position:relative;
+}
+.trip-card::after,
+.news-editorial-card::after{
+  content:"" !important;
+  display:block !important;
+  position:absolute;
+  z-index:5;
+  inset:0;
+  border:2px solid transparent;
+  pointer-events:none;
+  background:
+    linear-gradient(transparent,transparent) padding-box,
+    conic-gradient(from var(--kename-border-angle),transparent 0deg 265deg,#ffff00 285deg,#ffff00 335deg,transparent 355deg 360deg) border-box;
+  opacity:0;
+  transition:opacity .2s ease;
+}
+.trip-card:hover::after,
+.trip-card:focus-within::after,
+.news-editorial-card:hover::after,
+.news-editorial-card:focus-visible::after{
+  opacity:1;
+  animation:kename-border-orbit 2.6s linear infinite;
+}
+#destinations .trip-card:hover,
+#destinations .trip-card:focus-within{
+  z-index:3;
+  transform:translateY(-5px) scale(1.02) !important;
+  box-shadow:0 17px 34px rgba(25,12,42,.22),0 0 18px rgba(255,255,0,.10);
+}
+.news-editorial-card:hover,
+.news-editorial-card:focus-visible{
+  z-index:3;
+  transform:translateY(-5px) scale(1.02);
+  box-shadow:0 19px 38px rgba(25,12,42,.28),0 0 18px rgba(255,255,0,.10);
+}
+.been-card:hover{
+  z-index:3;
+  transform:translateY(-5px) scale(1.02) !important;
+  box-shadow:
+    0 4px 9px rgba(15,8,28,.17),
+    0 18px 34px rgba(39,14,64,.28),
+    0 34px 58px rgba(39,14,64,.19),
+    0 0 18px rgba(255,255,0,.12) !important;
+}
+@media(prefers-reduced-motion:reduce){
+  .trip-card:hover::after,
+  .trip-card:focus-within::after,
+  .news-editorial-card:hover::after,
+  .news-editorial-card:focus-visible::after{
+    animation:none !important;
+  }
+  #destinations .trip-card:hover,
+  #destinations .trip-card:focus-within,
+  .news-editorial-card:hover,
+  .news-editorial-card:focus-visible,
+  .been-card:hover{
+    transform:none !important;
+  }
+}
