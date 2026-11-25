@@ -1156,7 +1156,7 @@ body:not(.home-page) main .vision-copy{
   position:absolute;
   z-index:5;
   inset:0;
-  padding:1px;
+  padding:2px;
   pointer-events:none;
   background:conic-gradient(from var(--kename-border-angle),transparent 0deg 285deg,#ffff00 310deg,#ffff00 326deg,transparent 350deg 360deg);
   -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
@@ -1243,11 +1243,11 @@ body:not(.home-page) main .vision-copy{
   position:absolute;
   z-index:5;
   inset:0;
-  border:1px solid transparent;
+  border:2px solid transparent;
   pointer-events:none;
   background:
     linear-gradient(transparent,transparent) padding-box,
-    conic-gradient(from var(--kename-border-angle),transparent 0deg 285deg,#ffff00 310deg,#ffff00 326deg,transparent 350deg 360deg) border-box;
+    conic-gradient(from var(--kename-border-angle),transparent 0deg 265deg,#ffff00 285deg,#ffff00 335deg,transparent 355deg 360deg) border-box;
   opacity:0;
   transition:opacity .2s ease;
 }
