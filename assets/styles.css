@@ -1129,3 +1129,80 @@ body:not(.home-page) main .vision-copy{
 *::after{
   border-radius:0 !important;
 }
+
+
+/* Thin animated yellow tracing outline for interactive content cards */
+@property --kename-border-angle{
+  syntax:"<angle>";
+  inherits:false;
+  initial-value:0deg;
+}
+@keyframes kename-border-orbit{
+  to{--kename-border-angle:360deg}
+}
+.trip-card,
+.eco-card,
+.news-card,
+.been-card,
+.content-card{
+  position:relative;
+}
+.trip-card::before,
+.eco-card::before,
+.news-card::before,
+.been-card::before,
+.content-card::before{
+  content:"";
+  position:absolute;
+  z-index:5;
+  inset:0;
+  padding:1px;
+  pointer-events:none;
+  background:conic-gradient(from var(--kename-border-angle),transparent 0deg 285deg,#ffff00 310deg,#ffff00 326deg,transparent 350deg 360deg);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  mask-composite:exclude;
+  opacity:0;
+  transition:opacity .2s ease;
+}
+.trip-card:hover::before,
+.trip-card:focus-within::before,
+.eco-card:hover::before,
+.eco-card:focus-visible::before,
+.news-card:hover::before,
+.news-card:focus-visible::before,
+.been-card:hover::before,
+.been-card:focus-visible::before,
+.content-card:hover::before,
+.content-card:focus-within::before{
+  opacity:1;
+  animation:kename-border-orbit 2.6s linear infinite;
+}
+
+/* Give the Where We've Been cards a deeper, cleaner layered shadow */
+.been-card{
+  box-shadow:
+    0 2px 5px rgba(15,8,28,.12),
+    0 12px 26px rgba(39,14,64,.20),
+    0 28px 48px rgba(39,14,64,.13),
+    inset 0 1px 0 rgba(255,255,255,.12);
+  transition:box-shadow .3s ease;
+}
+.been-card:hover{
+  transform:none;
+  box-shadow:
+    0 4px 9px rgba(15,8,28,.16),
+    0 18px 34px rgba(39,14,64,.26),
+    0 34px 58px rgba(39,14,64,.17),
+    0 0 18px rgba(255,255,0,.10),
+    inset 0 1px 0 rgba(255,255,255,.16);
+}
+.been-card:hover .been-photo{transform:none}
+@media(prefers-reduced-motion:reduce){
+  .trip-card::before,
+  .eco-card::before,
+  .news-card::before,
+  .been-card::before,
+  .content-card::before{animation:none!important}
+}
