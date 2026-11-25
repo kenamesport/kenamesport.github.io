@@ -1398,3 +1398,11 @@ body:not(.home-page) main .vision-copy{
   opacity:1;
   animation:kename-border-orbit 2.6s linear infinite !important;
 }
+
+
+/* Remove the heavy drop shadow behind the WHERE WE'VE BEEN cards */
+.been-card,
+.been-card:hover,
+.been-card:focus-visible{
+  box-shadow:none !important;
+}
