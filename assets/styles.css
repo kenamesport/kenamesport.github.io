@@ -1699,12 +1699,21 @@ body:not(.home-page) main .vision-copy{
   align-items:center;
   gap:clamp(28px,5vw,72px);
   max-width:1180px;
-  margin:30px auto 0;
+  margin:0 auto;
 }
 .behind-name-layout .page-intro{
   max-width:none;
   margin:0;
   min-width:0;
+}
+.behind-name-layout .page-intro p{
+  margin:26px 0 0;
+  font-size:16px;
+  line-height:1.8;
+  color:rgba(255,255,255,.9);
+}
+.behind-name-layout .page-intro p + p{
+  margin-top:18px;
 }
 .behind-name-art{
   display:block !important;
@@ -1724,7 +1733,7 @@ body:not(.home-page) main .vision-copy{
   .behind-name-layout{
     grid-template-columns:1fr;
     gap:28px;
-    margin-top:24px;
+    margin-top:0;
   }
   .behind-name-art{
     justify-self:center;
