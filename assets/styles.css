@@ -1595,3 +1595,14 @@ body:not(.home-page) main .vision-copy{
     animation:none !important;
   }
 }
+
+
+/* WHERE WE'VE BEEN: remove the card drop shadows completely.
+   Keep the animated yellow perimeter and stationary card behavior. */
+.been-card,
+.been-card:hover,
+.been-card:focus,
+.been-card:focus-visible{
+  box-shadow:none !important;
+  filter:none !important;
+}
