@@ -1689,3 +1689,17 @@ body:not(.home-page) main .vision-copy{
   background-position:center;
   background-size:cover;
 }
+
+
+/* Behind the Name page visual */
+.behind-name-visual{
+  display:flex;
+  justify-content:center;
+  padding-top:20px;
+}
+.behind-name-art{
+  display:block;
+  width:min(100%,860px);
+  height:auto;
+  object-fit:contain;
+}
