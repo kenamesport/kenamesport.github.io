@@ -1373,3 +1373,28 @@ body:not(.home-page) main .vision-copy{
   .news-card.news-editorial-card:hover,
   .news-card.news-editorial-card:focus-visible{transform:none !important}
 }
+
+
+/* Restore the perimeter trace on the two homepage destination cards.
+   The older destination sheen rules used both pseudo-elements and disabled them later. */
+#destinations .trip-card::after{
+  content:"" !important;
+  display:block !important;
+  position:absolute;
+  z-index:5;
+  inset:0 !important;
+  border:2px solid transparent;
+  padding:0;
+  pointer-events:none;
+  opacity:0;
+  transform:none !important;
+  transition:opacity .2s ease;
+  background:
+    linear-gradient(transparent,transparent) padding-box,
+    conic-gradient(from var(--kename-border-angle),transparent 0deg 265deg,#ffff00 285deg,#ffff00 335deg,transparent 355deg 360deg) border-box !important;
+}
+#destinations .trip-card:hover::after,
+#destinations .trip-card:focus-within::after{
+  opacity:1;
+  animation:kename-border-orbit 2.6s linear infinite !important;
+}
