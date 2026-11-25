@@ -1696,7 +1696,7 @@ body:not(.home-page) main .vision-copy{
 .behind-name-layout{
   display:grid;
   grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr);
-  align-items:center;
+  align-items:start;
   gap:clamp(28px,5vw,72px);
   max-width:1180px;
   margin:0 auto;
