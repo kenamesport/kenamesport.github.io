@@ -1707,13 +1707,18 @@ body:not(.home-page) main .vision-copy{
   min-width:0;
 }
 .behind-name-art{
-  display:block;
-  width:100%;
+  display:block !important;
+  visibility:visible !important;
+  opacity:1 !important;
+  width:100% !important;
   max-width:470px;
+  min-width:0;
   max-height:620px;
-  height:auto;
+  height:auto !important;
   object-fit:contain;
   justify-self:end;
+  position:relative;
+  z-index:1;
 }
 @media(max-width:760px){
   .behind-name-layout{
