@@ -1641,3 +1641,38 @@ body:not(.home-page) main .vision-copy{
   position:relative;
   z-index:2 !important;
 }
+
+
+/* KENAME IN THE NEWS: eliminate the hairline photo gaps at the top and bottom.
+   Slightly overscan only this image, while keeping the original soft gradient. */
+.news-card.news-editorial-card{
+  overflow:hidden !important;
+  background-color:#140c1e !important;
+}
+.news-card.news-editorial-card > .news-editorial-image{
+  inset:-2px !important;
+  width:calc(100% + 4px) !important;
+  height:calc(100% + 4px) !important;
+  max-width:none !important;
+  object-fit:cover !important;
+  border-radius:0 !important;
+}
+.news-card.news-editorial-card::after{
+  inset:0 !important;
+  background:linear-gradient(
+    180deg,
+    rgba(20,12,30,.12) 0%,
+    rgba(20,12,30,.04) 38%,
+    rgba(20,12,30,.82) 100%
+  ) !important;
+}
+.news-card.news-editorial-card:hover::after,
+.news-card.news-editorial-card:focus-visible::after{
+  inset:0 !important;
+  background:linear-gradient(
+    180deg,
+    rgba(20,12,30,.12) 0%,
+    rgba(20,12,30,.04) 38%,
+    rgba(20,12,30,.82) 100%
+  ) !important;
+}
