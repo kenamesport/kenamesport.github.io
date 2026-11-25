@@ -1676,3 +1676,16 @@ body:not(.home-page) main .vision-copy{
     rgba(20,12,30,.82) 100%
   ) !important;
 }
+
+
+/* WHERE WE'VE BEEN: use the founder's event photographs for these two cards. */
+.been-photo.been-1{
+  background-image:url("../IMG_0453.jpg") !important;
+  background-position:center;
+  background-size:cover;
+}
+.been-photo.been-5{
+  background-image:url("../20260531_170241.jpg") !important;
+  background-position:center;
+  background-size:cover;
+}
