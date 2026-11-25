@@ -1206,3 +1206,15 @@ body:not(.home-page) main .vision-copy{
   .been-card::before,
   .content-card::before{animation:none!important}
 }
+
+
+/* Guyway partner logo: blend the white JPEG canvas into the partner-section background */
+.partner-logos-real{
+  background:transparent;
+}
+.partner-logos-real img:first-child{
+  background:transparent !important;
+  mix-blend-mode:multiply !important;
+  isolation:isolate;
+  object-fit:contain;
+}
