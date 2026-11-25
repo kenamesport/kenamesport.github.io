@@ -1801,3 +1801,14 @@ body:not(.home-page) main .vision-copy{
 @media(prefers-reduced-motion:reduce){
   .vision-montage-accent img{margin:-15% 0 0 -15%}
 }
+
+
+/* Our Vision photo 4: tighter crop within its existing collage frame. */
+.vision-montage-bottom img{
+  width:150% !important;
+  height:150% !important;
+  max-width:none !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+  margin:-25% 0 0 -25%;
+}
