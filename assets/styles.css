@@ -1777,3 +1777,27 @@ body:not(.home-page) main .vision-copy{
 @media(prefers-reduced-motion:reduce){
   .behind-name-art{animation:none}
 }
+
+
+/* Our Vision collage: preserve the full celebration in the lead frame and
+   use a tighter crop for the repeated closing photograph. */
+.vision-montage-main{
+  background:#32106f !important;
+}
+.vision-montage-main img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;
+  object-position:center center !important;
+}
+.vision-montage-accent img{
+  width:130% !important;
+  height:130% !important;
+  max-width:none !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+  margin:-15% 0 0 -15%;
+}
+@media(prefers-reduced-motion:reduce){
+  .vision-montage-accent img{margin:-15% 0 0 -15%}
+}
