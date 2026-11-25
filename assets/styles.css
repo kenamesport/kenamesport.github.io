@@ -1608,19 +1608,21 @@ body:not(.home-page) main .vision-copy{
 }
 
 
-/* KENAME IN THE NEWS: on hover, make the dark treatment cover the full card
-   edge-to-edge so no slivers of the untouched photograph show at the perimeter. */
+/* KENAME IN THE NEWS: preserve the original photo and soft dark gradient.
+   Extend the gradient to the card edge so no bright slivers appear on hover. */
 .news-card.news-editorial-card{
   isolation:isolate;
+  overflow:hidden;
 }
 .news-card.news-editorial-card::after{
+  content:"" !important;
+  display:block !important;
+  position:absolute !important;
   inset:-1px !important;
-  border-radius:inherit !important;
   background:linear-gradient(
     180deg,
-    rgba(20,12,30,.76) 0%,
-    rgba(20,12,30,.84) 48%,
-    rgba(20,12,30,.94) 100%
+    rgba(20,12,30,0) 38%,
+    rgba(20,12,30,.82) 100%
   ) !important;
   z-index:1 !important;
   pointer-events:none !important;
@@ -1630,9 +1632,8 @@ body:not(.home-page) main .vision-copy{
   inset:-1px !important;
   background:linear-gradient(
     180deg,
-    rgba(20,12,30,.82) 0%,
-    rgba(20,12,30,.90) 48%,
-    rgba(20,12,30,.97) 100%
+    rgba(20,12,30,0) 38%,
+    rgba(20,12,30,.82) 100%
   ) !important;
 }
 .news-card.news-editorial-card .news-date,
