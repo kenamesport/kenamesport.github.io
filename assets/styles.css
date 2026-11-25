@@ -1406,3 +1406,111 @@ body:not(.home-page) main .vision-copy{
 .been-card:focus-visible{
   box-shadow:none !important;
 }
+
+
+/* FINAL: Keep the animated outline independent from card movement. */
+.been-card{
+  box-shadow:
+    0 2px 5px rgba(15,8,28,.12),
+    0 12px 26px rgba(39,14,64,.20),
+    0 28px 48px rgba(39,14,64,.13) !important;
+  transform:none !important;
+  transition:box-shadow .3s ease !important;
+}
+.been-card:hover,
+.been-card:focus-visible{
+  transform:none !important;
+  box-shadow:
+    0 4px 9px rgba(15,8,28,.16),
+    0 18px 34px rgba(39,14,64,.26),
+    0 34px 58px rgba(39,14,64,.17),
+    0 0 18px rgba(255,255,0,.10) !important;
+}
+.been-card:hover .been-photo,
+.been-card:focus-visible .been-photo{
+  transform:none !important;
+}
+
+/* Two-pixel animated perimeter on WHERE WE'VE BEEN; no scaling or jumping. */
+.been-card::before{
+  content:"" !important;
+  display:block !important;
+  position:absolute;
+  z-index:5;
+  inset:0;
+  border:2px solid transparent;
+  padding:0;
+  pointer-events:none;
+  opacity:0;
+  transform:none !important;
+  background:
+    linear-gradient(transparent,transparent) padding-box,
+    conic-gradient(from var(--kename-border-angle),transparent 0deg 265deg,#ffff00 285deg,#ffff00 335deg,transparent 355deg 360deg) border-box !important;
+  -webkit-mask:none !important;
+  mask:none !important;
+  transition:opacity .2s ease;
+}
+.been-card:hover::before,
+.been-card:focus-visible::before{
+  opacity:1;
+  animation:kename-border-orbit 2.6s linear infinite !important;
+}
+
+/* KENAME IN THE NEWS: darken the image behind the copy, never use the white cloud. */
+.news-card.news-editorial-card::after{
+  content:"" !important;
+  display:block !important;
+  position:absolute;
+  z-index:1;
+  inset:0;
+  background:linear-gradient(180deg,rgba(20,12,30,.08) 0%,rgba(20,12,30,.18) 38%,rgba(20,12,30,.88) 100%) !important;
+  pointer-events:none;
+}
+.news-card.news-editorial-card .news-date,
+.news-card.news-editorial-card .news-editorial-copy{
+  z-index:2 !important;
+}
+.news-card.news-editorial-card .news-date{
+  color:#fff !important;
+}
+
+/* The outline alone animates; the KENAME IN THE NEWS card stays in place. */
+.news-card.news-editorial-card{
+  transform:none !important;
+  transition:box-shadow .3s ease !important;
+}
+.news-card.news-editorial-card:hover,
+.news-card.news-editorial-card:focus-visible{
+  transform:none !important;
+  box-shadow:0 12px 28px rgba(25,12,42,.18) !important;
+}
+.news-card.news-editorial-card::before{
+  content:"" !important;
+  display:block !important;
+  position:absolute;
+  z-index:5;
+  inset:0;
+  border:2px solid transparent;
+  padding:0;
+  pointer-events:none;
+  opacity:0;
+  background:
+    linear-gradient(transparent,transparent) padding-box,
+    conic-gradient(from var(--kename-border-angle),transparent 0deg 265deg,#ffff00 285deg,#ffff00 335deg,transparent 355deg 360deg) border-box !important;
+  -webkit-mask:none !important;
+  mask:none !important;
+  transition:opacity .2s ease;
+}
+.news-card.news-editorial-card:hover::before,
+.news-card.news-editorial-card:focus-visible::before{
+  opacity:1;
+  animation:kename-border-orbit 2.6s linear infinite !important;
+}
+@media(prefers-reduced-motion:reduce){
+  .been-card:hover::before,
+  .been-card:focus-visible::before,
+  .news-card.news-editorial-card:hover::before,
+  .news-card.news-editorial-card:focus-visible::before{
+    animation:none !important;
+  }
+}
