@@ -1121,3 +1121,11 @@ body:not(.home-page) main .vision-copy{
     will-change:auto;
   }
 }
+
+
+/* Site-wide design direction: square corners across every page and component */
+*,
+*::before,
+*::after{
+  border-radius:0 !important;
+}
