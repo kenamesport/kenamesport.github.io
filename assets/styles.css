@@ -1831,3 +1831,34 @@ body:not(.home-page) main .vision-copy{
   object-position:center center !important;
   margin:-25% 0 0 -25%;
 }
+
+
+/* Our Vision collage: reveal more of photos 2 and 4, and bring jersey name in photo 3 closer. */
+.vision-montage-top,
+.vision-montage-bottom{
+  background:#32106f !important;
+}
+.vision-montage-top img{
+  width:100% !important;
+  height:100% !important;
+  max-width:100% !important;
+  object-fit:contain !important;
+  object-position:center center !important;
+  margin:0 !important;
+}
+.vision-montage-bottom img{
+  width:100% !important;
+  height:100% !important;
+  max-width:100% !important;
+  object-fit:contain !important;
+  object-position:center center !important;
+  margin:0 !important;
+}
+.vision-montage-middle img{
+  width:200% !important;
+  height:200% !important;
+  max-width:none !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+  margin:-50% 0 0 -50%;
+}
