@@ -1333,3 +1333,43 @@ body:not(.home-page) main .vision-copy{
     transform:none !important;
   }
 }
+
+
+/* Match KENAME IN THE NEWS outline to the exact perimeter treatment used on WHERE WE'VE BEEN */
+.news-card.news-editorial-card::before{
+  content:"";
+  position:absolute;
+  z-index:5;
+  inset:0;
+  padding:0;
+  border:2px solid transparent;
+  pointer-events:none;
+  background:
+    linear-gradient(transparent,transparent) padding-box,
+    conic-gradient(from var(--kename-border-angle),transparent 0deg 265deg,#ffff00 285deg,#ffff00 335deg,transparent 355deg 360deg) border-box;
+  -webkit-mask:none;
+  mask:none;
+  opacity:0;
+  transition:opacity .2s ease;
+}
+.news-card.news-editorial-card::after{
+  content:none !important;
+  display:none !important;
+}
+.news-card.news-editorial-card:hover::before,
+.news-card.news-editorial-card:focus-visible::before{
+  opacity:1;
+  animation:kename-border-orbit 2.6s linear infinite;
+}
+.news-card.news-editorial-card:hover,
+.news-card.news-editorial-card:focus-visible{
+  z-index:3;
+  transform:translateY(-5px) scale(1.02);
+  box-shadow:0 19px 38px rgba(25,12,42,.28),0 0 18px rgba(255,255,0,.10);
+}
+@media(prefers-reduced-motion:reduce){
+  .news-card.news-editorial-card:hover::before,
+  .news-card.news-editorial-card:focus-visible::before{animation:none !important}
+  .news-card.news-editorial-card:hover,
+  .news-card.news-editorial-card:focus-visible{transform:none !important}
+}
