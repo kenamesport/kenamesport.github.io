@@ -1606,3 +1606,37 @@ body:not(.home-page) main .vision-copy{
   box-shadow:none !important;
   filter:none !important;
 }
+
+
+/* KENAME IN THE NEWS: on hover, make the dark treatment cover the full card
+   edge-to-edge so no slivers of the untouched photograph show at the perimeter. */
+.news-card.news-editorial-card{
+  isolation:isolate;
+}
+.news-card.news-editorial-card::after{
+  inset:-1px !important;
+  border-radius:inherit !important;
+  background:linear-gradient(
+    180deg,
+    rgba(20,12,30,.76) 0%,
+    rgba(20,12,30,.84) 48%,
+    rgba(20,12,30,.94) 100%
+  ) !important;
+  z-index:1 !important;
+  pointer-events:none !important;
+}
+.news-card.news-editorial-card:hover::after,
+.news-card.news-editorial-card:focus-visible::after{
+  inset:-1px !important;
+  background:linear-gradient(
+    180deg,
+    rgba(20,12,30,.82) 0%,
+    rgba(20,12,30,.90) 48%,
+    rgba(20,12,30,.97) 100%
+  ) !important;
+}
+.news-card.news-editorial-card .news-date,
+.news-card.news-editorial-card .news-editorial-copy{
+  position:relative;
+  z-index:2 !important;
+}
