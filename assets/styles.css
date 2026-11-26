@@ -1916,3 +1916,11 @@ body:not(.home-page) main .vision-copy{
 .vision-montage-main{
   background:transparent !important;
 }
+
+
+/* Guyway logo: blend its white JPEG canvas into the partner-section background. */
+.partners .partner-logos-real img:first-child{
+  background:transparent !important;
+  mix-blend-mode:multiply !important;
+  isolation:auto !important;
+}
