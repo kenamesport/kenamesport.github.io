@@ -1876,3 +1876,13 @@ body:not(.home-page) main .vision-copy{
   object-position:center center !important;
   margin:0 !important;
 }
+
+
+/* Our Vision photo 2: tighter crop to keep the W7F banner out of view. */
+.vision-montage-top{
+  overflow:hidden !important;
+}
+.vision-montage-top img{
+  transform:scale(1.25) !important;
+  transform-origin:center center !important;
+}
