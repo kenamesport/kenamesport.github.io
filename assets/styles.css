@@ -1886,3 +1886,25 @@ body:not(.home-page) main .vision-copy{
   transform:scale(1.25) !important;
   transform-origin:center center !important;
 }
+
+
+/* Our Vision collage: reveal each photograph in sequence, from 1 through 5. */
+@keyframes vision-photo-layer-in{
+  from{opacity:0;transform:translate3d(0,34px,0)}
+  to{opacity:1;transform:translate3d(0,0,0)}
+}
+.vision-montage figure{
+  opacity:0;
+  animation:vision-photo-layer-in .7s cubic-bezier(.2,.72,.24,1) both;
+}
+.vision-montage .vision-montage-main{animation-delay:.12s}
+.vision-montage .vision-montage-top{animation-delay:.32s}
+.vision-montage .vision-montage-middle{animation-delay:.52s}
+.vision-montage .vision-montage-bottom{animation-delay:.72s}
+.vision-montage .vision-montage-accent{animation-delay:.92s}
+@media(prefers-reduced-motion:reduce){
+  .vision-montage figure{
+    opacity:1;
+    animation:none !important;
+  }
+}
