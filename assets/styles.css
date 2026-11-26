@@ -1862,3 +1862,17 @@ body:not(.home-page) main .vision-copy{
   object-position:center center !important;
   margin:-50% 0 0 -50%;
 }
+
+
+/* Our Vision collage: photos 2, 3 and 4 fill their complete frames. */
+.vision-montage-top img,
+.vision-montage-middle img,
+.vision-montage-bottom img{
+  display:block !important;
+  width:100% !important;
+  height:100% !important;
+  max-width:100% !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+  margin:0 !important;
+}
